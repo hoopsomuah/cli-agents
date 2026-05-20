@@ -1,0 +1,45 @@
+{
+  "title": "CLI Agents",
+  "subtitle": "From Teletype to Rhythm of Business",
+  "tagline": "A guided tour of the terminal, version control, and agentic operations — for the people who keep the team running.",
+  "meeting_target_minutes": 30,
+  "live_coverage_percent": 20,
+  "acts": [
+    {
+      "id": "act-1",
+      "title": "From Teletype to Terminal",
+      "subtitle": "A one-minute history of the thing on your screen",
+      "scenes": ["01-teletype", "02-tty-pty-cli-tui", "03-windows-terminal"]
+    },
+    {
+      "id": "act-2",
+      "title": "The Filesystem is the Substrate",
+      "subtitle": "Where your work actually lives",
+      "scenes": ["04-filesystem", "05-tui-bridge"]
+    },
+    {
+      "id": "act-3",
+      "title": "Version Control as Rhythm of Business",
+      "subtitle": "How teams manage change without losing their minds",
+      "scenes": ["06-final-v7-final", "07-repos", "08-branches-and-prs", "09-living-canon"]
+    },
+    {
+      "id": "act-4",
+      "title": "File Over App",
+      "subtitle": "Why the file outlives the tool",
+      "scenes": ["10-file-over-app", "11-obsidian", "12-agent-friendly"]
+    },
+    {
+      "id": "act-5",
+      "title": "GitHub Copilot CLI",
+      "subtitle": "Talking to your repo in plain English",
+      "scenes": ["13-copilot-cli", "14-pr-as-conversation", "15-sharepoint-vs-repo"]
+    },
+    {
+      "id": "act-6",
+      "title": "Your Next 7 Days",
+      "subtitle": "Tangible next steps",
+      "scenes": ["16-install-checklist", "17-starter-issues"]
+    }
+  ]
+}
