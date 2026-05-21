@@ -371,6 +371,283 @@ html, body {
   font-size: clamp(0.875rem, 1.1vw, 1.125rem);
 }
 
+/* ============================================================
+   BULLETS slide — primary content layout for the new deck.
+   ============================================================ */
+
+.slide--bullets {
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+.slide--bullets.slide--bullets-image {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.slide--bullets .slide__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  max-width: 56rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.slide--bullets.slide--bullets-image .slide__left {
+  margin: 0;
+}
+
+.slide--bullets .slide__chrome {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  margin: 0 0 1.25rem;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-mute);
+  font-size: clamp(0.875rem, 1vw, 1.125rem);
+}
+
+.slide--bullets .slide__chrome-act {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.slide--bullets .slide__title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.75rem;
+  max-width: 24ch;
+}
+
+.slide--bullets .slide__sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+  color: var(--ink-soft);
+  line-height: 1.35;
+  margin: 0 0 2rem;
+  max-width: 42ch;
+}
+
+.slide--bullets .slide__bullets {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.7rem, 1vw, 1.1rem);
+}
+
+.slide--bullets .slide__bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  font-family: var(--sans);
+  font-size: clamp(1.125rem, 1.55vw, 1.7rem);
+  line-height: 1.35;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.slide--bullets .slide__bullet-marker {
+  color: var(--accent);
+  font-weight: 600;
+  flex: 0 0 auto;
+  line-height: 1.2;
+  transform: translateY(0.05em);
+}
+
+.slide--bullets .slide__bullet-text {
+  flex: 1;
+}
+
+.slide--bullets .slide__keyidea {
+  border-left: 3px solid var(--accent-2);
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  margin-top: auto;
+  max-width: 42ch;
+}
+
+.slide--bullets .slide__keyidea-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.25vw, 1.3rem);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.slide--bullets .slide__right {
+  position: relative;
+  height: 68vh;
+  max-height: 68vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.slide--bullets .slide__figure {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(244, 236, 216, 0.06);
+}
+
+.slide--bullets .slide__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.slide--bullets .slide__caption {
+  position: absolute;
+  bottom: -2.25rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.85rem, 1vw, 1.05rem);
+  color: var(--ink-mute);
+  padding: 0 1rem;
+}
+
+/* ============================================================
+   INSTALL slide — numbered-step checklist.
+   ============================================================ */
+
+.slide--install {
+  justify-content: flex-start;
+  align-items: stretch;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(111, 179, 212, 0.10), transparent 60%),
+    var(--bg);
+}
+
+.slide--install .slide__chrome {
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  margin: 0 0 1.25rem;
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--ink-mute);
+  font-size: clamp(0.875rem, 1vw, 1.125rem);
+}
+
+.slide--install .slide__chrome-act {
+  color: var(--accent-cool);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.slide--install .slide__title {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.5rem;
+  max-width: 24ch;
+}
+
+.slide--install .slide__sub {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+  max-width: 50ch;
+}
+
+.slide--install .slide__steps {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(28rem, 100%), 1fr));
+  gap: 0.9rem 2rem;
+  max-width: 88rem;
+}
+
+.slide--install .slide__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-family: var(--sans);
+  font-size: clamp(1rem, 1.3vw, 1.4rem);
+  line-height: 1.35;
+  color: var(--ink);
+  padding: 0.5rem 0;
+}
+
+.slide--install .slide__step-num {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.4rem;
+  height: 2.4rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent-cool);
+  color: var(--accent-cool);
+  font-family: var(--mono);
+  font-size: 0.85em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  background: rgba(111, 179, 212, 0.06);
+}
+
+.slide--install .slide__step-text {
+  flex: 1;
+}
+
+.slide--install .slide__keyidea {
+  border-left: 3px solid var(--accent-cool);
+  padding: 0.15rem 0 0.15rem 1.25rem;
+  margin-top: auto;
+  max-width: 60ch;
+}
+
+.slide--install .slide__keyidea-text {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Responsive shrink */
+@media (max-width: 900px) {
+  .slide--bullets.slide--bullets-image {
+    grid-template-columns: 1fr;
+  }
+  .slide--bullets .slide__right {
+    height: 36vh;
+    order: -1;
+  }
+  .slide--install .slide__steps {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* QUOTE slide variant */
 .slide--quote {
   justify-content: center;

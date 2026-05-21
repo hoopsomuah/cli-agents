@@ -8,18 +8,43 @@ const ASSET_DIAGRAM = '../site/assets/diagrams/';
 // ---------- Frontmatter parser (matches main site) ----------
 
 function parseScene(raw) {
-  const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!m) return { meta: {}, body: raw };
+  // Mirror of site/js/main.js → parseScene. Keep them in sync.
+  // Tolerates both LF and CRLF line endings.
+  const normalized = raw.replace(/\r\n?/g, '\n');
+  const m = normalized.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!m) return { meta: {}, body: normalized };
   const meta = {};
-  m[1].split('\n').forEach((line) => {
+  const lines = m[1].split('\n');
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
     const idx = line.indexOf(':');
-    if (idx === -1) return;
+    if (idx === -1) {
+      i++;
+      continue;
+    }
     const key = line.slice(0, idx).trim();
     let val = line.slice(idx + 1).trim();
+    if (val === '') {
+      const items = [];
+      let j = i + 1;
+      while (j < lines.length && /^\s+-\s+/.test(lines[j])) {
+        let item = lines[j].replace(/^\s+-\s+/, '').trim();
+        if (item.startsWith('"') && item.endsWith('"')) item = item.slice(1, -1);
+        items.push(item);
+        j++;
+      }
+      if (items.length > 0) {
+        meta[key] = items;
+        i = j;
+        continue;
+      }
+    }
     if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
     if (/^\d+$/.test(val)) val = parseInt(val, 10);
     meta[key] = val;
-  });
+    i++;
+  }
   return { meta, body: m[2] };
 }
 
@@ -51,6 +76,7 @@ function escapeHtml(s) {
 }
 
 function buildCoverSlide(manifest) {
+  const sceneCount = manifest.acts.reduce((n, a) => n + (a.scenes ? a.scenes.length : 0), 0);
   return {
     type: 'cover',
     actIndex: null,
@@ -69,7 +95,7 @@ function buildCoverSlide(manifest) {
           <span>·</span>
           <span>${manifest.acts.length} acts</span>
           <span>·</span>
-          <span>17 scenes</span>
+          <span>${sceneCount} scenes</span>
         </div>
       </div>
     `,
@@ -94,11 +120,21 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   const { meta } = scene;
   const hasImage = !!meta.hero_image;
   const hasDiagram = !!meta.diagram;
+  const hasBullets = Array.isArray(meta.bullets) && meta.bullets.length > 0;
 
-  // If there's a diagram and no hero image, use diagram layout
-  // If there's a hero image, use scene+image layout
-  // Otherwise quote layout
+  // Explicit install layout takes precedence.
+  if (meta.layout === 'install') {
+    return buildInstallSlide(scene, sceneId, actIndex);
+  }
 
+  // Bullets become the dominant layout. If a hero image is present, render it
+  // on the right; otherwise center the bullets.
+  if (hasBullets) {
+    return buildBulletsSlide(scene, sceneId, actIndex);
+  }
+
+  // Hero photo only — keep the cinematic editorial layout for historical
+  // imagery (teletypes, typewriters, etc.).
   if (hasImage) {
     return {
       type: 'scene',
@@ -168,6 +204,88 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   };
 }
 
+function buildBulletsSlide(scene, sceneId, actIndex) {
+  const { meta } = scene;
+  const hasImage = !!meta.hero_image;
+  const bullets = meta.bullets || [];
+  const bulletsHtml = bullets
+    .map((b, i) => `
+      <li class="slide__bullet reveal" style="--reveal-delay: ${500 + i * 180}ms;">
+        <span class="slide__bullet-marker" aria-hidden="true">→</span>
+        <span class="slide__bullet-text">${escapeHtml(b)}</span>
+      </li>`)
+    .join('');
+  const keyideaDelay = 500 + bullets.length * 180 + 200;
+
+  return {
+    type: 'bullets',
+    actIndex,
+    sceneId,
+    html: `
+      <div class="slide slide--bullets ${hasImage ? 'slide--bullets-image' : ''}" data-slide-type="bullets" data-scene-id="${sceneId}">
+        <div class="slide__left">
+          <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
+            <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
+            <span>·</span>
+            <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
+          </p>
+          <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
+          ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 350ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
+          <ul class="slide__bullets">${bulletsHtml}</ul>
+          ${meta.key_idea ? `
+            <div class="slide__keyidea reveal" style="--reveal-delay: ${keyideaDelay}ms;">
+              <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
+            </div>` : ''}
+        </div>
+        ${hasImage ? `
+          <div class="slide__right">
+            <figure class="slide__figure reveal" style="--reveal-delay: 100ms;">
+              <img src="${ASSET_IMG}${meta.hero_image}" alt="${escapeHtml(meta.hero_image_alt || '')}" />
+            </figure>
+            ${meta.hero_image_caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(meta.hero_image_caption)}</figcaption>` : ''}
+          </div>` : ''}
+      </div>
+    `,
+  };
+}
+
+function buildInstallSlide(scene, sceneId, actIndex) {
+  const { meta } = scene;
+  const steps = meta.bullets || [];
+  const stepsHtml = steps
+    .map((s, i) => `
+      <li class="slide__step reveal" style="--reveal-delay: ${400 + i * 130}ms;">
+        <span class="slide__step-num">${String(i + 1).padStart(2, '0')}</span>
+        <span class="slide__step-text">${escapeHtml(s)}</span>
+      </li>`)
+    .join('');
+  const keyideaDelay = 400 + steps.length * 130 + 200;
+
+  return {
+    type: 'install',
+    actIndex,
+    sceneId,
+    html: `
+      <div class="slide slide--install" data-slide-type="install" data-scene-id="${sceneId}">
+        <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
+          <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
+          <span>·</span>
+          <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
+          <span>·</span>
+          <span>Install</span>
+        </p>
+        <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
+        ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 300ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
+        <ol class="slide__steps">${stepsHtml}</ol>
+        ${meta.key_idea ? `
+          <div class="slide__keyidea reveal" style="--reveal-delay: ${keyideaDelay}ms;">
+            <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
+          </div>` : ''}
+      </div>
+    `,
+  };
+}
+
 function buildClosingSlide() {
   return {
     type: 'closing',
@@ -202,8 +320,19 @@ function expandScenes(manifest, scenes) {
       if (!scene) return;
       const { meta } = scene;
       slides.push(buildSceneSlide(scene, sceneId, actIndex, act.title));
-      // If both image AND diagram, follow up with a dedicated diagram slide
-      if (meta.hero_image && meta.diagram) {
+
+      // Decide whether the diagram was already shown on the primary slide.
+      // It is only the primary slide when there is no install layout, no
+      // bullets, no hero image — in which case buildSceneSlide returns the
+      // dedicated diagram layout.
+      const hasBullets = Array.isArray(meta.bullets) && meta.bullets.length > 0;
+      const diagramOnPrimary =
+        !!meta.diagram &&
+        !hasBullets &&
+        !meta.hero_image &&
+        meta.layout !== 'install';
+
+      if (meta.diagram && !diagramOnPrimary) {
         slides.push({
           type: 'diagram',
           actIndex,

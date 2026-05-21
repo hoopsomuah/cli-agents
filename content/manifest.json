@@ -1,45 +1,53 @@
 {
   "title": "CLI Agents",
   "subtitle": "From Teletype to Rhythm of Business",
-  "tagline": "A guided tour of the terminal, version control, and agentic operations — for the people who keep the team running.",
+  "tagline": "A guided tour of the terminal, repositories, GitHub, and the Copilot CLI — for the people who keep the team running.",
   "meeting_target_minutes": 30,
   "live_coverage_percent": 20,
   "acts": [
     {
       "id": "act-1",
       "title": "From Teletype to Terminal",
-      "subtitle": "A one-minute history of the thing on your screen",
-      "scenes": ["01-teletype", "02-tty-pty-cli-tui", "03-windows-terminal"]
+      "subtitle": "Where the black window came from, and how to get one of your own",
+      "scenes": [
+        "01-teletype-return",
+        "02-paper-to-glass",
+        "03-windows-terminal",
+        "04-install-terminal"
+      ]
     },
     {
       "id": "act-2",
-      "title": "The Filesystem is the Substrate",
-      "subtitle": "Where your work actually lives",
-      "scenes": ["04-filesystem", "05-tui-bridge"]
+      "title": "Files, Repos, and the Living Canon",
+      "subtitle": "From the filesystem on your laptop to a shared, versioned source of truth",
+      "scenes": [
+        "05-filesystem-house",
+        "06-terminal-walks-faster",
+        "07-file-over-app",
+        "08-obsidian",
+        "09-final-v7-final",
+        "10-what-is-a-repo",
+        "11-branches",
+        "12-pull-requests",
+        "13-issues",
+        "14-agent-friendly-canon",
+        "15-install-git-obsidian"
+      ]
     },
     {
       "id": "act-3",
-      "title": "Version Control as Rhythm of Business",
-      "subtitle": "How teams manage change without losing their minds",
-      "scenes": ["06-final-v7-final", "07-repos", "08-branches-and-prs", "09-living-canon"]
-    },
-    {
-      "id": "act-4",
-      "title": "File Over App",
-      "subtitle": "Why the file outlives the tool",
-      "scenes": ["10-file-over-app", "11-obsidian", "12-agent-friendly"]
-    },
-    {
-      "id": "act-5",
-      "title": "GitHub Copilot CLI",
-      "subtitle": "Talking to your repo in plain English",
-      "scenes": ["13-copilot-cli", "14-pr-as-conversation", "15-sharepoint-vs-repo"]
-    },
-    {
-      "id": "act-6",
-      "title": "Your Next 7 Days",
-      "subtitle": "Tangible next steps",
-      "scenes": ["16-install-checklist", "17-starter-issues"]
+      "title": "GitHub and the Copilot CLI",
+      "subtitle": "How the cloud platform and the agent in your terminal fit together",
+      "scenes": [
+        "16-github-cloud-home",
+        "17-orgs-and-repos",
+        "18-github-at-work",
+        "19-copilot-family",
+        "20-copilot-cli",
+        "21-pr-as-conversation",
+        "22-sharepoint-vs-repo",
+        "23-install-gh-copilot-cli"
+      ]
     }
   ]
 }

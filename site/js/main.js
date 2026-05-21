@@ -18,19 +18,45 @@ async function loadScene(sceneId) {
 }
 
 function parseScene(raw) {
-  // Simple frontmatter parser (--- delimited YAML-ish)
-  const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!m) return { meta: {}, body: raw };
+  // Simple frontmatter parser (--- delimited YAML-ish).
+  // Supports scalar keys (`key: value`) and list keys (`key:` followed by
+  // indented `- "item"` lines). Tolerates both LF and CRLF line endings.
+  const normalized = raw.replace(/\r\n?/g, '\n');
+  const m = normalized.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!m) return { meta: {}, body: normalized };
   const meta = {};
-  m[1].split('\n').forEach((line) => {
+  const lines = m[1].split('\n');
+  let i = 0;
+  while (i < lines.length) {
+    const line = lines[i];
     const idx = line.indexOf(':');
-    if (idx === -1) return;
+    if (idx === -1) {
+      i++;
+      continue;
+    }
     const key = line.slice(0, idx).trim();
     let val = line.slice(idx + 1).trim();
+    if (val === '') {
+      // Possible list — look for "  - item" continuation lines.
+      const items = [];
+      let j = i + 1;
+      while (j < lines.length && /^\s+-\s+/.test(lines[j])) {
+        let item = lines[j].replace(/^\s+-\s+/, '').trim();
+        if (item.startsWith('"') && item.endsWith('"')) item = item.slice(1, -1);
+        items.push(item);
+        j++;
+      }
+      if (items.length > 0) {
+        meta[key] = items;
+        i = j;
+        continue;
+      }
+    }
     if (val.startsWith('"') && val.endsWith('"')) val = val.slice(1, -1);
     if (/^\d+$/.test(val)) val = parseInt(val, 10);
     meta[key] = val;
-  });
+    i++;
+  }
   return { meta, body: m[2] };
 }
 

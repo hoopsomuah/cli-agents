@@ -1,51 +1,55 @@
 ---
 scene: 03
 act: 1
-title: "Windows Terminal, the App"
-subtitle: "The modern home for the world's oldest UI"
-duration_seconds: 180
-key_idea: "Windows Terminal is a tabbed browser for the command line. Install it once, configure it once, never think about it again."
-interactive: "terminal-tour"
+title: "Inside Windows Terminal"
+subtitle: "What you actually see when you open the modern terminal app"
+duration_seconds: 120
+key_idea: "Windows Terminal is a tabbed browser for command-line sessions. Install it once, configure it once, never think about it again."
 hero_image: "03-modern-terminal-desk.png"
-hero_image_alt: "A modern home-office desk with a monitor displaying a code editor and a mechanical keyboard in the foreground"
-hero_image_caption: "The terminal lives quietly inside a tidy desk — same contract, no clatter."
+hero_image_alt: "A modern home-office desk with a monitor displaying a terminal window and a mechanical keyboard in the foreground"
+hero_image_caption: "Same contract as 1963. Better chair."
+bullets:
+  - "A free Microsoft app — preinstalled on Windows 11"
+  - "Tabs and panes — multiple shells side by side, like browser tabs"
+  - "Hosts PowerShell, Command Prompt, WSL Linux, Azure Cloud Shell"
+  - "Real fonts, real Unicode, real emoji — built this decade"
+  - "Configurable in a Settings UI; open source on GitHub"
 ---
 
 ## What it is
 
-**Windows Terminal** is a free Microsoft app you install from the Microsoft Store. It is the **container** that holds your PowerShell, Command Prompt, WSL Linux, and Azure Cloud Shell sessions — each in its own tab, just like Chrome holds websites.
+**Windows Terminal** is the modern container that holds your command-line sessions. It is a free Microsoft app, shipped pre-installed on Windows 11 and one click away on the Microsoft Store for Windows 10.
 
-Before Windows Terminal (shipped in 2019), Windows users were stuck with the original `conhost.exe` console window from the early 1990s. No tabs. No transparency. No emoji support. No mouse-friendly text selection. It was, technically, a museum piece.
+It is not itself a "shell" — it does not run your commands. It is the **window** that hosts the shell, the same way Chrome is the window that hosts a webpage. The shell (PowerShell, for our purposes) is the program that does the work.
 
-Windows Terminal brought the Windows console world into 2019. As of 2024, it ships pre-installed on Windows 11.
+## The prompt, explained
 
-## What you get
+When you open it, you see something like this:
 
-- **Tabs.** Multiple shells running side by side, like browser tabs.
-- **Panes.** Split a tab into two or four panes. Run a server in one, edit files in another.
-- **Profiles.** Each tab can be a different shell: PowerShell for Windows-y things, WSL Ubuntu for Linux-y things, Azure Cloud Shell for cloud-y things.
-- **Real fonts.** Programming fonts with ligatures (JetBrains Mono, Cascadia Code), full Unicode, full emoji.
-- **Configurable.** Colors, key bindings, background images, transparency — all in a single JSON file or the Settings UI.
-- **Open source.** The whole codebase is on GitHub.
+```
+PS C:\Users\hoop>
+```
 
-## The shells inside it
+Read that left to right:
 
-A **shell** is the program that reads what you type and runs it. Windows Terminal does not replace your shell — it hosts it. The three shells you'll meet:
+- **`PS`** — you are talking to **PowerShell**.
+- **`C:\Users\hoop`** — you are currently inside the folder `C:\Users\hoop`. This is your "home" folder, where the prompt drops you by default.
+- **`>`** — the prompt is waiting for you to type a command.
+
+That single line tells you what shell you're using and where you are in the filesystem. Once you can read it, the terminal is no longer mysterious.
+
+## The three shells
 
 | Shell | What it's for | When you'll use it |
 | --- | --- | --- |
-| **PowerShell** | Modern, object-aware shell for Windows | Day-to-day Windows tasks, automation |
-| **Command Prompt (cmd)** | The classic MS-DOS-style shell | Legacy scripts, very simple commands |
-| **WSL (Ubuntu, etc.)** | A real Linux running inside Windows | Tools that assume Linux — most of the AI/dev world |
+| **PowerShell** | Modern Windows shell, object-aware | Day-to-day, almost always |
+| **Command Prompt (cmd)** | Classic MS-DOS-style shell | Legacy scripts only |
+| **WSL (Ubuntu)** | Real Linux running inside Windows | Tools that assume Linux |
 
-For our work, **PowerShell is the default** and the only one you need to start. We will note when something requires WSL.
+For our work, **PowerShell is the default**. You will not need anything else to start.
 
 ## What it is *not*
 
-- Not a code editor (use VS Code for that).
-- Not the same as PowerShell (PowerShell is what runs *inside* Terminal).
-- Not Windows-only conceptually — every operating system has its own terminal app. macOS has Terminal.app and iTerm2. Linux has GNOME Terminal, Konsole, and others.
-
-## Install link
-
-Get it from the [Microsoft Store: Windows Terminal](https://aka.ms/terminal). On Windows 11 it's already there — just hit the Start key and type "Terminal."
+- Not a code editor — use VS Code or Obsidian.
+- Not the same thing as PowerShell — PowerShell runs *inside* Terminal.
+- Not Windows-only conceptually — macOS has Terminal.app and iTerm2; Linux has GNOME Terminal and Konsole.
