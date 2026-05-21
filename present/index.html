@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CLI Agents — Presentation</title>
+    <meta
+      name="description"
+      content="From Teletype to Rhythm of Business — full-screen presentation deck."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="deck.css" />
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  </head>
+  <body>
+    <main id="deck" class="deck" aria-live="polite">
+      <div class="deck__stage" id="stage"></div>
+      <div class="deck__loading" id="loading">
+        <div class="deck__loading-dot"></div>
+        <p>Loading deck…</p>
+      </div>
+    </main>
+
+    <div class="deck__chrome">
+      <div class="deck__counter">
+        <span id="counter-current">01</span>
+        <span class="deck__counter-sep">/</span>
+        <span id="counter-total">--</span>
+      </div>
+      <div class="deck__controls">
+        <button id="btn-prev" class="deck__btn" aria-label="Previous">←</button>
+        <button id="btn-next" class="deck__btn" aria-label="Next">→</button>
+        <button id="btn-fullscreen" class="deck__btn" aria-label="Fullscreen">⛶</button>
+        <a href="../" class="deck__btn deck__btn--exit" aria-label="Exit to reading mode">Read mode</a>
+      </div>
+    </div>
+
+    <div class="deck__progress" id="progress"></div>
+
+    <div class="deck__hint" id="hint">
+      <kbd>→</kbd> next · <kbd>←</kbd> back · <kbd>F</kbd> fullscreen · <kbd>Esc</kbd> exit
+    </div>
+
+    <script type="module" src="deck.js"></script>
+  </body>
+</html>
