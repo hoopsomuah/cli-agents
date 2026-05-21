@@ -8,7 +8,12 @@ A 30-minute walkthrough that introduces a non-technical executive team to:
 - GitHub Copilot CLI as the agent that closes the loop
 - Why a repo plus a generated website displaces most of what we use SharePoint for
 
-The site is live at **https://hoopsomuah.github.io/cli-agents/**.
+Two views of the same content:
+
+- **Reading view** — long-form editorial site at <https://hoopsomuah.github.io/cli-agents/>
+- **Presentation view** — full-screen cinematic slide deck at <https://hoopsomuah.github.io/cli-agents/present/>
+
+Edit a Markdown file in `content/` and both views update.
 
 ---
 
@@ -23,7 +28,7 @@ This repo deliberately separates **content** from **layout**.
 │   ├── 01-teletype.md
 │   ├── 02-tty-pty-cli-tui.md
 │   └── ...
-├── site/                # Layout, styling, interactive widgets
+├── site/                # Reading view — layout, styling, interactive widgets
 │   ├── css/
 │   │   ├── tokens.css   # Color, type, spacing tokens
 │   │   ├── base.css     # Resets, body, typography
@@ -37,11 +42,18 @@ This repo deliberately separates **content** from **layout**.
 │   │   ├── toc.js       # Sticky table of contents
 │   │   └── interactive/ # One file per interactive widget
 │   └── assets/
+│       ├── images/      # Photographs (PNG)
+│       └── diagrams/    # Hand-built SVGs
+├── present/             # Presentation view — cinematic slide deck
+│   ├── index.html
+│   ├── deck.css
+│   └── deck.js
 ├── docs/
 │   └── SEEDED_ISSUES.md # Starter homework issues, ready to create
 ├── TEAM.md
 ├── index.html
-└── README.md
+├── README.md           # This file (for humans)
+└── AGENTS.md           # Operating manual for coding agents
 ```
 
 ### Editing content
@@ -53,6 +65,21 @@ To change what the site says, **edit the Markdown files in `content/`**. No HTML
 To change how the site looks, **edit the files in `site/`**. The Markdown files don't need to change.
 
 This isolation is intentional. It is the whole thesis of the presentation: **the file is the canon. The renderer is replaceable.**
+
+---
+
+## Presentation mode
+
+For live delivery in a meeting, open <https://hoopsomuah.github.io/cli-agents/present/> and press **F** to go fullscreen.
+
+- `→` / `Space` / click — next slide
+- `←` — previous
+- `F` — fullscreen toggle
+- `Esc` — exit fullscreen
+- `Home` / `End` — first / last
+- URL hash (`#1`, `#15`, etc.) — deep-linkable
+
+The deck is built from the same `content/` Markdown files — there is no separate slide source.
 
 ---
 
