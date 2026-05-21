@@ -6,6 +6,13 @@ subtitle: "Steph Ango's three-word manifesto, and why it matters now"
 duration_seconds: 180
 key_idea: "Apps are ephemeral. Files have a chance to last. In a world of agents, this isn't just nostalgia — it's strategy."
 interactive: "file-over-app-quotes"
+hero_image: "10-notebook-handwriting.png"
+hero_image_alt: "An open notebook on a wooden desk with handwritten cursive on the left page and a small ink sketch of a tree on the right, with a fountain pen and a cup of tea nearby"
+hero_image_caption: "Pages outlive notebooks. Notebooks outlive bookstores. Files outlive apps."
+hero_image_orientation: "portrait"
+diagram: "04-file-over-app.svg"
+diagram_alt: "Diagram showing your files as a wide foundation at the bottom, with apps like Obsidian, VS Code, and a CLI agent floating above as ephemeral, dashed boxes"
+diagram_caption: "The bedrock is your files. The apps come and go."
 ---
 
 ## The thesis

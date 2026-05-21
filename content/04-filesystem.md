@@ -6,6 +6,9 @@ subtitle: "Folders, files, and the addresses they live at"
 duration_seconds: 180
 key_idea: "Everything on a computer — every doc, every photo, every program — is a file in a folder. The terminal is the fastest way to walk through that house."
 interactive: "fs-walkthrough"
+hero_image: "04-server-room.png"
+hero_image_alt: "A long aisle of server racks lit by blue ambient light and warm floor LEDs"
+hero_image_caption: "Beneath every app, beneath every cloud, there is a tree of folders and files."
 ---
 
 ## The metaphor

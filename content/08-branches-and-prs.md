@@ -6,6 +6,9 @@ subtitle: "How a team agrees on a change without stepping on each other"
 duration_seconds: 240
 key_idea: "A pull request is the most powerful sign-off mechanism ever invented for knowledge work. Every change is proposed, reviewed, and approved before it becomes the new truth — and the entire conversation is auditable forever."
 interactive: "pr-walkthrough"
+diagram: "03-branch-merge.svg"
+diagram_alt: "Diagram showing the main branch as a horizontal line with commits, a feature branch arcing above with its own commits, a pull-request box with approvals, and the branch merging back into main"
+diagram_caption: "A branch is a safe place to try things. A PR is the conversation about whether to keep them."
 ---
 
 ## Branches — parallel realities for your folder

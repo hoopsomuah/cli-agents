@@ -6,6 +6,9 @@ subtitle: "The editor that treats your folder of notes like a knowledge graph"
 duration_seconds: 150
 key_idea: "Obsidian is the friendliest way to edit a folder of Markdown files. It gives you a real app experience while keeping the underlying files plain, portable, and yours."
 interactive: "obsidian-demo"
+hero_image: "11-obsidian-desk.png"
+hero_image_alt: "A laptop on a wooden desk displaying a markdown editor, with an open notebook and a steaming ceramic mug beside it"
+hero_image_caption: "Obsidian is a calm front door to a folder of plain-text files."
 ---
 
 ## What it is

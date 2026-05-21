@@ -6,6 +6,9 @@ subtitle: "TTY, PTY, CLI, TUI — plain-English definitions"
 duration_seconds: 120
 key_idea: "These four acronyms describe the layers of the terminal stack. Knowing them lets you read documentation without flinching."
 interactive: "acronym-cards"
+diagram: "02-tty-vs-pty.svg"
+diagram_alt: "Side-by-side diagram of a physical teletype connected by wire to a mainframe versus a software pty connecting a terminal app to a shell"
+diagram_caption: "On the left, a real wire. On the right, software pretending to be a wire. Same contract."
 ---
 
 ## The vocabulary, demystified

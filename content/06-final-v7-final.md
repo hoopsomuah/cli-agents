@@ -6,6 +6,10 @@ subtitle: "Why filenames are not a version-control strategy"
 duration_seconds: 120
 key_idea: "Every team has lived through the 'which version is the real one?' nightmare. Version control is the cure that the software world figured out 20 years ago — and that we should borrow."
 interactive: "filename-graveyard"
+hero_image: "06-stickynotes-chaos.png"
+hero_image_alt: "An overhead view of a wooden desk with stacks of paper drafts, red and blue pen edits, and yellow sticky notes saying FINAL, v3, USE THIS ONE, ALMOST THERE"
+hero_image_caption: "We have all worked on this desk. The cure is older than you think."
+hero_image_orientation: "portrait"
 ---
 
 ## A familiar scene

@@ -6,6 +6,9 @@ subtitle: "Forty-five minutes from zero to running Copilot CLI on your first rep
 duration_seconds: 120
 key_idea: "You don't need to remember any of this from the meeting. The checklist is the artifact. Work it on your own time."
 interactive: "install-checklist"
+hero_image: "16-fresh-start.png"
+hero_image_alt: "Overhead view of an open notebook with a handwritten note that reads A new day. A clear mind. Small steps. Meaningful work. All adds up. A fountain pen rests on the page beside a steaming coffee mug and a small sprig of greenery"
+hero_image_caption: "Small steps. Real ones. Today."
 ---
 
 ## The checklist

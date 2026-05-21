@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-label="Branch and merge flow">
+  <style>
+    .title { font-family: "Source Serif 4", Georgia, serif; font-size: 18px; font-weight: 500; fill: #1a1a1a; }
+    .label { font-family: "Source Serif 4", Georgia, serif; font-size: 14px; fill: #1a1a1a; }
+    .small { font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 12px; fill: #5a5546; }
+    .commit-main { fill: #1e3a5f; }
+    .commit-branch { fill: #c8741f; }
+    .commit-merge { fill: #2d5d3a; }
+    .line-main { stroke: #1e3a5f; stroke-width: 3; fill: none; }
+    .line-branch { stroke: #c8741f; stroke-width: 2.5; fill: none; }
+    .branch-label { font-family: "JetBrains Mono", monospace; font-size: 12px; }
+  </style>
+
+  <text x="600" y="40" text-anchor="middle" class="title">A branch is a safe place to try things. A pull request is the conversation about whether to keep them.</text>
+
+  <!-- Main branch line -->
+  <line x1="80" y1="200" x2="1120" y2="200" class="line-main" />
+  <text x="60" y="205" text-anchor="end" class="branch-label" fill="#1e3a5f">main</text>
+
+  <!-- Commits on main (before branch) -->
+  <circle cx="160" cy="200" r="9" class="commit-main" />
+  <circle cx="240" cy="200" r="9" class="commit-main" />
+
+  <!-- Branch off -->
+  <path d="M 240 200 Q 280 200 320 130" class="line-branch" />
+  <text x="295" y="118" class="branch-label" fill="#c8741f">team/weekly-prep</text>
+
+  <!-- Branch commits -->
+  <circle cx="380" cy="130" r="8" class="commit-branch" />
+  <circle cx="460" cy="130" r="8" class="commit-branch" />
+  <circle cx="540" cy="130" r="8" class="commit-branch" />
+
+  <!-- Labels above branch commits -->
+  <text x="380" y="105" text-anchor="middle" class="small">draft</text>
+  <text x="460" y="105" text-anchor="middle" class="small">edits</text>
+  <text x="540" y="105" text-anchor="middle" class="small">review fixes</text>
+
+  <!-- Main keeps moving -->
+  <circle cx="400" cy="200" r="9" class="commit-main" />
+  <circle cx="500" cy="200" r="9" class="commit-main" />
+  <text x="400" y="230" text-anchor="middle" class="small">unrelated work</text>
+  <text x="500" y="230" text-anchor="middle" class="small">on main</text>
+
+  <!-- PR / review box -->
+  <rect x="600" y="100" width="160" height="60" fill="#fdfaf3" stroke="#1a1a1a" stroke-width="1.5" rx="4" />
+  <text x="680" y="125" text-anchor="middle" class="label" font-weight="500">Pull Request</text>
+  <text x="680" y="145" text-anchor="middle" class="small">propose · review · approve</text>
+
+  <!-- Approval marks -->
+  <circle cx="615" cy="170" r="5" fill="#2d5d3a" />
+  <circle cx="635" cy="170" r="5" fill="#2d5d3a" />
+  <text x="650" y="175" class="small">2 approvals</text>
+
+  <!-- Branch continues to merge -->
+  <line x1="540" y1="130" x2="600" y2="130" class="line-branch" />
+  <path d="M 760 130 Q 810 130 850 200" class="line-branch" />
+
+  <!-- Merge commit -->
+  <circle cx="860" cy="200" r="11" class="commit-merge" />
+  <text x="860" y="240" text-anchor="middle" class="small">merged into main</text>
+  <text x="860" y="258" text-anchor="middle" class="small">— signed, timestamped</text>
+
+  <!-- Main continues -->
+  <circle cx="960" cy="200" r="9" class="commit-main" />
+  <circle cx="1040" cy="200" r="9" class="commit-main" />
+
+  <!-- Arrowhead -->
+  <polygon points="1120,200 1108,194 1108,206" fill="#1e3a5f" />
+</svg>

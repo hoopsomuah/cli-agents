@@ -19,7 +19,30 @@ function renderInteractive(slot) {
   </div>`;
 }
 
-function renderScene(scene, sceneId, idx) {
+function renderHeroPhoto(meta) {
+  if (!meta.hero_image) return '';
+  const orientation = meta.hero_image_orientation === 'portrait' ? ' scene__photo--portrait' : '';
+  const caption = meta.hero_image_caption
+    ? `<figcaption>${meta.hero_image_caption}</figcaption>`
+    : '';
+  return `<figure class="scene__photo${orientation}">
+    <img src="site/assets/images/${meta.hero_image}" alt="${escapeAttr(meta.hero_image_alt || '')}" loading="lazy" />
+    ${caption}
+  </figure>`;
+}
+
+function renderDiagram(meta) {
+  if (!meta.diagram) return '';
+  const caption = meta.diagram_caption
+    ? `<figcaption>${meta.diagram_caption}</figcaption>`
+    : '';
+  return `<figure class="scene__diagram">
+    <img src="site/assets/diagrams/${meta.diagram}" alt="${escapeAttr(meta.diagram_alt || '')}" loading="lazy" />
+    ${caption}
+  </figure>`;
+}
+
+function renderScene(scene, sceneId) {
   const { meta, body } = scene;
   const bodyHtml = window.marked
     ? window.marked.parse(body, { mangle: false, headerIds: false })
@@ -34,6 +57,7 @@ function renderScene(scene, sceneId, idx) {
     </div>
     <h3 class="scene__title">${meta.title || sceneId}</h3>
     ${meta.subtitle ? `<p class="scene__subtitle">${meta.subtitle}</p>` : ''}
+    ${renderHeroPhoto(meta)}
     ${
       meta.key_idea
         ? `<div class="scene__keyidea">
@@ -42,6 +66,7 @@ function renderScene(scene, sceneId, idx) {
           </div>`
         : ''
     }
+    ${renderDiagram(meta)}
     ${renderInteractive(meta.interactive)}
     <div class="scene__body">${bodyHtml}</div>
   </section>`;
@@ -51,7 +76,7 @@ export function renderActs(root, manifest, scenes) {
   const html = manifest.acts
     .map((act, i) => {
       const sceneHtml = act.scenes
-        .map((sid, idx) => renderScene(scenes[sid], sid, idx))
+        .map((sid) => renderScene(scenes[sid], sid))
         .join('\n');
       return `<section class="act" id="${act.id}">
         <header class="act__header">

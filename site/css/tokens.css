@@ -1,29 +1,32 @@
-/* tokens.css — single source of truth for color, spacing, type */
+/* tokens.css — editorial palette, light throughout */
 :root {
-  /* --- Dark hero palette --- */
-  --dark-bg: oklch(14% 0.012 250);
-  --dark-bg-1: oklch(18% 0.018 250);
-  --dark-bg-2: oklch(22% 0.022 250);
-  --dark-fg: oklch(94% 0.005 250);
-  --dark-fg-muted: oklch(70% 0.008 250);
-  --dark-accent: oklch(82% 0.16 145); /* phosphor green */
-  --dark-accent-amber: oklch(80% 0.14 75);
-  --dark-grid: oklch(28% 0.018 250 / 0.35);
-
-  /* --- Light reading palette --- */
-  --bg: oklch(98.5% 0.005 90);
+  /* --- Editorial light palette --- */
+  --bg: oklch(98.5% 0.005 90);            /* warm paper white */
   --bg-1: oklch(96% 0.008 90);
   --bg-2: oklch(93% 0.010 90);
-  --fg: oklch(20% 0.010 250);
+  --bg-warm: oklch(95% 0.018 80);          /* faint cream for figure backgrounds */
+  --fg: oklch(20% 0.010 250);              /* near-black with warmth */
   --fg-muted: oklch(45% 0.012 250);
   --fg-faint: oklch(65% 0.008 250);
   --rule: oklch(88% 0.008 90);
   --rule-strong: oklch(78% 0.010 90);
-  --accent: oklch(48% 0.14 240); /* deep editorial blue */
-  --accent-warm: oklch(55% 0.16 35); /* brick — for pull quotes, callouts */
-  --code-bg: oklch(17% 0.018 250);
-  --code-fg: oklch(94% 0.005 250);
-  --code-accent: oklch(82% 0.16 145);
+
+  --accent: oklch(38% 0.10 240);           /* deep editorial blue */
+  --accent-warm: oklch(55% 0.16 35);       /* brick — pull quotes, callouts */
+  --accent-soft: oklch(48% 0.06 240);
+
+  /* Code surfaces only — embedded snippets, not site chrome */
+  --code-bg: oklch(96% 0.012 90);
+  --code-fg: oklch(22% 0.012 250);
+  --code-border: oklch(86% 0.012 90);
+  --code-accent: oklch(38% 0.12 200);
+
+  /* For the two genuine "terminal" widgets in Act 5 — embedded artifacts */
+  --term-bg: oklch(20% 0.015 250);
+  --term-bg-1: oklch(24% 0.018 250);
+  --term-fg: oklch(94% 0.005 250);
+  --term-fg-muted: oklch(70% 0.008 250);
+  --term-accent: oklch(82% 0.13 145);
 
   /* --- Type --- */
   --font-display: "Boska", "Source Serif 4", Georgia, serif;
@@ -38,7 +41,7 @@
   --text-xl: clamp(1.35rem, 1.2rem + 0.7vw, 1.6rem);
   --text-2xl: clamp(1.8rem, 1.5rem + 1.4vw, 2.4rem);
   --text-3xl: clamp(2.4rem, 1.8rem + 2.8vw, 3.8rem);
-  --text-hero: clamp(3rem, 2.2rem + 4.8vw, 6rem);
+  --text-hero: clamp(2.8rem, 2.0rem + 4.4vw, 5.4rem);
 
   /* --- Spacing --- */
   --space-1: 0.25rem;
@@ -57,6 +60,7 @@
   --max-w-prose: 68ch;
   --max-w-wide: 78rem;
   --max-w-content: 56rem;
+  --max-w-figure: 64rem;
 
   /* --- Motion --- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);

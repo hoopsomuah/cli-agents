@@ -6,6 +6,12 @@ subtitle: "Talk to your repo. In English. From the terminal."
 duration_seconds: 240
 key_idea: "Copilot CLI turns the terminal into a conversation. You describe what you want; it proposes commands, edits files, opens PRs. You stay in the driver's seat."
 interactive: "copilot-cli-sim"
+hero_image: "13-hands-keyboard.png"
+hero_image_alt: "Two hands resting on a black mechanical keyboard at a wooden desk, with a stack of books and a mug in soft focus behind them"
+hero_image_caption: "The agent does not replace your hands. It collaborates with them."
+diagram: "05-agent-loop.svg"
+diagram_alt: "A circular diagram with four nodes — You, Copilot CLI, Files, and Git — connected by arrows showing the loop: you describe in English, the agent edits files, commits to git, and opens a PR back to you"
+diagram_caption: "A small loop. You can run it as many times as you need."
 ---
 
 ## What it is

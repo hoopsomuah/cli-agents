@@ -6,6 +6,13 @@ subtitle: "Every terminal window on Earth is a ghost of a machine that printed o
 duration_seconds: 60
 key_idea: "The black window with text isn't a relic. It's the most direct, durable interface humans have ever built for talking to a computer."
 interactive: "teletype-animation"
+hero_image: "02-teletype-keys.png"
+hero_image_alt: "Close-up of vintage typewriter keys with a sheet of paper above showing typed text"
+hero_image_caption: "Sixty-three years on, the contract is unchanged: characters in, characters out."
+hero_image_orientation: "portrait"
+diagram: "01-teletype-lineage.svg"
+diagram_alt: "Timeline from 1869 stock ticker through 1930 Model 15, 1963 ASCII, 1978 VT100, to 2019 Windows Terminal"
+diagram_caption: "From the stock ticker to Windows Terminal — a 150-year unbroken line."
 ---
 
 ## A one-minute history

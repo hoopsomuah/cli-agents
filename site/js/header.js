@@ -1,34 +1,5 @@
-// header.js — sticky header that swaps theme between dark and light contexts
+// header.js — light editorial header throughout; no theme swap.
+// Kept as a no-op so main.js doesn't need to change.
 export function initStickyHeader() {
-  const header = document.getElementById('site-header');
-  if (!header) return;
-
-  const setLight = () => {
-    header.classList.add('is-light');
-    header.classList.remove('is-dark');
-  };
-  const setDark = () => {
-    header.classList.add('is-dark');
-    header.classList.remove('is-light');
-  };
-
-  // Initially over hero (dark)
-  setDark();
-
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
-
-  const obs = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
-          setDark();
-        } else {
-          setLight();
-        }
-      });
-    },
-    { threshold: [0, 0.1, 0.5, 1] }
-  );
-  obs.observe(hero);
+  // intentionally empty — header is always light now
 }

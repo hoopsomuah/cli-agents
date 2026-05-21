@@ -6,6 +6,12 @@ subtitle: "An honest comparison, not a hot take"
 duration_seconds: 180
 key_idea: "SharePoint solves problems that mattered in 2007. A repo + a generated website solves the same problems and several new ones — in 2026."
 interactive: "sharepoint-vs-repo"
+hero_image: "15-cabinet-vs-shelf.png"
+hero_image_alt: "A split composition: on the left, a closed beige metal filing cabinet with a single sticky note; on the right, a wooden shelf with a neat row of bound notebooks in muted earth tones"
+hero_image_caption: "Both store information. Only one tells you who changed what, and when."
+diagram: "06-sharepoint-vs-repo.svg"
+diagram_alt: "Two-column diagram contrasting a SharePoint folder (one opaque blob labeled Weekly Plan.docx) with a repository (a row of small file icons above a timeline of commits, each commit annotated with author and date)"
+diagram_caption: "Same information. Very different stories about who, when, and why."
 ---
 
 ## What SharePoint actually does well

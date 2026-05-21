@@ -6,6 +6,9 @@ subtitle: "The modern home for the world's oldest UI"
 duration_seconds: 180
 key_idea: "Windows Terminal is a tabbed browser for the command line. Install it once, configure it once, never think about it again."
 interactive: "terminal-tour"
+hero_image: "03-modern-terminal-desk.png"
+hero_image_alt: "A modern home-office desk with a monitor displaying a code editor and a mechanical keyboard in the foreground"
+hero_image_caption: "The terminal lives quietly inside a tidy desk — same contract, no clatter."
 ---
 
 ## What it is

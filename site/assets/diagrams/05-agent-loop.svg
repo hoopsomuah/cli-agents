@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-label="The Copilot CLI agent loop">
+  <style>
+    .title { font-family: "Source Serif 4", Georgia, serif; font-size: 18px; font-weight: 500; fill: #1a1a1a; }
+    .node-label { font-family: "Source Serif 4", Georgia, serif; font-size: 16px; font-weight: 500; fill: #1a1a1a; }
+    .node-sub { font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 13px; fill: #5a5546; }
+    .edge-label { font-family: "Source Serif 4", Georgia, serif; font-size: 13px; fill: #1e3a5f; }
+    .node-you { fill: #fdfaf3; stroke: #1a1a1a; stroke-width: 2; }
+    .node-agent { fill: #f0e9d8; stroke: #c8741f; stroke-width: 2; }
+    .node-files { fill: #fdfaf3; stroke: #1e3a5f; stroke-width: 2; }
+    .node-git { fill: #fdfaf3; stroke: #2d5d3a; stroke-width: 2; }
+    .edge { stroke: #1a1a1a; stroke-width: 1.5; fill: none; }
+  </style>
+
+  <text x="450" y="40" text-anchor="middle" class="title">A small loop. Run it as many times as you need.</text>
+
+  <!-- You -->
+  <circle cx="450" cy="120" r="60" class="node-you" />
+  <text x="450" y="115" text-anchor="middle" class="node-label">You</text>
+  <text x="450" y="135" text-anchor="middle" class="node-sub">in plain English</text>
+
+  <!-- Agent -->
+  <circle cx="700" cy="290" r="60" class="node-agent" />
+  <text x="700" y="285" text-anchor="middle" class="node-label">Copilot CLI</text>
+  <text x="700" y="305" text-anchor="middle" class="node-sub">the agent</text>
+
+  <!-- Files -->
+  <circle cx="450" cy="450" r="60" class="node-files" />
+  <text x="450" y="445" text-anchor="middle" class="node-label">Files</text>
+  <text x="450" y="465" text-anchor="middle" class="node-sub">your repo</text>
+
+  <!-- Git -->
+  <circle cx="200" cy="290" r="60" class="node-git" />
+  <text x="200" y="285" text-anchor="middle" class="node-label">Git</text>
+  <text x="200" y="305" text-anchor="middle" class="node-sub">history &amp; PRs</text>
+
+  <!-- Edges with arrows -->
+  <!-- You → Agent -->
+  <path d="M 505 155 Q 620 200 650 245" class="edge" />
+  <polygon points="650,245 643,237 658,238" fill="#1a1a1a" />
+  <text x="610" y="195" text-anchor="middle" class="edge-label">"add three columns"</text>
+
+  <!-- Agent → Files -->
+  <path d="M 670 348 Q 580 410 510 430" class="edge" />
+  <polygon points="510,430 519,427 514,439" fill="#1a1a1a" />
+  <text x="610" y="410" text-anchor="middle" class="edge-label">edits</text>
+
+  <!-- Files → Git -->
+  <path d="M 393 432 Q 290 410 240 348" class="edge" />
+  <polygon points="240,348 250,355 246,343" fill="#1a1a1a" />
+  <text x="295" y="410" text-anchor="middle" class="edge-label">commit</text>
+
+  <!-- Git → You -->
+  <path d="M 230 235 Q 320 175 395 145" class="edge" />
+  <polygon points="395,145 386,144 391,156" fill="#1a1a1a" />
+  <text x="290" y="195" text-anchor="middle" class="edge-label">PR for review</text>
+
+  <!-- Center caption -->
+  <text x="450" y="290" text-anchor="middle" class="node-sub" font-size="14">the rhythm</text>
+  <text x="450" y="310" text-anchor="middle" class="node-sub" font-size="14">of business</text>
+</svg>

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-label="SharePoint folder versus a repo">
+  <style>
+    .title { font-family: "Source Serif 4", Georgia, serif; font-size: 17px; font-weight: 500; fill: #1a1a1a; }
+    .sub { font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 13px; fill: #5a5546; }
+    .label { font-family: "Source Serif 4", Georgia, serif; font-size: 14px; fill: #1a1a1a; }
+    .file-name { font-family: "JetBrains Mono", monospace; font-size: 12px; fill: #1a1a1a; }
+    .blob { fill: #e8e0cd; stroke: #5a5546; stroke-width: 1.2; }
+    .file { fill: #fdfaf3; stroke: #1a1a1a; stroke-width: 1.2; }
+    .commit { fill: #1e3a5f; }
+    .timeline { stroke: #1e3a5f; stroke-width: 2; }
+    .divider { stroke: #c8bfae; stroke-width: 1; stroke-dasharray: 4 4; }
+    .annotation { font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 12px; fill: #c8741f; }
+  </style>
+
+  <line x1="600" y1="80" x2="600" y2="440" class="divider" />
+
+  <!-- ========== LEFT: SharePoint folder ========== -->
+  <text x="300" y="50" text-anchor="middle" class="title">SharePoint folder</text>
+  <text x="300" y="70" text-anchor="middle" class="sub">one current version. who changed it? when? why?</text>
+
+  <!-- Single blob -->
+  <rect x="200" y="110" width="200" height="280" rx="6" class="blob" />
+  <text x="300" y="140" text-anchor="middle" class="label" font-weight="500">Weekly Plan</text>
+  <text x="300" y="160" text-anchor="middle" class="sub">.docx</text>
+
+  <!-- Some abstract lines -->
+  <line x1="225" y1="190" x2="375" y2="190" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="210" x2="375" y2="210" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="230" x2="350" y2="230" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="250" x2="375" y2="250" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="270" x2="320" y2="270" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="290" x2="375" y2="290" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="310" x2="365" y2="310" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="330" x2="340" y2="330" stroke="#5a5546" stroke-width="0.8" />
+  <line x1="225" y1="350" x2="375" y2="350" stroke="#5a5546" stroke-width="0.8" />
+
+  <!-- Annotation -->
+  <text x="300" y="420" text-anchor="middle" class="annotation">"who deleted this line?"</text>
+
+  <!-- ========== RIGHT: Repo ========== -->
+  <text x="900" y="50" text-anchor="middle" class="title">Repository</text>
+  <text x="900" y="70" text-anchor="middle" class="sub">every version. every author. every reason. forever.</text>
+
+  <!-- Files row -->
+  <g transform="translate(680,110)">
+    <rect width="70" height="90" class="file" rx="2" />
+    <line x1="10" y1="20" x2="60" y2="20" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="32" x2="60" y2="32" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="44" x2="50" y2="44" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="56" x2="60" y2="56" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="68" x2="40" y2="68" stroke="#5a5546" stroke-width="0.7" />
+    <text x="35" y="108" text-anchor="middle" class="file-name">plan.md</text>
+  </g>
+  <g transform="translate(770,110)">
+    <rect width="70" height="90" class="file" rx="2" />
+    <line x1="10" y1="20" x2="60" y2="20" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="32" x2="55" y2="32" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="44" x2="60" y2="44" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="56" x2="45" y2="56" stroke="#5a5546" stroke-width="0.7" />
+    <text x="35" y="108" text-anchor="middle" class="file-name">team.md</text>
+  </g>
+  <g transform="translate(860,110)">
+    <rect width="70" height="90" class="file" rx="2" />
+    <line x1="10" y1="20" x2="60" y2="20" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="32" x2="60" y2="32" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="44" x2="50" y2="44" stroke="#5a5546" stroke-width="0.7" />
+    <text x="35" y="108" text-anchor="middle" class="file-name">budget.csv</text>
+  </g>
+  <g transform="translate(950,110)">
+    <rect width="70" height="90" class="file" rx="2" />
+    <line x1="10" y1="20" x2="60" y2="20" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="32" x2="55" y2="32" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="44" x2="60" y2="44" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="56" x2="50" y2="56" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="68" x2="60" y2="68" stroke="#5a5546" stroke-width="0.7" />
+    <text x="35" y="108" text-anchor="middle" class="file-name">notes.md</text>
+  </g>
+  <g transform="translate(1040,110)">
+    <rect width="70" height="90" class="file" rx="2" />
+    <line x1="10" y1="20" x2="60" y2="20" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="32" x2="60" y2="32" stroke="#5a5546" stroke-width="0.7" />
+    <line x1="10" y1="44" x2="55" y2="44" stroke="#5a5546" stroke-width="0.7" />
+    <text x="35" y="108" text-anchor="middle" class="file-name">README</text>
+  </g>
+
+  <!-- Timeline -->
+  <line x1="680" y1="290" x2="1110" y2="290" class="timeline" />
+  <text x="660" y="295" text-anchor="end" class="sub" fill="#1e3a5f">history</text>
+
+  <!-- Commits with annotations -->
+  <circle cx="720" cy="290" r="7" class="commit" />
+  <text x="720" y="320" text-anchor="middle" class="sub">Mon</text>
+  <text x="720" y="335" text-anchor="middle" class="sub">Alex · agenda</text>
+
+  <circle cx="800" cy="290" r="7" class="commit" />
+  <text x="800" y="320" text-anchor="middle" class="sub">Tue</text>
+  <text x="800" y="335" text-anchor="middle" class="sub">Sam · roster</text>
+
+  <circle cx="880" cy="290" r="7" class="commit" />
+  <text x="880" y="320" text-anchor="middle" class="sub">Wed</text>
+  <text x="880" y="335" text-anchor="middle" class="sub">Hoop · review</text>
+
+  <circle cx="960" cy="290" r="7" class="commit" />
+  <text x="960" y="320" text-anchor="middle" class="sub">Wed</text>
+  <text x="960" y="335" text-anchor="middle" class="sub">Pat · merged</text>
+
+  <circle cx="1040" cy="290" r="7" class="commit" />
+  <text x="1040" y="320" text-anchor="middle" class="sub">Fri</text>
+  <text x="1040" y="335" text-anchor="middle" class="sub">Alex · revise</text>
+
+  <text x="900" y="420" text-anchor="middle" class="annotation">"every change has a name on it."</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" role="img" aria-label="TTY versus PTY">
+  <style>
+    .title { font-family: "Source Serif 4", Georgia, serif; font-size: 18px; font-weight: 500; fill: #1a1a1a; }
+    .subtitle { font-family: "Source Serif 4", Georgia, serif; font-style: italic; font-size: 14px; fill: #5a5546; }
+    .label { font-family: "Source Serif 4", Georgia, serif; font-size: 15px; fill: #1a1a1a; }
+    .small { font-family: "Source Serif 4", Georgia, serif; font-size: 12px; fill: #5a5546; }
+    .box { fill: #fdfaf3; stroke: #1a1a1a; stroke-width: 1.5; }
+    .box-soft { fill: #f4ede0; stroke: #1a1a1a; stroke-width: 1.5; }
+    .wire { stroke: #1e3a5f; stroke-width: 1.8; fill: none; }
+    .wire-dashed { stroke: #1e3a5f; stroke-width: 1.5; fill: none; stroke-dasharray: 4 4; }
+    .divider { stroke: #c8bfae; stroke-width: 1; }
+  </style>
+
+  <!-- Center divider -->
+  <line x1="600" y1="80" x2="600" y2="440" class="divider" stroke-dasharray="2 4" />
+
+  <!-- ============= LEFT: Physical TTY ============= -->
+  <text x="300" y="50" text-anchor="middle" class="title">TTY — physical wires</text>
+  <text x="300" y="70" text-anchor="middle" class="subtitle">teletypewriter, c. 1930–1970s</text>
+
+  <!-- Teletype machine -->
+  <rect x="80" y="180" width="180" height="120" class="box" rx="4" />
+  <text x="170" y="225" text-anchor="middle" class="label" font-weight="500">Teletype</text>
+  <text x="170" y="245" text-anchor="middle" class="small">keyboard + printer</text>
+  <text x="170" y="262" text-anchor="middle" class="small">one piece of hardware</text>
+  <!-- key dots -->
+  <circle cx="115" cy="285" r="2.5" fill="#1a1a1a" />
+  <circle cx="135" cy="285" r="2.5" fill="#1a1a1a" />
+  <circle cx="155" cy="285" r="2.5" fill="#1a1a1a" />
+  <circle cx="175" cy="285" r="2.5" fill="#1a1a1a" />
+  <circle cx="195" cy="285" r="2.5" fill="#1a1a1a" />
+  <circle cx="215" cy="285" r="2.5" fill="#1a1a1a" />
+
+  <!-- Wire to computer -->
+  <line x1="260" y1="240" x2="380" y2="240" class="wire" />
+  <text x="320" y="232" text-anchor="middle" class="small">copper wire</text>
+
+  <!-- Mainframe -->
+  <rect x="380" y="180" width="140" height="120" class="box-soft" rx="4" />
+  <text x="450" y="225" text-anchor="middle" class="label" font-weight="500">Mainframe</text>
+  <text x="450" y="245" text-anchor="middle" class="small">one of many</text>
+  <text x="450" y="262" text-anchor="middle" class="small">users via TTY</text>
+  <rect x="395" y="280" width="110" height="8" fill="#c8bfae" />
+
+  <!-- Note below -->
+  <text x="300" y="380" text-anchor="middle" class="subtitle">Each "tty" was a real wire to a real machine.</text>
+  <text x="300" y="402" text-anchor="middle" class="subtitle">If you wanted two, you ran two cables.</text>
+
+  <!-- ============= RIGHT: Pseudo-TTY ============= -->
+  <text x="900" y="50" text-anchor="middle" class="title">PTY — software pretends</text>
+  <text x="900" y="70" text-anchor="middle" class="subtitle">pseudo-terminal, 1980s–today</text>
+
+  <!-- Terminal emulator app -->
+  <rect x="680" y="120" width="200" height="90" class="box" rx="4" />
+  <text x="780" y="148" text-anchor="middle" class="label" font-weight="500">Terminal app</text>
+  <text x="780" y="167" text-anchor="middle" class="small">Windows Terminal,</text>
+  <text x="780" y="184" text-anchor="middle" class="small">iTerm2, Alacritty…</text>
+  <text x="780" y="201" text-anchor="middle" class="small">(just a window)</text>
+
+  <!-- Connector down -->
+  <line x1="780" y1="210" x2="780" y2="245" class="wire-dashed" />
+  <text x="810" y="232" class="small">writes pixels</text>
+
+  <!-- PTY middle layer -->
+  <rect x="680" y="245" width="200" height="60" class="box-soft" rx="4" />
+  <text x="780" y="272" text-anchor="middle" class="label" font-weight="500">pty</text>
+  <text x="780" y="290" text-anchor="middle" class="small">virtual cable in memory</text>
+
+  <!-- Connector down -->
+  <line x1="780" y1="305" x2="780" y2="340" class="wire-dashed" />
+  <text x="810" y="327" class="small">reads bytes</text>
+
+  <!-- Shell program -->
+  <rect x="680" y="340" width="200" height="80" class="box" rx="4" />
+  <text x="780" y="368" text-anchor="middle" class="label" font-weight="500">Shell program</text>
+  <text x="780" y="388" text-anchor="middle" class="small">bash, pwsh, zsh</text>
+  <text x="780" y="405" text-anchor="middle" class="small">thinks it's talking to a tty</text>
+
+  <!-- Right side annotation -->
+  <text x="980" y="148" class="small">the app you see</text>
+  <text x="980" y="275" class="small">the OS in between</text>
+  <text x="980" y="380" class="small">the work happens here</text>
+</svg>

@@ -1,6 +1,5 @@
 // main.js — orchestrator
 import { renderActs } from './render.js';
-import { initHeroTerminal } from './interactive/hero-terminal.js';
 import { initStickyHeader } from './header.js';
 import { initInteractives } from './interactive/index.js';
 import { initTOC } from './toc.js';
@@ -37,7 +36,6 @@ function parseScene(raw) {
 
 async function boot() {
   try {
-    initHeroTerminal();
     initStickyHeader();
 
     const manifest = await loadManifest();

@@ -6,6 +6,9 @@ subtitle: "A repository is just a folder that remembers"
 duration_seconds: 150
 key_idea: "A repo is a regular folder on your computer that has been given a memory. Every change is recorded forever. You can travel back to any moment in its history."
 interactive: "repo-timeline"
+hero_image: "07-annotated-book.png"
+hero_image_alt: "An open hardcover book with extensive handwritten marginalia in two ink colors, a fountain pen resting on the page"
+hero_image_caption: "A repo is a book that remembers every margin note ever written in it."
 ---
 
 ## What a repository actually is
