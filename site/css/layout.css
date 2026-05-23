@@ -374,7 +374,7 @@
   background: var(--matte-bg);
   border: var(--rule-w, 1px) solid var(--matte-rule);
   border-radius: var(--radius-md, 6px);
-  padding: clamp(0.75rem, 1.4vw, 1.25rem);
+  padding: clamp(0.5rem, 0.9vw, 0.9rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -385,7 +385,7 @@
   /* subtle inner ring to feel like a mounted print */
   content: "";
   position: absolute;
-  inset: clamp(0.75rem, 1.4vw, 1.25rem);
+  inset: clamp(0.5rem, 0.9vw, 0.9rem);
   border: 1px solid color-mix(in oklch, var(--matte-rule) 70%, transparent);
   border-radius: var(--radius-sm, 4px);
   pointer-events: none;

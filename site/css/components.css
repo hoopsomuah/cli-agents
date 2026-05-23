@@ -1,7 +1,7 @@
 /* components.css — Act and Scene styles */
 
 .act {
-  margin-bottom: var(--space-32);
+  margin-bottom: var(--space-24);
 }
 .act:last-child {
   margin-bottom: 0;
@@ -9,8 +9,8 @@
 
 .act__header {
   position: relative;
-  margin-bottom: var(--space-16);
-  padding-bottom: var(--space-8);
+  margin-bottom: var(--space-12);
+  padding-bottom: var(--space-6);
   border-bottom: 1px solid var(--rule);
 }
 .act__roman {
@@ -44,7 +44,7 @@
 }
 
 .scene {
-  margin-bottom: var(--space-24);
+  margin-bottom: var(--space-16);
   scroll-margin-top: 5rem;
 }
 .scene:last-child {
@@ -88,7 +88,7 @@
   font-style: italic;
   font-size: var(--text-lg);
   color: var(--fg-muted);
-  margin: 0 0 var(--space-8);
+  margin: 0 0 var(--space-5, var(--space-4));
   max-width: 56ch;
   line-height: 1.45;
 }
@@ -97,7 +97,7 @@
   background: var(--bg-warm);
   border-left: 3px solid var(--accent-warm);
   padding: var(--space-4) var(--space-6);
-  margin: 0 0 var(--space-10, var(--space-8));
+  margin: 0 0 var(--space-6);
   border-radius: 0 var(--radius-md, 6px) var(--radius-md, 6px) 0;
 }
 .scene__keyidea-label {
@@ -215,12 +215,12 @@
 }
 
 .scene__interactive {
-  margin: var(--space-10, var(--space-8)) 0;
+  margin: var(--space-6) 0;
 }
 
 /* ===== Scene hero image (photo at the top of a scene) ===== */
 .scene__photo {
-  margin: 0 0 var(--space-8);
+  margin: 0 0 var(--space-5, var(--space-4));
   width: 100%;
   max-width: var(--max-w-figure);
 }
@@ -229,7 +229,7 @@
   background: var(--matte-bg);
   border: var(--rule-w, 1px) solid var(--matte-rule);
   border-radius: var(--radius-md, 6px);
-  padding: clamp(0.75rem, 1.4vw, 1.25rem);
+  padding: clamp(0.5rem, 0.9vw, 0.9rem);
   box-shadow: var(--shadow-md);
   display: flex;
   align-items: center;
@@ -238,7 +238,7 @@
 .scene__photo__matte::after {
   content: "";
   position: absolute;
-  inset: clamp(0.75rem, 1.4vw, 1.25rem);
+  inset: clamp(0.5rem, 0.9vw, 0.9rem);
   border: 1px solid color-mix(in oklch, var(--matte-rule) 70%, transparent);
   border-radius: var(--radius-sm, 4px);
   pointer-events: none;
@@ -282,11 +282,11 @@
 
 /* ===== Inline diagram (SVG) ===== */
 .scene__diagram {
-  margin: var(--space-10, var(--space-8)) 0;
+  margin: var(--space-5, var(--space-4)) 0 var(--space-6);
   width: 100%;
   max-width: var(--max-w-figure);
   background: var(--paper-bg);
-  padding: var(--space-8) var(--space-6);
+  padding: var(--space-6) var(--space-5, var(--space-4));
   border-radius: var(--radius-md, 6px);
   border: var(--rule-w, 1px) solid var(--paper-rule);
   position: relative;
@@ -295,7 +295,7 @@
 .scene__diagram::after {
   content: "";
   position: absolute;
-  inset: var(--space-4);
+  inset: var(--space-3);
   border: 1px solid color-mix(in oklch, var(--paper-rule) 60%, transparent);
   border-radius: var(--radius-sm, 4px);
   pointer-events: none;
