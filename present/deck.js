@@ -75,6 +75,24 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;');
 }
 
+function buildThesisSlide(manifest) {
+  return {
+    type: 'thesis',
+    actIndex: null,
+    html: `
+      <div class="slide slide--thesis" data-slide-type="thesis">
+        <p class="slide__eyebrow reveal" style="--reveal-delay: 100ms;">The thesis, in one image</p>
+        <figure class="slide__thesis-figure reveal" style="--reveal-delay: 300ms;">
+          <img src="${ASSET_IMG}00-print-to-pixel-mural.png" alt="A mural in two halves. Left: 1960s hard-copy interface — a hand-drawn Teletype Model 33 with fanfold paper, vacuum-tube electronics behind, and office workers from the era. An arrow labeled 'Successor' cuts across to the right half. Right: present-day software-defined terminal — a CRT-style monitor showing a PowerShell session, surrounded by glowing circuits, cloud icons, and modern workers." />
+        </figure>
+        <p class="slide__caption reveal" style="--reveal-delay: 700ms;">
+          From print to pixel — sixty years of the same conversation, in two scenes.
+        </p>
+      </div>
+    `,
+  };
+}
+
 function buildCoverSlide(manifest) {
   const sceneCount = manifest.acts.reduce((n, a) => n + (a.scenes ? a.scenes.length : 0), 0);
   return {
@@ -314,6 +332,7 @@ function buildClosingSlide() {
 function expandScenes(manifest, scenes) {
   const slides = [];
   slides.push(buildCoverSlide(manifest));
+  slides.push(buildThesisSlide(manifest));
 
   manifest.acts.forEach((act, actIndex) => {
     slides.push(buildActSlide(act, actIndex));

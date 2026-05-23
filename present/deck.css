@@ -1296,3 +1296,58 @@ html, body {
 :root[data-palette="sunset"] .slide--install .slide__keyidea-text {
   color: var(--bg);
 }
+
+/* ============================================================
+   THESIS slide — the mural that frames the whole presentation.
+   Sits between the cover and Act I.
+   ============================================================ */
+
+.slide--thesis {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at center,
+      color-mix(in oklch, var(--accent) 12%, transparent), transparent 75%),
+    var(--bg);
+}
+
+.slide--thesis .slide__eyebrow {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  color: var(--ink-mute);
+  letter-spacing: 0.08em;
+  margin: 0 0 1.5rem;
+  text-transform: uppercase;
+}
+
+.slide--thesis .slide__thesis-figure {
+  margin: 0;
+  max-width: min(92vw, 1400px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide--thesis .slide__thesis-figure img {
+  width: 100%;
+  height: auto;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: var(--radius-md, 6px);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 0 1px color-mix(in oklch, var(--ink) 8%, transparent);
+}
+
+.slide--thesis .slide__caption {
+  margin-top: 1.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  color: var(--ink-soft);
+  max-width: 60ch;
+  text-align: center;
+  position: static;
+}
