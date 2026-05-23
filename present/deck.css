@@ -288,8 +288,6 @@ html, body {
 
 .slide--scene .slide__right {
   position: relative;
-  height: 70vh;
-  max-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -298,54 +296,47 @@ html, body {
   gap: 0.5rem;
 }
 .slide--scene .slide__right .slide__figure {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-height: 0;
 }
 
 .slide--scene .slide__figure {
   position: relative;
   width: 100%;
-  height: 100%;
+  max-height: 68vh;
   border-radius: 4px;
   overflow: hidden;
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.45),
     0 0 0 1px color-mix(in oklch, var(--ink) 8%, transparent);
   background: var(--photo-mat-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.6rem, 1vw, 1.1rem);
 }
 
 .slide--scene .slide__figure img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-width: 100%;
+  max-height: 64vh;
+  object-fit: contain;
   display: block;
 }
 
 /* Portrait photos sit on a matte, contained, never cropped weirdly. */
 .slide--scene .slide__figure--portrait {
   background: var(--photo-mat-bg);
-  padding: clamp(0.4rem, 0.7vw, 0.8rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
-.slide--scene .slide__figure--portrait img {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
+.slide--scene .slide__figure--portrait img,
+.slide--scene .slide__figure--landscape img {
   object-fit: contain;
 }
-.slide--scene .slide__figure--landscape img {
-  object-fit: cover;
-}
 
-/* Ken Burns only on landscape (covered) photos.
-   Portraits stay still so the matte edges don't drift. */
-.slide--scene.is-current .slide__figure--landscape img,
-.slide--scene.is-current .slide__figure:not(.slide__figure--portrait) img {
-  animation: kenburns 18s ease-out forwards;
-}
-
+/* Ken Burns disabled — the new illustrated assets carry intentional edge
+   detail; scaling them inside a contained matte would reveal matte and
+   distort the framing. Leave the keyframes for future asset types. */
 @keyframes kenburns {
   from { transform: scale(1.02) translate(0, 0); }
   to   { transform: scale(1.12) translate(-1.5%, -1%); }
@@ -544,8 +535,6 @@ html, body {
 
 .slide--bullets .slide__right {
   position: relative;
-  height: 68vh;
-  max-height: 68vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -556,38 +545,38 @@ html, body {
 
 .slide--bullets .slide__figure {
   position: relative;
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-height: 0;
   width: 100%;
+  max-height: 64vh;
   border-radius: 4px;
   overflow: hidden;
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.4),
     0 0 0 1px color-mix(in oklch, var(--ink) 8%, transparent);
   background: var(--photo-mat-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.5rem, 0.9vw, 1rem);
 }
 
 .slide--bullets .slide__figure img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
   display: block;
 }
 
-.slide--bullets .slide__figure--portrait {
-  padding: clamp(0.4rem, 0.7vw, 0.8rem);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.slide--bullets .slide__figure--portrait,
+.slide--bullets .slide__figure--landscape {
+  /* Both use the same contained layout — no special-cases. */
 }
-.slide--bullets .slide__figure--portrait img {
-  width: auto;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
+.slide--bullets .slide__figure--portrait img,
 .slide--bullets .slide__figure--landscape img {
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .slide--bullets .slide__caption {

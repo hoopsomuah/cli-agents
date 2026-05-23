@@ -248,17 +248,18 @@
   height: auto;
   display: block;
   border-radius: var(--radius-sm, 2px);
-  max-height: 32rem;
+  max-height: clamp(20rem, 55vh, 36rem);
   object-fit: contain;
 }
 .scene__photo--landscape .scene__photo__matte {
-  aspect-ratio: 16 / 10;
+  /* No forced aspect — matte sizes to its contained image. */
 }
 .scene__photo--landscape .scene__photo img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 2px;
+  height: auto;
+  max-height: clamp(20rem, 55vh, 36rem);
+  object-fit: contain;
+  border-radius: var(--radius-sm, 2px);
 }
 .scene__photo--portrait .scene__photo__matte {
   max-width: 28rem;
