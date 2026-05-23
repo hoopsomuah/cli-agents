@@ -24,9 +24,11 @@
 }
 .act__title {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);
+  font-size: calc(var(--text-3xl) * var(--heading-scale, 1));
   line-height: 1.02;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--heading-tracking, -0.025em);
+  font-weight: var(--heading-weight, 500);
+  font-style: var(--heading-style, normal);
   margin: 0 0 var(--space-4);
   color: var(--fg);
   text-wrap: balance;
@@ -71,9 +73,11 @@
 
 .scene__title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: calc(var(--text-2xl) * var(--heading-scale, 1));
   line-height: 1.08;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--heading-tracking, -0.02em);
+  font-weight: var(--heading-weight, 500);
+  font-style: var(--heading-style, normal);
   margin: 0 0 var(--space-3);
   color: var(--fg);
   text-wrap: balance;
@@ -94,7 +98,7 @@
   border-left: 3px solid var(--accent-warm);
   padding: var(--space-4) var(--space-6);
   margin: 0 0 var(--space-10, var(--space-8));
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 var(--radius-md, 6px) var(--radius-md, 6px) 0;
 }
 .scene__keyidea-label {
   font-family: var(--font-serif);
@@ -115,18 +119,20 @@
 .scene__body {
   font-family: var(--font-serif);
   font-size: var(--text-base);
-  line-height: 1.75;
+  line-height: calc(1.75 * var(--density, 1));
   color: var(--fg);
-  max-width: var(--max-w-prose);
+  max-width: var(--prose-width, var(--max-w-prose));
 }
 .scene__body > * + * {
   margin-top: var(--space-4);
 }
 .scene__body h2 {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: calc(var(--text-xl) * var(--heading-scale, 1));
   margin: var(--space-12) 0 var(--space-4);
-  letter-spacing: -0.015em;
+  letter-spacing: var(--heading-tracking, -0.015em);
+  font-weight: var(--heading-weight, 500);
+  font-style: var(--heading-style, normal);
   color: var(--fg);
   text-wrap: balance;
 }
@@ -144,7 +150,7 @@
 .scene__body p {
   font-family: var(--font-serif);
   font-size: var(--text-base);
-  line-height: 1.75;
+  line-height: calc(1.75 * var(--density, 1));
   margin: 0 0 var(--space-4);
 }
 .scene__body ul,
@@ -177,11 +183,10 @@
 .scene__body table {
   font-family: var(--font-body);
   background: var(--bg-1);
-  border-radius: 8px;
+  border-radius: var(--radius-md, 8px);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--rule);
-  /* Tables may need more room than the prose column */
+  border: var(--rule-w, 1px) solid var(--rule);
   max-width: 100%;
 }
 .scene__body table p {
@@ -199,7 +204,7 @@
   border-left: 3px solid var(--accent-warm);
   margin: var(--space-8) 0;
   padding: var(--space-5, var(--space-4)) var(--space-6);
-  border-radius: 0 6px 6px 0;
+  border-radius: 0 var(--radius-md, 6px) var(--radius-md, 6px) 0;
 }
 .scene__body blockquote p {
   margin: 0;
@@ -222,8 +227,8 @@
 .scene__photo__matte {
   position: relative;
   background: var(--matte-bg);
-  border: 1px solid var(--matte-rule);
-  border-radius: 6px;
+  border: var(--rule-w, 1px) solid var(--matte-rule);
+  border-radius: var(--radius-md, 6px);
   padding: clamp(0.75rem, 1.4vw, 1.25rem);
   box-shadow: var(--shadow-md);
   display: flex;
@@ -235,14 +240,14 @@
   position: absolute;
   inset: clamp(0.75rem, 1.4vw, 1.25rem);
   border: 1px solid color-mix(in oklch, var(--matte-rule) 70%, transparent);
-  border-radius: 4px;
+  border-radius: var(--radius-sm, 4px);
   pointer-events: none;
 }
 .scene__photo img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 2px;
+  border-radius: var(--radius-sm, 2px);
   max-height: 32rem;
   object-fit: contain;
 }
@@ -282,8 +287,8 @@
   max-width: var(--max-w-figure);
   background: var(--paper-bg);
   padding: var(--space-8) var(--space-6);
-  border-radius: 6px;
-  border: 1px solid var(--paper-rule);
+  border-radius: var(--radius-md, 6px);
+  border: var(--rule-w, 1px) solid var(--paper-rule);
   position: relative;
   box-shadow: var(--shadow-sm);
 }
@@ -292,7 +297,7 @@
   position: absolute;
   inset: var(--space-4);
   border: 1px solid color-mix(in oklch, var(--paper-rule) 60%, transparent);
-  border-radius: 4px;
+  border-radius: var(--radius-sm, 4px);
   pointer-events: none;
 }
 .scene__diagram img,

@@ -282,10 +282,11 @@
 }
 .hero__title {
   font-family: var(--font-display);
-  font-weight: 500;
-  font-size: var(--text-hero);
+  font-weight: var(--heading-weight, 500);
+  font-style: var(--heading-style, normal);
+  font-size: calc(var(--text-hero) * var(--heading-scale, 1));
   line-height: 0.98;
-  letter-spacing: -0.025em;
+  letter-spacing: var(--heading-tracking, -0.025em);
   margin: 0 0 var(--space-6);
   color: var(--fg);
 }
@@ -330,7 +331,7 @@
   padding: 0.75rem 1.4rem;
   background: var(--accent);
   color: var(--bg);
-  border-radius: 4px;
+  border-radius: var(--radius-sm, 4px);
   font-weight: 500;
   transition: transform var(--dur-fast) var(--ease-out),
     background var(--dur-fast) var(--ease-out);
@@ -343,7 +344,7 @@
 .hero__cta--secondary {
   background: transparent;
   color: var(--fg);
-  border: 1px solid var(--rule-strong);
+  border: var(--rule-w, 1px) solid var(--rule-strong);
 }
 .hero__cta--secondary:hover {
   background: var(--bg-1);
@@ -371,8 +372,8 @@
 }
 .hero__figure__matte {
   background: var(--matte-bg);
-  border: 1px solid var(--matte-rule);
-  border-radius: 6px;
+  border: var(--rule-w, 1px) solid var(--matte-rule);
+  border-radius: var(--radius-md, 6px);
   padding: clamp(0.75rem, 1.4vw, 1.25rem);
   display: flex;
   align-items: center;
@@ -386,13 +387,13 @@
   position: absolute;
   inset: clamp(0.75rem, 1.4vw, 1.25rem);
   border: 1px solid color-mix(in oklch, var(--matte-rule) 70%, transparent);
-  border-radius: 4px;
+  border-radius: var(--radius-sm, 4px);
   pointer-events: none;
 }
 .hero__figure img {
   width: 100%;
   height: auto;
-  border-radius: 2px;
+  border-radius: var(--radius-sm, 2px);
   display: block;
   max-height: 32rem;
   object-fit: contain;

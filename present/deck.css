@@ -34,10 +34,12 @@
   --dot-hover:    color-mix(in oklch, var(--fg) 45%, transparent);
   --kbd-bg:       color-mix(in oklch, var(--fg) 8%, transparent);
 
-  /* Type — keep deck-specific font names. */
-  --serif: 'Fraunces', 'Boska', 'Source Serif 4', Georgia, serif;
-  --sans:  'Inter', -apple-system, system-ui, sans-serif;
-  --mono:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  /* Type — pick from active palette so each theme has its own voice.
+     --serif drives display/headlines; --sans drives bullets/chrome;
+     --mono drives code & step numbers. */
+  --serif: var(--font-display);
+  --sans:  var(--font-body);
+  --mono:  var(--font-mono);
 
   /* Motion */
   --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
@@ -135,10 +137,11 @@ html, body {
 
 .slide--cover .slide__title {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: var(--heading-weight, 700);
+  font-style: var(--heading-style, normal);
   font-size: clamp(3.5rem, 8vw, 9rem);
   line-height: 0.95;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--heading-tracking, -0.02em);
   margin: 0 0 2rem;
   max-width: 16ch;
 }
@@ -190,10 +193,11 @@ html, body {
 
 .slide--act .slide__title {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: var(--heading-weight, 700);
+  font-style: var(--heading-style, normal);
   font-size: clamp(3rem, 7vw, 7rem);
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--heading-tracking, -0.02em);
   margin: 0 0 1.5rem;
   max-width: 18ch;
 }
@@ -240,10 +244,11 @@ html, body {
 
 .slide--scene .slide__title {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: var(--heading-weight, 700);
+  font-style: var(--heading-style, normal);
   font-size: clamp(2.25rem, 4.5vw, 4.5rem);
   line-height: 1.05;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--heading-tracking, -0.015em);
   margin: 0 0 1rem;
 }
 
@@ -374,10 +379,11 @@ html, body {
 
 .slide--diagram .slide__title {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: var(--heading-weight, 700);
+  font-style: var(--heading-style, normal);
   font-size: clamp(2rem, 3.5vw, 3.5rem);
   line-height: 1.1;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--heading-tracking, -0.015em);
   margin: 0 0 0.5rem;
   max-width: 24ch;
 }
@@ -469,10 +475,11 @@ html, body {
 
 .slide--bullets .slide__title {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: var(--heading-weight, 700);
+  font-style: var(--heading-style, normal);
   font-size: clamp(2rem, 4vw, 4rem);
   line-height: 1.05;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--heading-tracking, -0.015em);
   margin: 0 0 0.75rem;
   max-width: 24ch;
 }
@@ -627,10 +634,11 @@ html, body {
 
 .slide--install .slide__title {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: var(--heading-weight, 700);
+  font-style: var(--heading-style, normal);
   font-size: clamp(2rem, 4vw, 4rem);
   line-height: 1.05;
-  letter-spacing: -0.015em;
+  letter-spacing: var(--heading-tracking, -0.015em);
   margin: 0 0 0.5rem;
   max-width: 24ch;
 }
@@ -781,11 +789,12 @@ html, body {
 
 .slide--closing .slide__title {
   font-family: var(--serif);
-  font-weight: 700;
+  font-weight: var(--heading-weight, 700);
+  font-style: var(--heading-style, normal);
   font-size: clamp(3rem, 7vw, 8rem);
   line-height: 0.95;
   margin: 0 0 1.5rem;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--heading-tracking, -0.02em);
 }
 
 .slide--closing .slide__sub {
@@ -1192,4 +1201,98 @@ html, body {
     animation: none !important;
     transform: none !important;
   }
+}
+
+/* ============================================================
+   Per-palette signature moves (deck)
+   ============================================================ */
+
+/* INK — hairline, no shadow, no border-radius. */
+:root[data-palette="ink"] .slide--scene .slide__figure,
+:root[data-palette="ink"] .slide--bullets .slide__figure {
+  box-shadow: none;
+  border: 1px solid var(--rule);
+}
+:root[data-palette="ink"] .slide--scene .slide__chrome,
+:root[data-palette="ink"] .slide--bullets .slide__chrome {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-style: normal;
+}
+:root[data-palette="ink"] .slide--scene .slide__keyidea,
+:root[data-palette="ink"] .slide--bullets .slide__keyidea {
+  border-left-width: 4px;
+}
+
+/* SOLAR — em-dash subtitle flourish. */
+:root[data-palette="solar"] .slide__sub::before {
+  content: "— ";
+  color: var(--accent);
+  font-style: normal;
+}
+
+/* FOREST — italic captions with em-dashes on both sides. */
+:root[data-palette="forest"] .slide__caption {
+  font-style: italic;
+}
+:root[data-palette="forest"] .slide__caption::before {
+  content: "— ";
+}
+:root[data-palette="forest"] .slide__caption::after {
+  content: " —";
+}
+
+/* SLATE — uppercase chrome, sharp accent line under titles. */
+:root[data-palette="slate"] .slide--scene .slide__chrome,
+:root[data-palette="slate"] .slide--bullets .slide__chrome,
+:root[data-palette="slate"] .slide--diagram .slide__chrome,
+:root[data-palette="slate"] .slide--install .slide__chrome {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-style: normal;
+  font-family: var(--sans);
+  font-weight: 600;
+}
+
+/* ROSE — italic display on every title. */
+:root[data-palette="rose"] .slide__title,
+:root[data-palette="rose"] .slide--cover .slide__title-accent {
+  font-style: italic;
+}
+
+/* OCEAN — small-caps chrome. */
+:root[data-palette="ocean"] .slide__chrome {
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+}
+
+/* SUNSET — brutalist chrome, mono uppercase, thick offset shadow on figures. */
+:root[data-palette="sunset"] .slide--scene .slide__chrome,
+:root[data-palette="sunset"] .slide--bullets .slide__chrome,
+:root[data-palette="sunset"] .slide--diagram .slide__chrome,
+:root[data-palette="sunset"] .slide--install .slide__chrome {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-style: normal;
+  font-family: var(--mono);
+  font-weight: 500;
+}
+:root[data-palette="sunset"] .slide--scene .slide__figure,
+:root[data-palette="sunset"] .slide--bullets .slide__figure {
+  border: 2px solid var(--ink);
+  box-shadow: 8px 8px 0 var(--accent);
+  border-radius: 0;
+}
+:root[data-palette="sunset"] .slide--scene .slide__keyidea,
+:root[data-palette="sunset"] .slide--bullets .slide__keyidea {
+  border-left-width: 6px;
+  background: var(--accent-2);
+  color: var(--bg);
+  padding: 0.5rem 1rem 0.5rem 1.25rem;
+}
+:root[data-palette="sunset"] .slide--scene .slide__keyidea-text,
+:root[data-palette="sunset"] .slide--bullets .slide__keyidea-text,
+:root[data-palette="sunset"] .slide--scene .slide__keyidea-label,
+:root[data-palette="sunset"] .slide--install .slide__keyidea-text {
+  color: var(--bg);
 }
