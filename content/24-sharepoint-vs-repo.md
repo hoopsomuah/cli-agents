@@ -1,5 +1,5 @@
 ---
-scene: 22
+scene: 24
 act: 3
 title: "Does SharePoint Still Earn Its Keep?"
 subtitle: "An honest comparison — not a hot take"

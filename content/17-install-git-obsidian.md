@@ -1,5 +1,5 @@
 ---
-scene: 15
+scene: 17
 act: 2
 title: "Install: Git, Obsidian, and Your First Clone"
 subtitle: "By the end of this scene, you have the canon on your laptop"
@@ -9,6 +9,9 @@ key_idea: "You'll be done with Act II when you've cloned a real repo, edited a f
 hero_image: "15-install-trio.png"
 hero_image_alt: "Three small hand-illustrated object portraits in a row: a Git logo as an embroidered patch, an Obsidian vault icon stitched onto canvas, and a small terminal window framed like a photograph"
 hero_image_caption: "Three small installs, and the canon is on your laptop."
+deck_image: "15-install-plaques.png"
+deck_image_alt: "Cinematic watercolor of three brass plaques mounted on a wooden plank — Git, Obsidian, Terminal — museum-spotlit against a dark gallery wall"
+deck_image_caption: "Three plaques. By the end of this scene, all three are on your wall."
 bullets:
   - "Install Git: winget install --id Git.Git -e --source winget"
   - "Verify: close + reopen Terminal, run 'git --version' → version number"

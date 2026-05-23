@@ -1,5 +1,5 @@
 ---
-scene: 20
+scene: 22
 act: 3
 title: "Copilot CLI — Your Terminal Collaborator"
 subtitle: "Talk to your repo in plain English. Watch what it proposes. Approve each step."

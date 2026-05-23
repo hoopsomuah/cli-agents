@@ -8,12 +8,14 @@
     {
       "id": "act-1",
       "title": "From Teletype to Terminal",
-      "subtitle": "Where the black window came from, and how to get one of your own",
+      "subtitle": "Where the black window came from, what's actually inside it, and how to get one of your own",
       "scenes": [
         "01-teletype-return",
         "02-paper-to-glass",
         "03-windows-terminal",
-        "04-install-terminal"
+        "04-shells-family",
+        "05-powershell",
+        "06-install-terminal"
       ]
     },
     {
@@ -21,17 +23,17 @@
       "title": "Files, Repos, and the Living Canon",
       "subtitle": "From the filesystem on your laptop to a shared, versioned source of truth",
       "scenes": [
-        "05-filesystem-house",
-        "06-terminal-walks-faster",
-        "07-file-over-app",
-        "08-obsidian",
-        "09-final-v7-final",
-        "10-what-is-a-repo",
-        "11-branches",
-        "12-pull-requests",
-        "13-issues",
-        "14-agent-friendly-canon",
-        "15-install-git-obsidian"
+        "07-filesystem-house",
+        "08-terminal-walks-faster",
+        "09-file-over-app",
+        "10-obsidian",
+        "11-final-v7-final",
+        "12-what-is-a-repo",
+        "13-branches",
+        "14-pull-requests",
+        "15-issues",
+        "16-agent-friendly-canon",
+        "17-install-git-obsidian"
       ]
     },
     {
@@ -39,14 +41,14 @@
       "title": "GitHub and the Copilot CLI",
       "subtitle": "How the cloud platform and the agent in your terminal fit together",
       "scenes": [
-        "16-github-cloud-home",
-        "17-orgs-and-repos",
-        "18-github-at-work",
-        "19-copilot-family",
-        "20-copilot-cli",
-        "21-pr-as-conversation",
-        "22-sharepoint-vs-repo",
-        "23-install-gh-copilot-cli"
+        "18-github-cloud-home",
+        "19-orgs-and-repos",
+        "20-github-at-work",
+        "21-copilot-family",
+        "22-copilot-cli",
+        "23-pr-as-conversation",
+        "24-sharepoint-vs-repo",
+        "25-install-gh-copilot-cli"
       ]
     }
   ]

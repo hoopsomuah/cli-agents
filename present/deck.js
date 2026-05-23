@@ -290,6 +290,8 @@ function buildBulletsSlide(scene, sceneId, actIndex) {
 function buildInstallSlide(scene, sceneId, actIndex) {
   const { meta } = scene;
   const steps = meta.bullets || [];
+  const hasImage = !!meta.hero_image || !!meta.deck_image;
+  const img = hasImage ? deckImageOf(meta) : null;
   const stepsHtml = steps
     .map((s, i) => `
       <li class="slide__step reveal" style="--reveal-delay: ${400 + i * 130}ms;">
@@ -304,20 +306,29 @@ function buildInstallSlide(scene, sceneId, actIndex) {
     actIndex,
     sceneId,
     html: `
-      <div class="slide slide--install" data-slide-type="install" data-scene-id="${sceneId}">
-        <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
-          <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
-          <span>·</span>
-          <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
-          <span>·</span>
-          <span>Install</span>
-        </p>
-        <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
-        ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 300ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
-        <ol class="slide__steps">${stepsHtml}</ol>
-        ${meta.key_idea ? `
-          <div class="slide__keyidea reveal" style="--reveal-delay: ${keyideaDelay}ms;">
-            <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
+      <div class="slide slide--install ${hasImage ? 'slide--install-image' : ''}" data-slide-type="install" data-scene-id="${sceneId}">
+        <div class="slide__install-text">
+          <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
+            <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
+            <span>·</span>
+            <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
+            <span>·</span>
+            <span>Install</span>
+          </p>
+          <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
+          ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 300ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
+          <ol class="slide__steps">${stepsHtml}</ol>
+          ${meta.key_idea ? `
+            <div class="slide__keyidea reveal" style="--reveal-delay: ${keyideaDelay}ms;">
+              <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
+            </div>` : ''}
+        </div>
+        ${hasImage ? `
+          <div class="slide__install-figure">
+            <figure class="slide__figure slide__figure--install reveal" style="--reveal-delay: 200ms;">
+              <img src="${ASSET_IMG}${img.src}" alt="${escapeHtml(img.alt)}" />
+            </figure>
+            ${img.caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(img.caption)}</figcaption>` : ''}
           </div>` : ''}
       </div>
     `,

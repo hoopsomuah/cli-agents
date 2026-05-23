@@ -1,5 +1,5 @@
 ---
-scene: 08
+scene: 10
 act: 2
 title: "Obsidian — A Friendly Editor on Top of Plain Files"
 subtitle: "A polished app experience that doesn't lock your notes inside it"

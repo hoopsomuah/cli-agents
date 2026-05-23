@@ -12,7 +12,7 @@ You can create them by hand on the GitHub website, or use the `gh issue create` 
 **Labels:** `good first issue`, `step-1`
 **Description:**
 
-Walk through Step 1 of the [install checklist](https://hoopsomuah.github.io/cli-agents/#scene-16). When you have Windows Terminal open with a blinking cursor:
+Walk through Step 1 of the [install checklist](https://hoopsomuah.github.io/cli-agents/#scene-06). When you have Windows Terminal open with a blinking cursor:
 
 1. Take a screenshot.
 2. Save it as `evidence/terminal-installed-<your-name>.png` in this repo.
@@ -42,7 +42,7 @@ The point of this issue is to exercise the full PR loop: branch → edit → com
 **Labels:** `good first issue`, `step-3`
 **Description:**
 
-Walk through Steps 5–7 of the [install checklist](https://hoopsomuah.github.io/cli-agents/#scene-16).
+Walk through Steps 1–5 of the [install checklist for Git + Obsidian](https://hoopsomuah.github.io/cli-agents/#scene-17).
 
 When Obsidian shows you the `content/` folder with all the scene files:
 
@@ -94,7 +94,7 @@ If the proposal gets a thumbs-up, open a PR adding a draft of the scene.
 **Labels:** `step-4`, `experiment`
 **Description:**
 
-Walk through Step 4 of the install checklist to get Copilot CLI working. Then:
+Walk through the [Copilot CLI install checklist (scene 25)](https://hoopsomuah.github.io/cli-agents/#scene-25) to get Copilot CLI working. Then:
 
 1. Run `copilot` from inside the `cli-agents` folder.
 2. Ask it: *"Summarize what this repo is for."*

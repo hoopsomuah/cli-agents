@@ -1,5 +1,5 @@
 ---
-scene: 05
+scene: 07
 act: 2
 title: "The Filesystem as a House"
 subtitle: "Folders, files, and the addresses they live at"

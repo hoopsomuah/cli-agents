@@ -1,5 +1,5 @@
 ---
-scene: 14
+scene: 16
 act: 2
 title: "The Agent-Friendly Living Canon"
 subtitle: "Mission, plan-of-record, and org chart as live URLs — not attachments"

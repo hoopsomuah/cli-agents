@@ -615,6 +615,61 @@ html, body {
     var(--bg);
 }
 
+/* Two-column install slide when an image is supplied. */
+.slide--install-image {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: stretch;
+}
+.slide--install-image .slide__install-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.slide--install-image .slide__install-figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  min-width: 0;
+  gap: 0.6rem;
+}
+.slide--install-image .slide__figure--install {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  border-radius: var(--radius-md, 4px);
+  overflow: hidden;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.4),
+    0 0 0 1px color-mix(in oklch, var(--ink) 8%, transparent);
+  background: var(--photo-mat-bg);
+}
+.slide--install-image .slide__figure--install img {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+  object-fit: contain;
+  display: block;
+}
+.slide--install-image .slide__caption {
+  margin: 0;
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.85rem, 1vw, 1.05rem);
+  color: var(--ink-mute);
+  padding: 0 1rem;
+  position: static;
+}
+/* When the image is present, the step grid stops being multi-column and stacks
+   into a single tall column so it reads from top to bottom alongside the figure. */
+.slide--install-image .slide__steps {
+  grid-template-columns: 1fr;
+  max-width: none;
+}
+
 .slide--install .slide__chrome {
   display: flex;
   gap: 0.75rem;
@@ -722,6 +777,16 @@ html, body {
   }
   .slide--install .slide__steps {
     grid-template-columns: 1fr;
+  }
+  .slide--install-image {
+    grid-template-columns: 1fr;
+  }
+  .slide--install-image .slide__install-figure {
+    order: -1;
+    max-height: 30vh;
+  }
+  .slide--install-image .slide__figure--install img {
+    max-height: 28vh;
   }
 }
 

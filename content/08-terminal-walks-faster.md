@@ -1,5 +1,5 @@
 ---
-scene: 06
+scene: 08
 act: 2
 title: "The Terminal Walks the House Faster"
 subtitle: "Five commands cover ninety percent of the work"
