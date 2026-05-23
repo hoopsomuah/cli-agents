@@ -35,6 +35,19 @@
     <link rel="stylesheet" href="site/css/layout.css" />
     <link rel="stylesheet" href="site/css/components.css" />
     <link rel="stylesheet" href="site/css/interactive.css" />
+
+    <script>
+      // Anti-FOUC: set theme before stylesheets paint.
+      (function () {
+        try {
+          var key = 'cli-agents-theme';
+          var stored = localStorage.getItem(key);
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -60,13 +73,27 @@
           <a href="#act-1">I</a>
           <a href="#act-2">II</a>
           <a href="#act-3">III</a>
-          <a href="#act-4">IV</a>
-          <a href="#act-5">V</a>
-          <a href="#act-6">VI</a>
         </nav>
-        <a href="https://github.com/hoopsomuah/cli-agents" class="site-header__repo" target="_blank" rel="noopener">
-          View on GitHub →
-        </a>
+        <div class="site-header__actions">
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            title="Toggle dark mode"
+          >
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+            </svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+          </button>
+          <a href="https://github.com/hoopsomuah/cli-agents" class="site-header__repo" target="_blank" rel="noopener">
+            View on GitHub →
+          </a>
+        </div>
       </div>
     </header>
 
@@ -81,23 +108,23 @@
             </h1>
             <p class="hero__lede">
               The terminal is sixty-three years old, and the most agent-friendly interface
-              humans have ever built. Six acts on how to put it to work for an executive team.
+              humans have ever built. Three acts on how to put it to work for an executive team.
             </p>
             <div class="hero__cta-row">
               <a href="#act-1" class="hero__cta">Begin Act I</a>
               <a href="present/" class="hero__cta hero__cta--secondary">Present mode →</a>
-              <a href="#scene-16" class="hero__cta hero__cta--secondary">Skip to the checklist</a>
+              <a href="#scene-23" class="hero__cta hero__cta--secondary">Skip to the checklist</a>
             </div>
             <div class="hero__meta">
               <span>30-minute live walkthrough</span>
               <span aria-hidden="true">·</span>
-              <span>17 scenes</span>
+              <span>23 scenes</span>
               <span aria-hidden="true">·</span>
               <span>~20% covered live, the rest is yours</span>
             </div>
           </div>
           <figure class="hero__figure">
-            <img src="site/assets/images/01-hero-teletype.png" alt="A Teletype Model 33 machine on a wooden surface, with a paper tape curling from its printer" />
+            <img src="site/assets/images/01-teletype-asr33.jpg" alt="A Teletype Model 33 ASR: tan plastic body, round-capped typewriter keys, a roll of fanfold paper feeding through the printer head, with FORTRAN source code printed on the paper holder above" />
             <figcaption>Teletype Model 33, c. 1963 — the great-great-grandparent of every terminal window on Earth.</figcaption>
           </figure>
         </div>
@@ -152,5 +179,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script type="module" src="site/js/main.js"></script>
+    <script type="module" src="site/js/theme.js"></script>
   </body>
 </html>

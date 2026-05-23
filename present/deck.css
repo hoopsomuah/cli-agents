@@ -3,8 +3,9 @@
    Dark cinematic theme. Slides cross-fade. Content stays as-is.
    ============================================================ */
 
-:root {
-  /* Palette — deep navy night for projection */
+:root,
+:root[data-theme="dark"] {
+  /* Palette — deep navy night for projection (default) */
   --bg: #0b1220;
   --bg-elev: #111a2e;
   --ink: #f4ecd8;            /* warm cream text */
@@ -14,6 +15,19 @@
   --accent-2: #c14a3a;       /* warm brick */
   --accent-cool: #6fb3d4;    /* cool teal for diagrams */
   --rule: rgba(244, 236, 216, 0.12);
+
+  /* Surfaces for image / diagram cards */
+  --figure-bg: #f4ecd8;      /* cream card behind diagrams */
+  --figure-ink: #1a2236;     /* dark ink on cream card */
+  --toggle-bg: rgba(244, 236, 216, 0.08);
+  --toggle-bg-hover: rgba(244, 236, 216, 0.16);
+  --toggle-icon: #f4ecd8;
+  /* Chrome surfaces (counter, buttons, hint, kbd, dots) */
+  --chrome-bg: rgba(11, 18, 32, 0.6);
+  --chrome-hover: rgba(244, 236, 216, 0.1);
+  --dot-idle: rgba(244, 236, 216, 0.2);
+  --dot-hover: rgba(244, 236, 216, 0.5);
+  --kbd-bg: rgba(244, 236, 216, 0.08);
 
   /* Type */
   --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
@@ -29,6 +43,34 @@
   /* Layout — scale with viewport so it looks right at any projector size */
   --slide-pad-x: max(4rem, 6vw);
   --slide-pad-y: max(3rem, 5vh);
+
+  color-scheme: dark;
+}
+
+/* --- Light theme overrides for the deck --- */
+:root[data-theme="light"] {
+  --bg: #f5efe2;             /* warm cream */
+  --bg-elev: #ece4d2;
+  --ink: #1a2236;            /* deep navy ink */
+  --ink-soft: #3a4358;
+  --ink-mute: #6a7388;
+  --accent: #b6532f;         /* deeper peach for contrast on cream */
+  --accent-2: #8a2a1c;       /* deeper brick */
+  --accent-cool: #2c6b8a;    /* deeper teal */
+  --rule: rgba(26, 34, 54, 0.14);
+
+  --figure-bg: #f4ecd8;      /* keep diagrams on a cream "paper" card in both themes */
+  --figure-ink: #1a2236;
+  --toggle-bg: rgba(26, 34, 54, 0.08);
+  --toggle-bg-hover: rgba(26, 34, 54, 0.16);
+  --toggle-icon: #1a2236;
+  --chrome-bg: rgba(245, 239, 226, 0.85);
+  --chrome-hover: rgba(26, 34, 54, 0.1);
+  --dot-idle: rgba(26, 34, 54, 0.2);
+  --dot-hover: rgba(26, 34, 54, 0.5);
+  --kbd-bg: rgba(26, 34, 54, 0.08);
+
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
@@ -349,7 +391,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(244, 236, 216, 0.96);
+  background: var(--figure-bg);
   border-radius: 6px;
   padding: 2.5rem;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -797,7 +839,7 @@ html, body {
   font-size: 0.875rem;
   color: var(--ink-soft);
   letter-spacing: 0.05em;
-  background: rgba(11, 18, 32, 0.6);
+  background: var(--chrome-bg);
   backdrop-filter: blur(8px);
   padding: 0.5rem 0.875rem;
   border-radius: 999px;
@@ -822,7 +864,7 @@ html, body {
   min-width: 2.25rem;
   height: 2.25rem;
   padding: 0 0.75rem;
-  background: rgba(11, 18, 32, 0.6);
+  background: var(--chrome-bg);
   backdrop-filter: blur(8px);
   border: 1px solid var(--rule);
   border-radius: 999px;
@@ -836,7 +878,7 @@ html, body {
 }
 
 .deck__btn:hover {
-  background: rgba(244, 236, 216, 0.1);
+  background: var(--chrome-hover);
   color: var(--ink);
   border-color: var(--ink-soft);
 }
@@ -844,6 +886,35 @@ html, body {
 .deck__btn--exit {
   font-family: var(--serif);
   font-style: italic;
+}
+
+/* Theme toggle button — same shape as deck__btn, swaps sun/moon icons */
+.deck__btn--theme {
+  padding: 0;
+  min-width: 2.25rem;
+  width: 2.25rem;
+}
+.deck__btn--theme .theme-toggle__icon {
+  display: block;
+}
+.deck__btn--theme .theme-toggle__icon--sun {
+  display: none;
+}
+.deck__btn--theme .theme-toggle__icon--moon {
+  display: block;
+}
+:root[data-theme="dark"] .deck__btn--theme .theme-toggle__icon--sun {
+  display: block;
+}
+:root[data-theme="dark"] .deck__btn--theme .theme-toggle__icon--moon {
+  display: none;
+}
+/* No explicit data-theme attr means deck default (dark) — show sun. */
+:root:not([data-theme="light"]):not([data-theme="dark"]) .deck__btn--theme .theme-toggle__icon--sun {
+  display: block;
+}
+:root:not([data-theme="light"]):not([data-theme="dark"]) .deck__btn--theme .theme-toggle__icon--moon {
+  display: none;
 }
 
 .deck__progress {
@@ -866,7 +937,7 @@ html, body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(244, 236, 216, 0.2);
+  background: var(--dot-idle);
   border: none;
   padding: 0;
   cursor: pointer;
@@ -874,7 +945,7 @@ html, body {
 }
 
 .deck__dot:hover {
-  background: rgba(244, 236, 216, 0.5);
+  background: var(--dot-hover);
   transform: scale(1.3);
 }
 
@@ -884,7 +955,7 @@ html, body {
 }
 
 .deck__dot.is-visited {
-  background: rgba(232, 168, 124, 0.5);
+  background: color-mix(in oklch, var(--accent) 50%, transparent);
 }
 
 .deck__hint {
@@ -908,7 +979,7 @@ html, body {
   display: inline-block;
   padding: 2px 6px;
   margin: 0 2px;
-  background: rgba(244, 236, 216, 0.08);
+  background: var(--kbd-bg);
   border: 1px solid var(--rule);
   border-radius: 4px;
   font-family: var(--mono);

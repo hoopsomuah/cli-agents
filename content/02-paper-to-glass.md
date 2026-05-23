@@ -5,6 +5,9 @@ title: "From Paper to Glass"
 subtitle: "A 60-second bridge from the teletype on the previous slide to the app on the next one"
 duration_seconds: 60
 key_idea: "The screen replaced the paper. The software pipe replaced the cable. The conversation stayed identical."
+hero_image: "02-vt100-terminal.jpg"
+hero_image_alt: "A DEC VT100 video terminal: beige plastic case, dark monochrome CRT showing a directory listing in glowing text, with a chunky keyboard attached below"
+hero_image_caption: "The DEC VT100 (1978): the same conversation, now on glass."
 bullets:
   - "Paper roll → glass screen"
   - "Physical cable → 'pseudo-teletype' (PTY) in software"

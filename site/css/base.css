@@ -37,7 +37,7 @@ a {
   transition: color var(--dur-fast) var(--ease-out);
 }
 a:hover {
-  color: oklch(38% 0.16 240);
+  color: var(--accent-hover);
 }
 
 h1,
@@ -68,9 +68,9 @@ code {
   font-family: var(--font-mono);
   font-size: 0.92em;
   padding: 0.1em 0.35em;
-  background: oklch(92% 0.015 90);
+  background: var(--code-inline-bg);
   border-radius: 4px;
-  color: oklch(28% 0.04 250);
+  color: var(--code-inline-fg);
 }
 
 pre {
@@ -97,11 +97,11 @@ blockquote {
   margin: var(--space-6) 0;
   padding: var(--space-4) var(--space-6);
   border-left: 3px solid var(--accent-warm);
-  background: oklch(96% 0.015 35 / 0.6);
+  background: var(--quote-bg);
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--text-lg);
-  color: oklch(28% 0.02 35);
+  color: var(--quote-fg);
 }
 
 hr {
@@ -147,5 +147,5 @@ th {
 }
 
 ::selection {
-  background: oklch(82% 0.16 145 / 0.35);
+  background: var(--selection-bg);
 }

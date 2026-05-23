@@ -143,7 +143,7 @@
 }
 .scene__body em {
   font-style: italic;
-  color: oklch(28% 0.04 240);
+  color: var(--accent);
 }
 .scene__body a {
   text-decoration: underline;
@@ -152,7 +152,7 @@
 }
 .scene__body table {
   font-family: var(--font-body);
-  background: white;
+  background: var(--bg-1);
   border-radius: 8px;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
