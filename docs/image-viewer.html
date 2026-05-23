@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>cli-agents · Image Catalog Viewer</title>
+<style>
+  :root {
+    --bg: #f4ede0;
+    --ink: #2b1d12;
+    --muted: #6b5a47;
+    --rule: #d9cdb6;
+    --accent: #8a2a1f;
+    --card: #fffaf0;
+    --card-deck: #1d1b2e;
+    --card-deck-ink: #f4ede0;
+    --shadow: 0 1px 0 rgba(43,29,18,0.08), 0 8px 24px rgba(43,29,18,0.12);
+    --serif: "Iowan Old Style", "Charter", "Georgia", "Cambria", serif;
+    --sans: "Inter", "Helvetica Neue", "Arial", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    padding: 40px 32px 80px;
+  }
+  header {
+    max-width: 1280px;
+    margin: 0 auto 32px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 24px;
+  }
+  h1 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 34px;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+  }
+  .lede {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 60ch;
+    margin: 0 0 20px;
+  }
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    align-items: center;
+    margin-top: 12px;
+  }
+  .toolbar label {
+    font-size: 13px;
+    color: var(--muted);
+    margin-right: 4px;
+  }
+  .toolbar input[type="search"] {
+    flex: 1 1 280px;
+    max-width: 360px;
+    padding: 8px 12px;
+    border: 1px solid var(--rule);
+    background: var(--card);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--ink);
+  }
+  .seg {
+    display: inline-flex;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .seg button {
+    background: transparent;
+    border: 0;
+    padding: 8px 14px;
+    font: inherit;
+    font-size: 13px;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .seg button.active {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  main {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  section.group { margin-bottom: 48px; }
+  section.group h2 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0 0 16px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  @media (min-width: 900px) {
+    .row { grid-template-columns: 220px 1fr 1fr; gap: 20px; align-items: stretch; }
+  }
+  .row-label {
+    padding-top: 6px;
+  }
+  .row-label .scene-num {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .row-label .scene-title {
+    margin-top: 4px;
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .row-label .scene-sub {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  figure {
+    margin: 0;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+  }
+  figure.deck {
+    background: var(--card-deck);
+    border-color: #2d2940;
+  }
+  figure.deck figcaption { color: var(--card-deck-ink); }
+  figure.deck .filename { color: #b8b0d6; }
+  figure .imgwrap {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background: #00000020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    cursor: zoom-in;
+  }
+  figcaption {
+    padding: 10px 14px 14px;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  figcaption .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  figure.deck figcaption .tag { color: #b8b0d6; }
+  figcaption .filename {
+    display: block;
+    margin-top: 4px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 11px;
+    color: var(--muted);
+    word-break: break-all;
+  }
+  .missing {
+    padding: 32px 14px;
+    text-align: center;
+    color: var(--muted);
+    font-style: italic;
+    font-size: 13px;
+  }
+  .row.hidden { display: none; }
+  body.view-reading figure.deck { display: none; }
+  body.view-deck figure.reading { display: none; }
+  body.view-reading .row { grid-template-columns: 220px 1fr; }
+  body.view-deck .row { grid-template-columns: 220px 1fr; }
+  @media (max-width: 899px) {
+    body.view-reading .row, body.view-deck .row, .row { grid-template-columns: 1fr; }
+  }
+  /* lightbox */
+  #lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 12, 22, 0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 24px;
+    cursor: zoom-out;
+  }
+  #lightbox.open { display: flex; }
+  #lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+  }
+  footer {
+    max-width: 1280px;
+    margin: 48px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  a { color: var(--accent); }
+</style>
+</head>
+<body class="view-both">
+
+<header>
+  <h1>cli-agents · image catalog</h1>
+  <p class="lede">Side-by-side viewer for every per-scene and concept image produced for <a href="https://github.com/hoopsomuah/cli-agents/issues/1">issue #1</a>. Left card is the <strong>reading view</strong> (calm, editorial). Right card is the <strong>deck</strong> (cinematic, stage-lit). Click any image to enlarge.</p>
+  <div class="toolbar">
+    <label for="q">Filter</label>
+    <input id="q" type="search" placeholder="Search by scene title, filename, or concept…" autocomplete="off" />
+    <span class="seg" role="tablist" aria-label="View mode">
+      <button data-view="both" class="active">Both</button>
+      <button data-view="reading">Reading only</button>
+      <button data-view="deck">Deck only</button>
+    </span>
+  </div>
+</header>
+
+<main id="grid"></main>
+
+<footer>
+  Hand-illustrated watercolor batch, anchored on <code>00-print-to-pixel-mural.png</code>. See <a href="./IMAGE_CATALOG.md">IMAGE_CATALOG.md</a> for the full filename map and renderer notes.
+</footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <img alt="" />
+</div>
+
+<script>
+const BASE = "../site/assets/images/";
+
+const CATALOG = [
+  { group: "Act I — From Teletype to Terminal", rows: [
+    { num: "01", title: "The Return of the Teletype", sub: "existing assets — no new art", reading: "01-teletype-asr33.jpg", deck: null },
+    { num: "02", title: "From Paper to Glass", sub: "VT100 — still life vs cinematic", reading: "02-vt100-terminal-still.png", deck: "02-vt100-cinematic.png" },
+    { num: "03", title: "Inside Windows Terminal", sub: "tabbed desk vs four-pane wall", reading: "03-windows-terminal-desk.png", deck: "03-windows-terminal-fourpane.png" },
+    { num: "04", title: "Install: Your Terminal", sub: "trio of platforms vs pedestal", reading: "04-install-terminal-trio.png", deck: "04-install-terminal-pedestal.png" }
+  ]},
+  { group: "Act II — Files, Repos, and the Living Canon", rows: [
+    { num: "05", title: "The Filesystem as a House", sub: "cutaway vs night view", reading: "05-house-cutaway.png", deck: "05-house-night.png" },
+    { num: "06", title: "The Terminal Walks Faster", sub: "mouse vs keyboard / velocity", reading: "06-mouse-vs-keyboard.png", deck: "06-terminal-velocity.png" },
+    { num: "07", title: "File Over App", sub: "existing notebook asset", reading: "10-notebook-handwriting.png", deck: null },
+    { num: "08", title: "Obsidian", sub: "existing desk + new deck variant", reading: "11-obsidian-desk.png", deck: "08-obsidian-vault.png" },
+    { num: "09", title: "Final_v7_FINAL.docx", sub: "existing sticky-notes asset", reading: "06-stickynotes-chaos.png", deck: null },
+    { num: "10", title: "A Repository Is a Folder with Memory", sub: "existing annotated-book asset", reading: "07-annotated-book.png", deck: null },
+    { num: "11", title: "Branches", sub: "parallel drafts vs forked road", reading: "11-parallel-drafts.png", deck: "11-forked-road.png" },
+    { num: "12", title: "Pull Requests", sub: "manuscript review vs diff+paper", reading: "12-manuscript-review.png", deck: "12-diff-and-paper.png" },
+    { num: "13", title: "Issues", sub: "single card vs wall of notes", reading: "13-single-issue-card.png", deck: "13-issue-wall.png" },
+    { num: "14", title: "Agent-Friendly Living Canon", sub: "book + markdown vs golden hour", reading: "14-book-and-markdown.png", deck: "14-canon-living.png" },
+    { num: "15", title: "Install: Git, Obsidian, First Clone", sub: "object trio vs brass plaques", reading: "15-install-trio.png", deck: "15-install-plaques.png" }
+  ]},
+  { group: "Act III — GitHub and the Copilot CLI", rows: [
+    { num: "16", title: "GitHub Is the Cloud Home", sub: "repo house vs campus at twilight", reading: "16-repo-house.png", deck: "16-campus-twilight.png" },
+    { num: "17", title: "Organizations, Teams, Repositories", sub: "nested drawers vs architecture", reading: "17-nested-drawers.png", deck: "17-org-architecture.png" },
+    { num: "18", title: "GitHub at Work", sub: "tools on bench vs in motion", reading: "18-platform-tools.png", deck: "18-platform-in-use.png" },
+    { num: "19", title: "The Copilot Family", sub: "round table vs constellation", reading: "19-copilot-table.png", deck: "19-copilot-constellation.png" },
+    { num: "20", title: "Copilot CLI", sub: "existing hands+keyboard + new session", reading: "13-hands-keyboard.png", deck: "20-copilot-cli-session.png" },
+    { num: "21", title: "PRs as the Conversation", sub: "converging routes vs glowing door", reading: "21-converging-door.png", deck: "21-pr-door-dusk.png" },
+    { num: "22", title: "SharePoint vs Repo", sub: "existing cabinet vs shelf asset", reading: "15-cabinet-vs-shelf.png", deck: null },
+    { num: "23", title: "Install: GitHub, gh CLI, Copilot CLI", sub: "trio vs glowing pedestal", reading: "23-install-final-trio.png", deck: "23-install-final-pedestal.png" }
+  ]},
+  { group: "Concepts (no scene yet)", rows: [
+    { num: "—", title: "Shells (the family)", sub: "five jars vs five glass shells", reading: "concept-shells-jars.png", deck: "concept-shells-glass.png" },
+    { num: "⭐", title: "PowerShell", sub: "desk close-up vs cinematic", reading: "concept-powershell-desk.png", deck: "concept-powershell-cinematic.png" },
+    { num: "—", title: "Pipelines (|)", sub: "copper plumbing vs data streams", reading: "concept-pipelines-copper.png", deck: "concept-pipelines-data.png" },
+    { num: "—", title: "SSH / remote sessions", sub: "here & there vs night globe", reading: "concept-ssh-here-and-there.png", deck: "concept-ssh-globe.png" },
+    { num: "—", title: "Markdown / plain text", sub: "source vs rendered, vs typewriter morph", reading: "concept-markdown-source-vs-rendered.png", deck: "concept-markdown-morph.png" },
+    { num: "—", title: "The cloud", sub: "quiet cumulus vs aerial campus", reading: "concept-cloud-quiet.png", deck: "concept-cloud-aerial.png" },
+    { num: "—", title: "Open source / community", sub: "kitchen vs barn-raising", reading: "concept-open-source-kitchen.png", deck: "concept-open-source-barn.png" },
+    { num: "—", title: "Continuous integration", sub: "bakery vs conveyor", reading: "concept-ci-bakery.png", deck: "concept-ci-conveyor.png" },
+    { num: "—", title: "The agentic loop", sub: "dominoes vs Möbius strip", reading: "concept-agent-loop-dominoes.png", deck: "concept-agent-loop-mobius.png" },
+    { num: "—", title: "Repo as a building", sub: "library vs glass-walled stage", reading: "concept-repo-library.png", deck: "concept-repo-glass.png" },
+    { num: "+", title: "GitHub workflow (bonus)", sub: "from the inspiration diagram", reading: "concept-github-workflow-reading.png", deck: "concept-github-workflow-deck.png" }
+  ]}
+];
+
+const grid = document.getElementById("grid");
+
+function card(file, kind) {
+  if (!file) {
+    return `<figure class="${kind}"><div class="missing">no ${kind} variant</div></figure>`;
+  }
+  return `
+    <figure class="${kind}">
+      <div class="imgwrap"><img src="${BASE}${file}" alt="${file}" loading="lazy" /></div>
+      <figcaption>
+        <span class="tag">${kind === "reading" ? "Reading view" : "Deck"}</span>
+        <span class="filename">${file}</span>
+      </figcaption>
+    </figure>`;
+}
+
+function render() {
+  grid.innerHTML = CATALOG.map(group => `
+    <section class="group">
+      <h2>${group.group}</h2>
+      ${group.rows.map(r => `
+        <div class="row" data-search="${(r.num + " " + r.title + " " + r.sub + " " + (r.reading||"") + " " + (r.deck||"")).toLowerCase()}">
+          <div class="row-label">
+            <div class="scene-num">${r.num}</div>
+            <div class="scene-title">${r.title}</div>
+            <div class="scene-sub">${r.sub}</div>
+          </div>
+          ${card(r.reading, "reading")}
+          ${card(r.deck, "deck")}
+        </div>
+      `).join("")}
+    </section>
+  `).join("");
+}
+
+render();
+
+// search
+const q = document.getElementById("q");
+q.addEventListener("input", () => {
+  const v = q.value.trim().toLowerCase();
+  document.querySelectorAll(".row").forEach(row => {
+    row.classList.toggle("hidden", v && !row.dataset.search.includes(v));
+  });
+});
+
+// view mode
+document.querySelectorAll(".seg button").forEach(b => {
+  b.addEventListener("click", () => {
+    document.querySelectorAll(".seg button").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    document.body.className = "view-" + b.dataset.view;
+  });
+});
+
+// lightbox
+const lb = document.getElementById("lightbox");
+const lbImg = lb.querySelector("img");
+document.addEventListener("click", (e) => {
+  const img = e.target.closest("figure img");
+  if (img) {
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    lb.classList.add("open");
+  } else if (lb.classList.contains("open")) {
+    lb.classList.remove("open");
+    lbImg.src = "";
+  }
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && lb.classList.contains("open")) {
+    lb.classList.remove("open");
+    lbImg.src = "";
+  }
+});
+</script>
+</body>
+</html>

@@ -5,6 +5,9 @@ title: "Pull Requests — Change as a Conversation"
 subtitle: "The most auditable, lowest-friction sign-off process ever invented for knowledge work"
 duration_seconds: 240
 key_idea: "A PR turns 'I changed something' into 'I am proposing this change, here is exactly what I'm changing, and here is why' — and it preserves the whole conversation forever."
+hero_image: "12-manuscript-review.png"
+hero_image_alt: "Overhead editorial illustration of a printed manuscript between two reviewers, marked up in red and blue pen with line-level comments in the margins"
+hero_image_caption: "A pull request is a manuscript with the margins open for everyone."
 bullets:
   - "A pull request (PR) says: please merge my branch into main"
   - "It shows the diff — every added, removed, and changed line"

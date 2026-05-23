@@ -6,6 +6,9 @@ subtitle: "Five minutes from zero to a blinking cursor"
 duration_seconds: 60
 layout: "install"
 key_idea: "You'll be done with Act I when you can open Windows Terminal, see a PowerShell prompt, and type your name without flinching."
+hero_image: "04-install-terminal-trio.png"
+hero_image_alt: "Hand-illustrated watercolor of three platform glyphs in a row — Windows Terminal, macOS Terminal, and a Linux terminal mark — tied with a single ribbon on a warm cream background"
+hero_image_caption: "Three doors into the same room: Windows, macOS, Linux — all open onto a blinking cursor."
 bullets:
   - "Open the Microsoft Store from the Start menu"
   - "Search for 'Windows Terminal' (already installed on Windows 11)"

@@ -5,6 +5,9 @@ title: "Organizations, Teams, Repositories"
 subtitle: "How GitHub structures ownership at company scale"
 duration_seconds: 120
 key_idea: "Inside a GitHub organization, every repo has an owner, a visibility setting, and a permission model — and 'teams' are the unit of access."
+hero_image: "17-nested-drawers.png"
+hero_image_alt: "Editorial illustration of a hardware-store wall of labeled wooden drawers in three sizes — large for org, medium for teams, small for repos — with one drawer at each level open to reveal the next"
+hero_image_caption: "Drawers inside drawers: org holds teams, teams hold repos."
 bullets:
   - "Organization = the company-level container (e.g. github.com/microsoft)"
   - "Repository = a project / canon / codebase inside the org"

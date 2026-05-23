@@ -6,6 +6,9 @@ subtitle: "Twenty minutes from a cloned repo to your first agent-authored PR"
 duration_seconds: 120
 layout: "install"
 key_idea: "You'll be done with this presentation when you've opened a PR — yourself or via Copilot — and watched it merge into main."
+hero_image: "23-install-final-trio.png"
+hero_image_alt: "Three small hand-illustrated object portraits in a row: a GitHub Octocat as a pin, the gh CLI mark as an embroidered patch, and a Copilot mark on a brass tag"
+hero_image_caption: "Three small installs, and the agent loop is on your laptop."
 bullets:
   - "Sign in to GitHub: gh auth login (choose GitHub.com or your enterprise host)"
   - "Verify: gh auth status → prints your username"

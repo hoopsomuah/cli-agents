@@ -5,6 +5,9 @@ title: "Issues — The Unit of Work"
 subtitle: "Capturing 'we should do this' so it doesn't live only in someone's head"
 duration_seconds: 180
 key_idea: "An issue turns 'good intentions' into 'a thing with a URL.' Anyone can open one, anyone can comment, and the entire history of what got done — and why — is captured next to the work itself."
+hero_image: "13-single-issue-card.png"
+hero_image_alt: "Editorial close-up of a cork bulletin board with a single hand-printed index card pinned in the middle: MOVE Q2 STATUS UPDATE TO FRIDAYS 4PM"
+hero_image_caption: "An issue turns 'good intentions' into 'a thing with a URL.'"
 bullets:
   - "An issue is a small unit of work or conversation on a repo"
   - "Title, description, labels, assignee, comments — all at a permanent URL"

@@ -5,6 +5,9 @@ title: "GitHub at Work"
 subtitle: "Actions, rulesets, Projects, security — the platform under the canon"
 duration_seconds: 180
 key_idea: "Around every repo, GitHub provides a small but powerful set of platform features — automation, guardrails, planning, and security — that together make the rhythm of business durable."
+hero_image: "18-platform-tools.png"
+hero_image_alt: "Editorial top-down illustration of a watchmaker's bench with five neatly-laid-out tools labeled Actions, Rulesets, Projects, Issues, and Security"
+hero_image_caption: "Around every repo is a small bench of platform tools."
 bullets:
   - "Actions — automation: run code on every push, PR, or schedule"
   - "Rulesets — guardrails: 'main needs 2 approvals', 'no force-push', 'no secrets'"
