@@ -5,9 +5,9 @@ title: "Final_v7_FINAL_actually-final.docx"
 subtitle: "Why filenames are not a version-control strategy"
 duration_seconds: 90
 key_idea: "Every team has lived through the 'which version is the real one?' nightmare. The software world solved this twenty years ago. We should borrow the cure."
-hero_image: "06-stickynotes-chaos.png"
-hero_image_alt: "Overhead view of a desk covered in stacks of paper drafts, red and blue pen edits, and yellow sticky notes labeled FINAL, v3, USE THIS ONE"
-hero_image_caption: "We have all worked on this desk."
+hero_image: "06-stickynotes-chaos-watercolor.png"
+hero_image_alt: "Hand-illustrated watercolor overhead of a wooden desk in chaos: a printed document labeled PROPOSAL_FINAL_v7_FINAL.docx surrounded by overlapping sticky notes with conflicting revisions"
+hero_image_caption: "The version-naming disaster as still life."
 hero_image_orientation: "portrait"
 bullets:
   - "Filenames-as-versions doesn't scale: who, when, why, which one is real?"

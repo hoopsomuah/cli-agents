@@ -6,6 +6,9 @@ subtitle: "By the end of this scene, you have the canon on your laptop"
 duration_seconds: 90
 layout: "install"
 key_idea: "You'll be done with Act II when you've cloned a real repo, edited a file, and seen your change with git status."
+hero_image: "15-install-trio.png"
+hero_image_alt: "Three small hand-illustrated object portraits in a row: a Git logo as an embroidered patch, an Obsidian vault icon stitched onto canvas, and a small terminal window framed like a photograph"
+hero_image_caption: "Three small installs, and the canon is on your laptop."
 bullets:
   - "Install Git: winget install --id Git.Git -e --source winget"
   - "Verify: close + reopen Terminal, run 'git --version' → version number"

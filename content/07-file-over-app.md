@@ -5,9 +5,9 @@ title: "File Over App"
 subtitle: "Steph Ango's three-word manifesto for durable knowledge"
 duration_seconds: 120
 key_idea: "Apps are ephemeral. Files have a chance to last. In a world of agents, that's not nostalgia — it's strategy."
-hero_image: "10-notebook-handwriting.png"
-hero_image_alt: "Open notebook with handwritten cursive on the left page and a small ink sketch of a tree on the right"
-hero_image_caption: "Pages outlive notebooks. Files outlive apps."
+hero_image: "10-notebook-handwriting-watercolor.png"
+hero_image_alt: "Hand-illustrated watercolor of an open spiral notebook on a wooden desk, left page handwritten in cursive ink, right page sketched with a box-and-arrow outline, brick wall behind"
+hero_image_caption: "Plain text is forever — handwriting is just its earliest format."
 hero_image_orientation: "portrait"
 bullets:
   - "The tools you rely on today will eventually shut down, get bought, or change format"

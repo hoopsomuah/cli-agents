@@ -5,9 +5,9 @@ title: "Inside Windows Terminal"
 subtitle: "What you actually see when you open the modern terminal app"
 duration_seconds: 120
 key_idea: "Windows Terminal is a tabbed browser for command-line sessions. Install it once, configure it once, never think about it again."
-hero_image: "03-windows-terminal-consoles.jpg"
-hero_image_alt: "A Windows 10 desktop with three terminal windows layered on top of each other: a WSL Ubuntu session showing a directory listing on the left, a Windows PowerShell session in the middle showing the same listing, and a classic Command Prompt on the right also showing the same listing"
-hero_image_caption: "One window, three shells: WSL, PowerShell, and cmd — all hosted by Windows Terminal."
+hero_image: "03-windows-terminal-desk.png"
+hero_image_alt: "Hand-illustrated watercolor of a modern laptop on a wooden desk, Windows Terminal open on screen with a tabbed PowerShell session, brick wall behind, warm desk lamp light"
+hero_image_caption: "The same terminal, four decades later — on the desk of someone shipping software."
 bullets:
   - "A free Microsoft app — preinstalled on Windows 11"
   - "Tabs and panes — multiple shells side by side, like browser tabs"

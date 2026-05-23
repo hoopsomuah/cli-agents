@@ -5,6 +5,9 @@ title: "The Terminal Walks the House Faster"
 subtitle: "Five commands cover ninety percent of the work"
 duration_seconds: 120
 key_idea: "File Explorer is friendly. The terminal is fast. You'll use both — but the terminal is the one that scales."
+hero_image: "06-mouse-vs-keyboard.png"
+hero_image_alt: "Split editorial illustration: on the left a person clicks through a file browser with a mouse; on the right the same person, same desk, types in a terminal — the right half visibly faster"
+hero_image_caption: "Same person, same desk — but the terminal walks the house faster."
 bullets:
   - "pwd — 'where am I?' Prints the current folder"
   - "ls (or dir) — 'what's here?' Lists files and folders"

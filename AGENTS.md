@@ -188,12 +188,17 @@ What we are not:
 
 ## Adding visual assets
 
-Use real photography for hero images. Hand-built SVGs for diagrams. AI-generated text inside images is forbidden — diagrams must be authored SVG so text never hallucinates.
+The house style for hero imagery is **hand-illustrated cartoony watercolor with ink-line work**, anchored on `site/assets/images/00-print-to-pixel-mural.png`. Every new hero image must read as a continuous piece of that editorial illustration — not as photography, not as glossy AI poster art, not as flat vector.
 
-- **Images** — PNG, ~16:9 or portrait if the subject warrants. Save to `site/assets/images/NN-name.png`.
+- **Reading-view variants** (`hero_image`) lean editorial and calm: muted warm palette (cream, ochre, sienna, soft brown), soft window/lamp light, brick wall environments where natural. They sit beside prose without competing.
+- **Deck variants** (`deck_image`, once the renderer supports it) lean cinematic: muted deep teal-purple backdrops, soft cyan-magenta glows, warm amber highlights, dramatic spotlighting, and — where it fits — small silhouette audience figures inside the frame, echoing the plaza spectators in the print-to-pixel mural.
+
+**Text inside images is allowed** when it serves the metaphor (labels on jars, brass plaques, recipe binders, chalkboard flows, etc.). Misspelled or hallucinated text is not — review every panel before merging. Diagrams that need to be precisely readable (architecture, agent loops with labeled steps that change as the project evolves) should still be hand-built SVG, not raster art.
+
+- **Images** — PNG, ~16:9 or portrait (~4:3) if the subject warrants. Save to `site/assets/images/NN-name.png` for scene art or `concept-<topic>-<variant>.png` for cross-cutting concepts.
 - **Diagrams** — hand-write SVG to `site/assets/diagrams/NN-name.svg`. Use `currentColor` where possible; the deck renders diagrams on a cream card so dark-on-light reads cleanly against the navy stage.
 
-Reference both from scene frontmatter, not from Markdown body.
+Reference both from scene frontmatter, not from Markdown body. For the per-asset filename map, see `docs/IMAGE_CATALOG.md`; to browse the full set visually, open `docs/image-viewer.html` directly from a checkout.
 
 ---
 

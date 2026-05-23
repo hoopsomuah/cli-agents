@@ -5,6 +5,9 @@ title: "GitHub Is the Cloud Home for Your Repos"
 subtitle: "What github.com actually is — and why your enterprise might have its own"
 duration_seconds: 120
 key_idea: "Git lives on your laptop. GitHub is the social, collaborative cloud where teams meet their repos and each other."
+hero_image: "16-repo-house.png"
+hero_image_alt: "Editorial illustration of a tall glass-fronted building at dusk with one warm light glowing inside, and a small hand-lettered sign by the door reading REPOS WELCOME"
+hero_image_caption: "GitHub is the cloud home where teams meet their repos and each other."
 bullets:
   - "Git = local version control on your laptop"
   - "GitHub = the cloud host that adds a website, accounts, permissions, and collaboration"

@@ -5,6 +5,9 @@ title: "PRs as the Conversation"
 subtitle: "Every change — human, agent, or bot — flows through the same door"
 duration_seconds: 120
 key_idea: "When PRs are the universal change mechanism, it doesn't matter whether the change was proposed by a human or an agent. The review surface, the audit trail, and the sign-off process are identical."
+hero_image: "21-converging-door.png"
+hero_image_alt: "Editorial wide illustration of many different delivery routes — bike messenger, van, hand-carried parcel, overhead drone — all approaching the same revolving door of a building"
+hero_image_caption: "Every change — human, agent, or bot — flows through the same door."
 bullets:
   - "Every change to the canon enters via a PR — no exceptions"
   - "Doesn't matter who proposed it: human, Copilot CLI, scheduled bot, external collaborator"

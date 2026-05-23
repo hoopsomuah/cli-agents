@@ -5,9 +5,9 @@ title: "The Filesystem as a House"
 subtitle: "Folders, files, and the addresses they live at"
 duration_seconds: 120
 key_idea: "Every doc, every photo, every program on your computer is a file in a folder. Once you can read a path, the whole machine opens up."
-hero_image: "04-server-room.png"
-hero_image_alt: "A long aisle of server racks lit by blue ambient light and warm floor LEDs"
-hero_image_caption: "Beneath every app, beneath every cloud, there is a tree of folders and files."
+hero_image: "05-house-cutaway.png"
+hero_image_alt: "Architectural watercolor cutaway of a two-story house with rooms labeled Documents, Pictures, Projects, and a hallway labeled /Users/hoop/"
+hero_image_caption: "Your computer is a house. Folders are rooms. Paths are directions."
 bullets:
   - "Computer = a house. Folders = rooms. Files = objects in those rooms."
   - "A 'path' is the address: drive → folder → folder → file"
