@@ -134,9 +134,25 @@ function buildActSlide(act, actIndex) {
   };
 }
 
+// ---------- Image resolver: prefer deck_image when present ----------
+
+function deckImageOf(meta) {
+  // Each scene may carry a separate cinematic deck variant. When present,
+  // the deck prefers it over the calmer hero_image used by the reading view.
+  return {
+    src: meta.deck_image || meta.hero_image || '',
+    alt: meta.deck_image_alt || meta.hero_image_alt || '',
+    caption: meta.deck_image_caption || meta.hero_image_caption || '',
+    orientation:
+      meta.deck_image_orientation ||
+      meta.hero_image_orientation ||
+      'landscape',
+  };
+}
+
 function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   const { meta } = scene;
-  const hasImage = !!meta.hero_image;
+  const hasImage = !!meta.hero_image || !!meta.deck_image;
   const hasDiagram = !!meta.diagram;
   const hasBullets = Array.isArray(meta.bullets) && meta.bullets.length > 0;
 
@@ -154,7 +170,8 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   // Hero photo only — keep the cinematic editorial layout for historical
   // imagery (teletypes, typewriters, etc.).
   if (hasImage) {
-    const orientation = meta.hero_image_orientation === 'portrait' ? 'portrait' : 'landscape';
+    const img = deckImageOf(meta);
+    const orientation = img.orientation === 'portrait' ? 'portrait' : 'landscape';
     return {
       type: 'scene',
       actIndex,
@@ -178,9 +195,9 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
           </div>
           <div class="slide__right">
             <figure class="slide__figure slide__figure--${orientation} reveal" style="--reveal-delay: 100ms;">
-              <img src="${ASSET_IMG}${meta.hero_image}" alt="${escapeHtml(meta.hero_image_alt || '')}" />
+              <img src="${ASSET_IMG}${img.src}" alt="${escapeHtml(img.alt)}" />
             </figure>
-            ${meta.hero_image_caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: 700ms;">${escapeHtml(meta.hero_image_caption)}</figcaption>` : ''}
+            ${img.caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: 700ms;">${escapeHtml(img.caption)}</figcaption>` : ''}
           </div>
         </div>
       `,
@@ -225,8 +242,9 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
 
 function buildBulletsSlide(scene, sceneId, actIndex) {
   const { meta } = scene;
-  const hasImage = !!meta.hero_image;
-  const orientation = meta.hero_image_orientation === 'portrait' ? 'portrait' : 'landscape';
+  const hasImage = !!meta.hero_image || !!meta.deck_image;
+  const img = hasImage ? deckImageOf(meta) : null;
+  const orientation = img && img.orientation === 'portrait' ? 'portrait' : 'landscape';
   const bullets = meta.bullets || [];
   const bulletsHtml = bullets
     .map((b, i) => `
@@ -260,9 +278,9 @@ function buildBulletsSlide(scene, sceneId, actIndex) {
         ${hasImage ? `
           <div class="slide__right">
             <figure class="slide__figure slide__figure--${orientation} reveal" style="--reveal-delay: 100ms;">
-              <img src="${ASSET_IMG}${meta.hero_image}" alt="${escapeHtml(meta.hero_image_alt || '')}" />
+              <img src="${ASSET_IMG}${img.src}" alt="${escapeHtml(img.alt)}" />
             </figure>
-            ${meta.hero_image_caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(meta.hero_image_caption)}</figcaption>` : ''}
+            ${img.caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(img.caption)}</figcaption>` : ''}
           </div>` : ''}
       </div>
     `,

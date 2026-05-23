@@ -8,6 +8,9 @@ key_idea: "Around every repo, GitHub provides a small but powerful set of platfo
 hero_image: "18-platform-tools.png"
 hero_image_alt: "Editorial top-down illustration of a watchmaker's bench with five neatly-laid-out tools labeled Actions, Rulesets, Projects, Issues, and Security"
 hero_image_caption: "Around every repo is a small bench of platform tools."
+deck_image: "18-platform-in-use.png"
+deck_image_alt: "Cinematic watercolor of a watchmaker's bench with five tools — Actions, Rulesets, Projects, Issues, Security — partially floating above the surface as if mid-use, motion-trails suggesting the platform is running"
+deck_image_caption: "Five small tools, one durable rhythm."
 bullets:
   - "Actions — automation: run code on every push, PR, or schedule"
   - "Rulesets — guardrails: 'main needs 2 approvals', 'no force-push', 'no secrets'"

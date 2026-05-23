@@ -8,6 +8,9 @@ key_idea: "A PR turns 'I changed something' into 'I am proposing this change, he
 hero_image: "12-manuscript-review.png"
 hero_image_alt: "Overhead editorial illustration of a printed manuscript between two reviewers, marked up in red and blue pen with line-level comments in the margins"
 hero_image_caption: "A pull request is a manuscript with the margins open for everyone."
+deck_image: "12-diff-and-paper.png"
+deck_image_alt: "Cinematic split watercolor: a green and red code diff at high zoom on the left, a handwritten review comment on real paper on the right, both lit with warm overhead light against a dark room"
+deck_image_caption: "Code on one side, conversation on the other."
 bullets:
   - "A pull request (PR) says: please merge my branch into main"
   - "It shows the diff — every added, removed, and changed line"

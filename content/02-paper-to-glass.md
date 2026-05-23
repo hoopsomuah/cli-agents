@@ -8,6 +8,9 @@ key_idea: "The screen replaced the paper. The software pipe replaced the cable. 
 hero_image: "02-vt100-terminal-still.png"
 hero_image_alt: "Hand-illustrated watercolor still life of a VT100 terminal sitting on a wooden desk with brick wall behind, soft warm window light from the left"
 hero_image_caption: "The screen replaces the page — but the conversation stays the same."
+deck_image: "02-vt100-cinematic.png"
+deck_image_alt: "Cinematic watercolor of a VT100 video terminal in a darkened room, the amber CRT glowing brightly with a directory listing, casting warm light across the desk and outlining a silhouette audience"
+deck_image_caption: "The screen is the stage. The text is still the conversation."
 bullets:
   - "Paper roll → glass screen"
   - "Physical cable → 'pseudo-teletype' (PTY) in software"

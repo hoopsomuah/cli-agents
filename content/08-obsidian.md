@@ -8,6 +8,9 @@ key_idea: "Obsidian gives you the comfort of a modern note app while keeping the
 hero_image: "11-obsidian-desk-watercolor.png"
 hero_image_alt: "Hand-illustrated watercolor of a writers desk with a laptop showing Obsidian's graph and editor panes, an open handwritten notebook beside it mirroring the on-screen graph, brick wall behind"
 hero_image_caption: "Obsidian as a digital extension of a handwritten thinking practice."
+deck_image: "08-obsidian-vault.png"
+deck_image_alt: "Cinematic watercolor of an Obsidian vault: file tree on the left, a Markdown note in the middle showing a mission statement, and the graph view on the right, all rendered in a calm dark theme"
+deck_image_caption: "A friendly editor sitting on top of plain text."
 bullets:
   - "A free desktop app that opens a folder of Markdown files (a 'vault')"
   - "Gives you search, tags, backlinks, graph view, themes, plugins"

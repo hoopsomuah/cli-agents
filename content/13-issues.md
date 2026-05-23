@@ -8,6 +8,9 @@ key_idea: "An issue turns 'good intentions' into 'a thing with a URL.' Anyone ca
 hero_image: "13-single-issue-card.png"
 hero_image_alt: "Editorial close-up of a cork bulletin board with a single hand-printed index card pinned in the middle: MOVE Q2 STATUS UPDATE TO FRIDAYS 4PM"
 hero_image_caption: "An issue turns 'good intentions' into 'a thing with a URL.'"
+deck_image: "13-issue-wall.png"
+deck_image_alt: "Cinematic wide shot of an entire wall covered in identical yellow sticky notes, with one note in the center glowing brighter than the rest"
+deck_image_caption: "Every 'we should do this' gets a permanent URL."
 bullets:
   - "An issue is a small unit of work or conversation on a repo"
   - "Title, description, labels, assignee, comments — all at a permanent URL"

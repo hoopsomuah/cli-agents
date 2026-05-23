@@ -89,6 +89,10 @@ hero_image: "10-notebook-handwriting.png"
 hero_image_alt: "Open notebook with handwritten journal entry and pen-drawn tree"
 hero_image_caption: "Pages outlive notebooks. Notebooks outlive bookstores. Files outlive apps."
 hero_image_orientation: "portrait"     # "portrait" or omit for landscape
+deck_image: "10-notebook-cinematic.png" # optional — cinematic variant for /present/
+deck_image_alt: "..."                   # optional, falls back to hero_image_alt
+deck_image_caption: "..."               # optional, falls back to hero_image_caption
+deck_image_orientation: "portrait"      # optional, falls back to hero_image_orientation
 diagram: "04-file-over-app.svg"        # optional
 diagram_alt: "..."
 diagram_caption: "..."
@@ -106,7 +110,8 @@ Plain Markdown. No raw HTML.
 - `duration_seconds` — int, used in scene chrome
 - `key_idea` — string, rendered as the brick-red callout in the reading view and as the pull-quote on slides
 - `interactive` — slot name, must match a registered widget
-- `hero_image`, `hero_image_alt`, `hero_image_caption`, `hero_image_orientation`
+- `hero_image`, `hero_image_alt`, `hero_image_caption`, `hero_image_orientation` — used by both views; the reading view always uses these
+- `deck_image`, `deck_image_alt`, `deck_image_caption`, `deck_image_orientation` — optional; when present the slide deck prefers these over the hero image. Lets a scene carry a calmer editorial illustration for the reading view and a more cinematic one for the projector. Each field individually falls back to its `hero_image_*` counterpart if omitted.
 - `diagram`, `diagram_alt`, `diagram_caption`
 
 The parser is intentionally dumb (`key: value` per line, quoted strings). If you need lists or nested structures, extend the parser in **both** loaders, not in a content file.
