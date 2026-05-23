@@ -5,9 +5,9 @@ title: "Does SharePoint Still Earn Its Keep?"
 subtitle: "An honest comparison — not a hot take"
 duration_seconds: 150
 key_idea: "SharePoint solves problems that mattered in 2007. A repo plus a generated site solves the same problems and several new ones — in 2026."
-hero_image: "15-cabinet-vs-shelf.png"
-hero_image_alt: "A split composition: on the left, a closed beige metal filing cabinet with a single sticky note; on the right, a wooden shelf with bound notebooks"
-hero_image_caption: "Both store information. Only one tells you who changed what, and when."
+hero_image: "15-cabinet-vs-shelf-watercolor.png"
+hero_image_alt: "Hand-illustrated watercolor diptych: on the left a bursting four-drawer filing cabinet labeled SHAREPOINT with overflowing FINAL_v7 / FINAL_v8 folders; on the right a tidy open wooden shelf labeled REPO with leather volumes labeled MISSION, PLAN, OKRS, README"
+hero_image_caption: "The cabinet bursts. The shelf endures."
 bullets:
   - "SharePoint is still good at: large binaries, Office-native edits, Power Automate flows"
   - "Repos are better at: PR-style sign-off, complete history, agent-readable formats"

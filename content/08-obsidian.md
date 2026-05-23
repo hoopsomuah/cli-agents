@@ -5,9 +5,9 @@ title: "Obsidian — A Friendly Editor on Top of Plain Files"
 subtitle: "A polished app experience that doesn't lock your notes inside it"
 duration_seconds: 120
 key_idea: "Obsidian gives you the comfort of a modern note app while keeping the underlying files plain, portable, and yours."
-hero_image: "11-obsidian-desk.png"
-hero_image_alt: "A laptop displaying a Markdown editor on a wooden desk, with an open notebook and a ceramic mug beside it"
-hero_image_caption: "A calm front door to a folder of plain-text files."
+hero_image: "11-obsidian-desk-watercolor.png"
+hero_image_alt: "Hand-illustrated watercolor of a writers desk with a laptop showing Obsidian's graph and editor panes, an open handwritten notebook beside it mirroring the on-screen graph, brick wall behind"
+hero_image_caption: "Obsidian as a digital extension of a handwritten thinking practice."
 bullets:
   - "A free desktop app that opens a folder of Markdown files (a 'vault')"
   - "Gives you search, tags, backlinks, graph view, themes, plugins"

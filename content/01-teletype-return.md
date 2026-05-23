@@ -5,9 +5,9 @@ title: "The Return of the Teletype"
 subtitle: "A typewriter, a computer, and a printer — wired together"
 duration_seconds: 90
 key_idea: "The black window with text on your screen is the great-great-grandchild of a real piece of furniture from the 1960s. It is the longest-lived user interface in computing."
-hero_image: "01-teletype-asr33.jpg"
-hero_image_alt: "A Teletype Model 33 ASR: tan plastic body, round-capped typewriter keys, a roll of fanfold paper feeding through the printer head, with FORTRAN source code printed on the paper holder above"
-hero_image_caption: "The Teletype Model 33 ASR (c.1963). Keyboard, cable, printer — the original 'terminal' was furniture."
+hero_image: "01-teletype-asr33-watercolor.png"
+hero_image_alt: "Hand-illustrated watercolor of a vintage Teletype ASR-33 on a wooden desk, a long ribbon of perforated paper trailing from its top, brick wall behind, warm window light from the left"
+hero_image_caption: "The teletype as a quiet ancestor on display."
 hero_image_orientation: "portrait"
 bullets:
   - "1963: a typewriter wired to a mainframe, printing replies on a roll of paper"

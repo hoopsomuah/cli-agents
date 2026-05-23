@@ -14,7 +14,7 @@ Filenames mirror the issue's suggestions. Where the issue suggested `.jpg`, the 
 
 | Scene | Reading view | Deck |
 | --- | --- | --- |
-| 01 — The Return of the Teletype | `01-teletype-asr33.jpg` (existing) | cover hero: `00-print-to-pixel-mural.png` |
+| 01 — The Return of the Teletype | `01-teletype-asr33-watercolor.png` | cover hero: `00-print-to-pixel-mural.png` |
 | 02 — From Paper to Glass | `02-vt100-terminal-still.png` | `02-vt100-cinematic.png` |
 | 03 — Inside Windows Terminal | `03-windows-terminal-desk.png` | `03-windows-terminal-fourpane.png` |
 | 04 — Install: Your Terminal | `04-install-terminal-trio.png` | `04-install-terminal-pedestal.png` |
@@ -25,10 +25,10 @@ Filenames mirror the issue's suggestions. Where the issue suggested `.jpg`, the 
 | --- | --- | --- |
 | 05 — The Filesystem as a House | `05-house-cutaway.png` | `05-house-night.png` |
 | 06 — The Terminal Walks Faster | `06-mouse-vs-keyboard.png` | `06-terminal-velocity.png` |
-| 07 — File Over App | `10-notebook-handwriting.png` (existing) | — |
-| 08 — Obsidian | `11-obsidian-desk.png` (existing) | `08-obsidian-vault.png` |
-| 09 — final_v7_FINAL.docx | `06-stickynotes-chaos.png` (existing) | — |
-| 10 — A Repository Is a Folder with Memory | `07-annotated-book.png` (existing) | — |
+| 07 — File Over App | `10-notebook-handwriting-watercolor.png` | — |
+| 08 — Obsidian | `11-obsidian-desk-watercolor.png` | `08-obsidian-vault.png` |
+| 09 — final_v7_FINAL.docx | `06-stickynotes-chaos-watercolor.png` | — |
+| 10 — A Repository Is a Folder with Memory | `07-annotated-book-watercolor.png` | — |
 | 11 — Branches | `11-parallel-drafts.png` | `11-forked-road.png` |
 | 12 — Pull Requests | `12-manuscript-review.png` | `12-diff-and-paper.png` |
 | 13 — Issues | `13-single-issue-card.png` | `13-issue-wall.png` |
@@ -43,9 +43,9 @@ Filenames mirror the issue's suggestions. Where the issue suggested `.jpg`, the 
 | 17 — Organizations, Teams, Repositories | `17-nested-drawers.png` | `17-org-architecture.png` |
 | 18 — GitHub at Work | `18-platform-tools.png` | `18-platform-in-use.png` |
 | 19 — The Copilot Family | `19-copilot-table.png` | `19-copilot-constellation.png` |
-| 20 — Copilot CLI | `13-hands-keyboard.png` (existing) | `20-copilot-cli-session.png` |
+| 20 — Copilot CLI | `13-hands-keyboard-watercolor.png` | `20-copilot-cli-session.png` |
 | 21 — PRs as the Conversation | `21-converging-door.png` | `21-pr-door-dusk.png` |
-| 22 — SharePoint vs Repo | `15-cabinet-vs-shelf.png` (existing) | — |
+| 22 — SharePoint vs Repo | `15-cabinet-vs-shelf-watercolor.png` | — |
 | 23 — Install: GitHub, gh CLI, Copilot CLI | `23-install-final-trio.png` | `23-install-final-pedestal.png` |
 
 ---
@@ -70,7 +70,7 @@ Filenames mirror the issue's suggestions. Where the issue suggested `.jpg`, the 
 
 ## Style notes
 
-Every new asset in this batch is hand-illustrated cartoony watercolor with ink-line work, anchored on the `00-print-to-pixel-mural.png` reference.
+**Every hero referenced from frontmatter is now hand-illustrated cartoony watercolor with ink-line work**, anchored on the `00-print-to-pixel-mural.png` reference. Older assets that pre-dated the style lock (e.g. `01-teletype-asr33.jpg`, `13-hands-keyboard.png`, `15-cabinet-vs-shelf.png`) remain in `site/assets/images/` for history but are no longer referenced; the new `*-watercolor.png` files replace them in frontmatter.
 
 - **Reading view variants** lean editorial: muted warm palette (cream, ochre, sienna, soft brown), soft window/lamp light, brick wall environments where natural.
 - **Deck variants** lean cinematic: deep teal-purple backdrops, soft cyan-magenta glows, warm amber highlights, dramatic spotlighting, and often small silhouette audience figures — a direct nod to the plaza spectators in the print-to-pixel mural.

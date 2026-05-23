@@ -5,9 +5,9 @@ title: "A Repository Is a Folder with Memory"
 subtitle: "The single mental model that unlocks Git, GitHub, and everything after"
 duration_seconds: 120
 key_idea: "A repo is a regular folder on your computer that has been given a memory. Every change is recorded forever. You can rewind to any moment in its history."
-hero_image: "07-annotated-book.png"
-hero_image_alt: "An open hardcover book with handwritten marginalia in two ink colors and a fountain pen resting on the page"
-hero_image_caption: "A repo is a book that remembers every margin note ever written in it."
+hero_image: "07-annotated-book-watercolor.png"
+hero_image_alt: "Hand-illustrated watercolor of an open hardcover book on a desk, pages dense with handwritten margin notes in several different inks, magnifying glass and fountain pen alongside, brick wall behind"
+hero_image_caption: "A repository is a folder that remembers everything written in its margins."
 bullets:
   - "A folder + a hidden .git subfolder = a repository"
   - "Files behave normally — open, edit, save in any app"
