@@ -37,14 +37,26 @@
     <link rel="stylesheet" href="site/css/interactive.css" />
 
     <script>
-      // Anti-FOUC: set theme before stylesheets paint.
+      // Anti-FOUC: set palette + mode before stylesheets paint.
       (function () {
         try {
-          var key = 'cli-agents-theme';
-          var stored = localStorage.getItem(key);
-          if (stored === 'light' || stored === 'dark') {
-            document.documentElement.setAttribute('data-theme', stored);
+          var pKey = 'cli-agents-palette';
+          var mKey = 'cli-agents-mode';
+          var legacy = 'cli-agents-theme';
+          var validPalettes = ['editorial','ink','solar','forest','slate','rose','ocean','sunset'];
+          var palette = localStorage.getItem(pKey);
+          var mode = localStorage.getItem(mKey);
+          if (!mode) {
+            var old = localStorage.getItem(legacy);
+            if (old === 'light' || old === 'dark') {
+              mode = old;
+              localStorage.setItem(mKey, mode);
+            }
           }
+          if (validPalettes.indexOf(palette) === -1) palette = 'editorial';
+          if (mode !== 'light' && mode !== 'dark') mode = 'light';
+          document.documentElement.setAttribute('data-palette', palette);
+          document.documentElement.setAttribute('data-mode', mode);
         } catch (e) {}
       })();
     </script>
@@ -75,6 +87,38 @@
           <a href="#act-3">III</a>
         </nav>
         <div class="site-header__actions">
+          <div class="palette-picker-wrap">
+            <button
+              id="palette-toggle"
+              class="theme-toggle palette-toggle"
+              type="button"
+              aria-label="Choose color theme"
+              aria-haspopup="dialog"
+              aria-expanded="false"
+              aria-controls="palette-picker"
+              title="Choose color theme"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="7.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="12" cy="7" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="16.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="15.5" cy="15" r="1.2" fill="currentColor" stroke="none" />
+                <path d="M12 21 a3 3 0 0 1 0 -6" />
+              </svg>
+            </button>
+            <div
+              id="palette-picker"
+              class="palette-picker"
+              role="dialog"
+              aria-label="Color theme"
+              hidden
+            >
+              <p class="palette-picker__label">Color theme</p>
+              <ul class="palette-picker__grid" data-picker-grid></ul>
+              <p class="palette-picker__current" data-picker-current>Editorial · Light</p>
+            </div>
+          </div>
           <button
             id="theme-toggle"
             class="theme-toggle"
@@ -123,8 +167,10 @@
               <span>~20% covered live, the rest is yours</span>
             </div>
           </div>
-          <figure class="hero__figure">
-            <img src="site/assets/images/01-teletype-asr33.jpg" alt="A Teletype Model 33 ASR: tan plastic body, round-capped typewriter keys, a roll of fanfold paper feeding through the printer head, with FORTRAN source code printed on the paper holder above" />
+          <figure class="hero__figure hero__figure--portrait">
+            <div class="hero__figure__matte">
+              <img src="site/assets/images/01-teletype-asr33.jpg" alt="A Teletype Model 33 ASR: tan plastic body, round-capped typewriter keys, a roll of fanfold paper feeding through the printer head, with FORTRAN source code printed on the paper holder above" />
+            </div>
             <figcaption>Teletype Model 33, c. 1963 — the great-great-grandparent of every terminal window on Earth.</figcaption>
           </figure>
         </div>

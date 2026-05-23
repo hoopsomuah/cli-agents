@@ -16,14 +16,27 @@
     />
     <link rel="stylesheet" href="deck.css" />
     <script>
-      // Anti-FOUC: set theme before stylesheet paints.
+      // Anti-FOUC: set palette + mode before stylesheet paints.
+      // Deck defaults to dark; reading view defaults to light.
       (function () {
         try {
-          var key = 'cli-agents-theme';
-          var stored = localStorage.getItem(key);
-          if (stored === 'light' || stored === 'dark') {
-            document.documentElement.setAttribute('data-theme', stored);
+          var pKey = 'cli-agents-palette';
+          var mKey = 'cli-agents-mode';
+          var legacy = 'cli-agents-theme';
+          var validPalettes = ['editorial','ink','solar','forest','slate','rose','ocean','sunset'];
+          var palette = localStorage.getItem(pKey);
+          var mode = localStorage.getItem(mKey);
+          if (!mode) {
+            var old = localStorage.getItem(legacy);
+            if (old === 'light' || old === 'dark') {
+              mode = old;
+              localStorage.setItem(mKey, mode);
+            }
           }
+          if (validPalettes.indexOf(palette) === -1) palette = 'editorial';
+          if (mode !== 'light' && mode !== 'dark') mode = 'dark';
+          document.documentElement.setAttribute('data-palette', palette);
+          document.documentElement.setAttribute('data-mode', mode);
         } catch (e) {}
       })();
     </script>
@@ -48,6 +61,38 @@
         <button id="btn-prev" class="deck__btn" aria-label="Previous">←</button>
         <button id="btn-next" class="deck__btn" aria-label="Next">→</button>
         <button id="btn-fullscreen" class="deck__btn" aria-label="Fullscreen">⛶</button>
+        <div class="palette-picker-wrap">
+          <button
+            id="palette-toggle"
+            class="deck__btn deck__btn--palette"
+            type="button"
+            aria-label="Choose color theme"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            aria-controls="palette-picker"
+            title="Choose color theme"
+          >
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="9" />
+              <circle cx="7.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
+              <circle cx="12" cy="7" r="1.2" fill="currentColor" stroke="none" />
+              <circle cx="16.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
+              <circle cx="15.5" cy="15" r="1.2" fill="currentColor" stroke="none" />
+              <path d="M12 21 a3 3 0 0 1 0 -6" />
+            </svg>
+          </button>
+          <div
+            id="palette-picker"
+            class="deck-palette-picker"
+            role="dialog"
+            aria-label="Color theme"
+            hidden
+          >
+            <p class="deck-palette-picker__label">Color theme</p>
+            <ul class="deck-palette-picker__grid" data-picker-grid></ul>
+            <p class="deck-palette-picker__current" data-picker-current>Editorial · Dark</p>
+          </div>
+        </div>
         <button id="theme-toggle" class="deck__btn deck__btn--theme" type="button" aria-label="Toggle dark mode" title="Toggle dark mode">
           <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4" />

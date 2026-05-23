@@ -1,77 +1,57 @@
 /* ============================================================
    CLI Agents — Presentation deck
-   Dark cinematic theme. Slides cross-fade. Content stays as-is.
+   Cinematic deck. Imports shared palette tokens from the
+   reading view so both views stay perfectly in sync. The deck
+   then aliases deck-specific names (--ink, --ink-soft, ...) to
+   the shared semantic tokens so existing rules keep working.
    ============================================================ */
 
-:root,
-:root[data-theme="dark"] {
-  /* Palette — deep navy night for projection (default) */
-  --bg: #0b1220;
-  --bg-elev: #111a2e;
-  --ink: #f4ecd8;            /* warm cream text */
-  --ink-soft: #c9bfa6;
-  --ink-mute: #8a8270;
-  --accent: #e8a87c;         /* warm peach accent */
-  --accent-2: #c14a3a;       /* warm brick */
-  --accent-cool: #6fb3d4;    /* cool teal for diagrams */
-  --rule: rgba(244, 236, 216, 0.12);
+@import url("../site/css/tokens.css");
 
-  /* Surfaces for image / diagram cards */
-  --figure-bg: #f4ecd8;      /* cream card behind diagrams */
-  --figure-ink: #1a2236;     /* dark ink on cream card */
-  --toggle-bg: rgba(244, 236, 216, 0.08);
-  --toggle-bg-hover: rgba(244, 236, 216, 0.16);
-  --toggle-icon: #f4ecd8;
-  /* Chrome surfaces (counter, buttons, hint, kbd, dots) */
-  --chrome-bg: rgba(11, 18, 32, 0.6);
-  --chrome-hover: rgba(244, 236, 216, 0.1);
-  --dot-idle: rgba(244, 236, 216, 0.2);
-  --dot-hover: rgba(244, 236, 216, 0.5);
-  --kbd-bg: rgba(244, 236, 216, 0.08);
+:root {
+  /* Alias deck-specific names from shared palette tokens.
+     These resolve through whatever data-palette/data-mode is active. */
+  --bg-elev:    var(--bg-1);
+  --ink:        var(--fg);
+  --ink-soft:   var(--fg-muted);
+  --ink-mute:   var(--fg-faint);
+  --accent-2:   var(--accent-warm);
+  --accent-cool: var(--accent-soft);
 
-  /* Type */
-  --serif: 'Fraunces', 'Iowan Old Style', Georgia, serif;
-  --sans: 'Inter', -apple-system, system-ui, sans-serif;
-  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  /* Diagram "paper" surface — palette-independent so the SVGs always look
+     right (they were hand-built for cream). */
+  --figure-bg:  var(--paper-bg);
+  --figure-ink: var(--paper-ink);
+
+  /* Photo matte — varies by palette. */
+  --photo-mat-bg:   var(--matte-bg);
+  --photo-mat-rule: var(--matte-rule);
+
+  /* Chrome surfaces compose from current bg/fg with alpha. */
+  --chrome-bg:    color-mix(in oklch, var(--bg) 80%, transparent);
+  --chrome-hover: color-mix(in oklch, var(--fg) 10%, transparent);
+  --dot-idle:     color-mix(in oklch, var(--fg) 18%, transparent);
+  --dot-hover:    color-mix(in oklch, var(--fg) 45%, transparent);
+  --kbd-bg:       color-mix(in oklch, var(--fg) 8%, transparent);
+
+  /* Type — keep deck-specific font names. */
+  --serif: 'Fraunces', 'Boska', 'Source Serif 4', Georgia, serif;
+  --sans:  'Inter', -apple-system, system-ui, sans-serif;
+  --mono:  'JetBrains Mono', 'SF Mono', Menlo, monospace;
 
   /* Motion */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out:      cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
-  --dur-slide: 600ms;
+  --dur-slide:  600ms;
   --dur-reveal: 700ms;
 
-  /* Layout — scale with viewport so it looks right at any projector size */
+  /* Layout — scale with viewport */
   --slide-pad-x: max(4rem, 6vw);
   --slide-pad-y: max(3rem, 5vh);
-
-  color-scheme: dark;
 }
 
-/* --- Light theme overrides for the deck --- */
-:root[data-theme="light"] {
-  --bg: #f5efe2;             /* warm cream */
-  --bg-elev: #ece4d2;
-  --ink: #1a2236;            /* deep navy ink */
-  --ink-soft: #3a4358;
-  --ink-mute: #6a7388;
-  --accent: #b6532f;         /* deeper peach for contrast on cream */
-  --accent-2: #8a2a1c;       /* deeper brick */
-  --accent-cool: #2c6b8a;    /* deeper teal */
-  --rule: rgba(26, 34, 54, 0.14);
-
-  --figure-bg: #f4ecd8;      /* keep diagrams on a cream "paper" card in both themes */
-  --figure-ink: #1a2236;
-  --toggle-bg: rgba(26, 34, 54, 0.08);
-  --toggle-bg-hover: rgba(26, 34, 54, 0.16);
-  --toggle-icon: #1a2236;
-  --chrome-bg: rgba(245, 239, 226, 0.85);
-  --chrome-hover: rgba(26, 34, 54, 0.1);
-  --dot-idle: rgba(26, 34, 54, 0.2);
-  --dot-hover: rgba(26, 34, 54, 0.5);
-  --kbd-bg: rgba(26, 34, 54, 0.08);
-
-  color-scheme: light;
-}
+/* The deck defaults to dark when no explicit attributes are set.
+   data-mode is applied by the anti-FOUC script in the head. */
 
 * { box-sizing: border-box; }
 
@@ -137,8 +117,10 @@ html, body {
   justify-content: center;
   text-align: left;
   background:
-    radial-gradient(ellipse at 70% 30%, rgba(232, 168, 124, 0.18), transparent 60%),
-    radial-gradient(ellipse at 20% 80%, rgba(111, 179, 212, 0.10), transparent 60%),
+    radial-gradient(ellipse at 70% 30%,
+      color-mix(in oklch, var(--accent) 24%, transparent), transparent 60%),
+    radial-gradient(ellipse at 20% 80%,
+      color-mix(in oklch, var(--accent-cool) 18%, transparent), transparent 60%),
     var(--bg);
 }
 
@@ -304,9 +286,15 @@ html, body {
   height: 70vh;
   max-height: 70vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: center;
   min-width: 0;
+  gap: 0.5rem;
+}
+.slide--scene .slide__right .slide__figure {
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .slide--scene .slide__figure {
@@ -317,7 +305,8 @@ html, body {
   overflow: hidden;
   box-shadow:
     0 30px 80px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(244, 236, 216, 0.06);
+    0 0 0 1px color-mix(in oklch, var(--ink) 8%, transparent);
+  background: var(--photo-mat-bg);
 }
 
 .slide--scene .slide__figure img {
@@ -327,8 +316,28 @@ html, body {
   display: block;
 }
 
-.slide--scene.is-current .slide__figure img {
-  /* Ken Burns */
+/* Portrait photos sit on a matte, contained, never cropped weirdly. */
+.slide--scene .slide__figure--portrait {
+  background: var(--photo-mat-bg);
+  padding: clamp(0.75rem, 1.2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide--scene .slide__figure--portrait img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+.slide--scene .slide__figure--landscape img {
+  object-fit: cover;
+}
+
+/* Ken Burns only on landscape (covered) photos.
+   Portraits stay still so the matte edges don't drift. */
+.slide--scene.is-current .slide__figure--landscape img,
+.slide--scene.is-current .slide__figure:not(.slide__figure--portrait) img {
   animation: kenburns 18s ease-out forwards;
 }
 
@@ -338,16 +347,14 @@ html, body {
 }
 
 .slide--scene .slide__caption {
-  position: absolute;
-  bottom: -2.5rem;
-  left: 0;
-  right: 0;
+  margin-top: 0.9rem;
   text-align: center;
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(0.875rem, 1vw, 1.125rem);
   color: var(--ink-mute);
   padding: 0 1rem;
+  position: static;
 }
 
 /* DIAGRAM slide variant */
@@ -533,20 +540,24 @@ html, body {
   height: 68vh;
   max-height: 68vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: center;
   min-width: 0;
+  gap: 0.5rem;
 }
 
 .slide--bullets .slide__figure {
   position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
   width: 100%;
-  height: 100%;
   border-radius: 4px;
   overflow: hidden;
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(244, 236, 216, 0.06);
+    0 0 0 1px color-mix(in oklch, var(--ink) 8%, transparent);
+  background: var(--photo-mat-bg);
 }
 
 .slide--bullets .slide__figure img {
@@ -556,28 +567,44 @@ html, body {
   display: block;
 }
 
+.slide--bullets .slide__figure--portrait {
+  padding: clamp(0.75rem, 1.2vw, 1.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide--bullets .slide__figure--portrait img {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+.slide--bullets .slide__figure--landscape img {
+  object-fit: cover;
+}
+
 .slide--bullets .slide__caption {
-  position: absolute;
-  bottom: -2.25rem;
-  left: 0;
-  right: 0;
+  margin-top: 0.6rem;
   text-align: center;
   font-family: var(--serif);
   font-style: italic;
   font-size: clamp(0.85rem, 1vw, 1.05rem);
   color: var(--ink-mute);
   padding: 0 1rem;
+  position: static;
 }
 
 /* ============================================================
    INSTALL slide — numbered-step checklist.
    ============================================================ */
 
+/* INSTALL slide — numbered-step checklist. */
 .slide--install {
   justify-content: flex-start;
   align-items: stretch;
   background:
-    radial-gradient(ellipse at 80% 20%, rgba(111, 179, 212, 0.10), transparent 60%),
+    radial-gradient(ellipse at 80% 20%,
+      color-mix(in oklch, var(--accent-cool) 14%, transparent), transparent 60%),
     var(--bg);
 }
 
@@ -653,7 +680,7 @@ html, body {
   font-size: 0.85em;
   font-weight: 500;
   letter-spacing: 0.04em;
-  background: rgba(111, 179, 212, 0.06);
+  background: color-mix(in oklch, var(--accent-cool) 12%, transparent);
 }
 
 .slide--install .slide__step-text {
@@ -696,7 +723,8 @@ html, body {
   align-items: center;
   text-align: center;
   background:
-    radial-gradient(ellipse at center, rgba(193, 74, 58, 0.10), transparent 70%),
+    radial-gradient(ellipse at center,
+      color-mix(in oklch, var(--accent-2) 16%, transparent), transparent 70%),
     var(--bg);
 }
 
@@ -746,7 +774,8 @@ html, body {
   text-align: center;
   align-items: center;
   background:
-    radial-gradient(ellipse at center, rgba(232, 168, 124, 0.10), transparent 70%),
+    radial-gradient(ellipse at center,
+      color-mix(in oklch, var(--accent) 14%, transparent), transparent 70%),
     var(--bg);
 }
 
@@ -903,18 +932,136 @@ html, body {
 .deck__btn--theme .theme-toggle__icon--moon {
   display: block;
 }
-:root[data-theme="dark"] .deck__btn--theme .theme-toggle__icon--sun {
+:root[data-mode="dark"] .deck__btn--theme .theme-toggle__icon--sun {
   display: block;
 }
-:root[data-theme="dark"] .deck__btn--theme .theme-toggle__icon--moon {
+:root[data-mode="dark"] .deck__btn--theme .theme-toggle__icon--moon {
   display: none;
 }
-/* No explicit data-theme attr means deck default (dark) — show sun. */
-:root:not([data-theme="light"]):not([data-theme="dark"]) .deck__btn--theme .theme-toggle__icon--sun {
+/* No explicit data-mode means deck default (dark) — show sun. */
+:root:not([data-mode="light"]):not([data-mode="dark"]) .deck__btn--theme .theme-toggle__icon--sun {
   display: block;
 }
-:root:not([data-theme="light"]):not([data-theme="dark"]) .deck__btn--theme .theme-toggle__icon--moon {
+:root:not([data-mode="light"]):not([data-mode="dark"]) .deck__btn--theme .theme-toggle__icon--moon {
   display: none;
+}
+
+/* Palette picker (deck) */
+.deck__btn--palette {
+  padding: 0;
+  min-width: 2.25rem;
+  width: 2.25rem;
+}
+.deck__btn--palette[aria-expanded="true"] {
+  background: var(--chrome-hover);
+  color: var(--ink);
+  border-color: var(--ink-soft);
+}
+
+.palette-picker-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.deck-palette-picker {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  min-width: 18rem;
+  background: color-mix(in oklch, var(--bg) 92%, transparent);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  z-index: 200;
+  font-family: var(--sans);
+  backdrop-filter: blur(14px);
+}
+.deck-palette-picker[hidden] {
+  display: none;
+}
+.deck-palette-picker__label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.75rem;
+  color: var(--ink-mute);
+  margin: 0 0 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.deck-palette-picker__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+.deck-palette-picker__current {
+  margin: 0.75rem 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+.palette-swatch {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.35rem 0.5rem 0.35rem 0.35rem;
+  background: color-mix(in oklch, var(--bg) 80%, transparent);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  color: var(--ink);
+  text-align: left;
+  transition: border-color 150ms, background 150ms, transform 150ms;
+}
+.palette-swatch:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+.palette-swatch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.palette-swatch.is-active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+.palette-swatch__half {
+  position: relative;
+  display: inline-block;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 5px;
+  border: 1px solid var(--rule);
+  flex: 0 0 auto;
+}
+.palette-swatch__half--light {
+  margin-right: -0.5rem;
+  z-index: 1;
+}
+.palette-swatch__half--dark {
+  z-index: 0;
+}
+.palette-swatch__dot {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+}
+.palette-swatch__name {
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 .deck__progress {

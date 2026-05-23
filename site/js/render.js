@@ -21,12 +21,14 @@ function renderInteractive(slot) {
 
 function renderHeroPhoto(meta) {
   if (!meta.hero_image) return '';
-  const orientation = meta.hero_image_orientation === 'portrait' ? ' scene__photo--portrait' : '';
+  const orientation = meta.hero_image_orientation === 'portrait' ? 'portrait' : 'landscape';
   const caption = meta.hero_image_caption
     ? `<figcaption>${meta.hero_image_caption}</figcaption>`
     : '';
-  return `<figure class="scene__photo${orientation}">
-    <img src="site/assets/images/${meta.hero_image}" alt="${escapeAttr(meta.hero_image_alt || '')}" loading="lazy" />
+  return `<figure class="scene__photo scene__photo--${orientation}">
+    <div class="scene__photo__matte">
+      <img src="site/assets/images/${meta.hero_image}" alt="${escapeAttr(meta.hero_image_alt || '')}" loading="lazy" />
+    </div>
     ${caption}
   </figure>`;
 }

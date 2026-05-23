@@ -136,6 +136,7 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   // Hero photo only — keep the cinematic editorial layout for historical
   // imagery (teletypes, typewriters, etc.).
   if (hasImage) {
+    const orientation = meta.hero_image_orientation === 'portrait' ? 'portrait' : 'landscape';
     return {
       type: 'scene',
       actIndex,
@@ -158,7 +159,7 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
             ` : ''}
           </div>
           <div class="slide__right">
-            <figure class="slide__figure reveal" style="--reveal-delay: 100ms;">
+            <figure class="slide__figure slide__figure--${orientation} reveal" style="--reveal-delay: 100ms;">
               <img src="${ASSET_IMG}${meta.hero_image}" alt="${escapeHtml(meta.hero_image_alt || '')}" />
             </figure>
             ${meta.hero_image_caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: 700ms;">${escapeHtml(meta.hero_image_caption)}</figcaption>` : ''}
@@ -207,6 +208,7 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
 function buildBulletsSlide(scene, sceneId, actIndex) {
   const { meta } = scene;
   const hasImage = !!meta.hero_image;
+  const orientation = meta.hero_image_orientation === 'portrait' ? 'portrait' : 'landscape';
   const bullets = meta.bullets || [];
   const bulletsHtml = bullets
     .map((b, i) => `
@@ -239,7 +241,7 @@ function buildBulletsSlide(scene, sceneId, actIndex) {
         </div>
         ${hasImage ? `
           <div class="slide__right">
-            <figure class="slide__figure reveal" style="--reveal-delay: 100ms;">
+            <figure class="slide__figure slide__figure--${orientation} reveal" style="--reveal-delay: 100ms;">
               <img src="${ASSET_IMG}${meta.hero_image}" alt="${escapeHtml(meta.hero_image_alt || '')}" />
             </figure>
             ${meta.hero_image_caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(meta.hero_image_caption)}</figcaption>` : ''}
@@ -474,14 +476,20 @@ function attachControls() {
     showSlide(parseInt(dot.dataset.idx, 10));
   });
 
-  // Click on slide advances (but not when clicking buttons/links)
+  // Click on slide advances (but not when clicking buttons/links or
+  // when the palette picker is open).
   document.getElementById('stage').addEventListener('click', (e) => {
     if (e.target.closest('a, button')) return;
+    if (document.documentElement.hasAttribute('data-picker-open')) return;
     showSlide(state.current + 1);
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
+    // Don't hijack keys while the palette picker is open or focused inside.
+    if (document.documentElement.hasAttribute('data-picker-open')) return;
+    const t = e.target;
+    if (t && t.closest && t.closest('[role="dialog"], .palette-picker-wrap')) return;
     switch (e.key) {
       case 'ArrowRight':
       case ' ':
