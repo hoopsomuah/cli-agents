@@ -176,8 +176,24 @@ gh api /repos/hoopsomuah/cli-agents/pages/builds/latest --jq '{status, commit}'
 
 Both views share a deliberate aesthetic. Hold the line.
 
-- **Reading view** — light, editorial. Warm cream background, deep navy ink, brick-red key-idea accent. Serif (Fraunces) for display, sans (Inter) for body, mono (JetBrains Mono) **only inside actual code snippets**.
-- **Slide deck** — dark cinematic. Deep navy background, cream text, peach + brick accents. Same type stack. Designed for projection in a darkened room.
+- **Reading view** — light, editorial by default. Warm cream background, deep navy ink, brick-red key-idea accent. Serif (Fraunces) for display, sans (Inter) for body, mono (JetBrains Mono) **only inside actual code snippets**.
+- **Slide deck** — dark cinematic by default. Deep navy background, cream text, peach + brick accents. Same type stack. Designed for projection in a darkened room.
+
+### Themes
+
+The visual surface is driven by two HTML attributes on `<html>`:
+
+- `data-palette` — one of `editorial`, `ink`, `solar`, `forest`, `slate`, `rose`, `ocean`, `sunset`
+- `data-mode` — `light` or `dark`
+
+Both views ship with all 8 palettes × 2 modes. The defaults are:
+
+- Reading view → `editorial` + `light`
+- Slide deck → `editorial` + `dark`
+
+Selection is persisted in `localStorage` (`cli-agents-palette` + `cli-agents-mode`) and synced across tabs/views via the `storage` event. Each view has a palette-swatch popover next to its dark/light toggle. The editorial palette is the canonical reference; the others are alternatives that respect the same hierarchy.
+
+Palette tokens live in **one place** — `site/css/tokens.css` — and are imported into `present/deck.css`, which aliases deck-specific variable names (`--ink`, `--ink-soft`, ...) onto the shared semantic tokens (`--fg`, `--fg-muted`, ...). Add a new palette in one file; both views pick it up.
 
 What we are not:
 - **Not a terminal-themed site.** No scanlines, no CRT glow, no phosphor green, no mono-everywhere. That aesthetic was deliberately removed in the editorial overhaul.
