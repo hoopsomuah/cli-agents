@@ -200,6 +200,18 @@ The house style for hero imagery is **hand-illustrated cartoony watercolor with 
 
 Reference both from scene frontmatter, not from Markdown body. For the per-asset filename map, see `docs/IMAGE_CATALOG.md`; to browse the full set visually, open `docs/image-viewer.html` directly from a checkout.
 
+### Responsive WebP variants
+
+The renderers emit `<picture>` with a WebP `<source>` at 768w / 1280w / 1920w and the original PNG/JPG as fallback. The WebP files are committed under `site/assets/images/webp/<width>/<basename>.webp`.
+
+**When you add or replace a hero image, regenerate the WebP variants:**
+
+```bash
+python3 scripts/generate-webp.py
+```
+
+The script is idempotent (skips up-to-date files), uses `ffmpeg` (required), runs encodes in parallel, and writes only into `site/assets/images/webp/`. Commit the new `.webp` files alongside the source image. If you forget to run it, the page still works — the `<img>` fallback loads the original PNG — but mobile bandwidth pays for it.
+
 ---
 
 ## Coding conventions
