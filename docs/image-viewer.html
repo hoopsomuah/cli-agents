@@ -311,9 +311,20 @@ function card(file, kind) {
   if (!file) {
     return `<figure class="${kind}"><div class="missing">no ${kind} variant</div></figure>`;
   }
+  // Use the 768w WebP variant in the gallery thumbnails (cards are ~600px
+  // wide max). Click-to-zoom lightbox swaps in the 1920w variant.
+  const stem = file.replace(/\.(png|jpe?g)$/i, "");
+  const thumb = `${BASE}webp/768/${stem}.webp`;
+  const full = `${BASE}webp/1920/${stem}.webp`;
+  const fallback = `${BASE}${file}`;
   return `
     <figure class="${kind}">
-      <div class="imgwrap"><img src="${BASE}${file}" alt="${file}" loading="lazy" /></div>
+      <div class="imgwrap">
+        <picture>
+          <source type="image/webp" srcset="${thumb}" />
+          <img src="${fallback}" data-full-webp="${full}" data-full-fallback="${fallback}" alt="${file}" loading="lazy" decoding="async" />
+        </picture>
+      </div>
       <figcaption>
         <span class="tag">${kind === "reading" ? "Reading view" : "Deck"}</span>
         <span class="filename">${file}</span>
@@ -360,13 +371,14 @@ document.querySelectorAll(".seg button").forEach(b => {
   });
 });
 
-// lightbox
+// lightbox — swap in the 1920w WebP for the zoomed view so the gallery doesn't
+// pay for the full PNG just to look at one image.
 const lb = document.getElementById("lightbox");
 const lbImg = lb.querySelector("img");
 document.addEventListener("click", (e) => {
   const img = e.target.closest("figure img");
   if (img) {
-    lbImg.src = img.src;
+    lbImg.src = img.dataset.fullWebp || img.dataset.fullFallback || img.src;
     lbImg.alt = img.alt;
     lb.classList.add("open");
   } else if (lb.classList.contains("open")) {
