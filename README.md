@@ -114,11 +114,11 @@ The site is served by GitHub Pages from the `main` branch root. To deploy:
 Cover ~20% of the content live and leave the rest for self-serve. Suggested live path:
 
 1. **Hero + teletype animation** (2 min) — the 63-year hook
-2. **Scene 03: Windows Terminal** (3 min) — install + tabs demo
-3. **Scene 06–08: filenames → repos → PRs** (10 min) — the core arc
-4. **Scene 13: Copilot CLI** (5 min) — the magic moment
-5. **Scene 15: SharePoint vs repo** (5 min) — the strategic question
-6. **Scene 16–17: install checklist + issues** (5 min) — the homework
+2. **Scene 03–05: Windows Terminal, shells, PowerShell** (5 min) — the actual machinery
+3. **Scene 11–14: filenames → repos → branches → PRs** (10 min) — the core arc
+4. **Scene 22: Copilot CLI** (5 min) — the magic moment
+5. **Scene 24: SharePoint vs repo** (3 min) — the strategic question
+6. **Scene 25 + issues** (5 min) — the homework
 
 Send the URL. Let the issues drive the next week.
 

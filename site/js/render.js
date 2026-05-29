@@ -39,15 +39,17 @@ function renderResponsiveImage(filename, alt, sizes, extraClass) {
 
 function renderHeroPhoto(meta) {
   if (!meta.hero_image) return '';
-  const orientation = meta.hero_image_orientation === 'portrait' ? ' scene__photo--portrait' : '';
+  const orientation = meta.hero_image_orientation === 'portrait' ? 'portrait' : 'landscape';
   const caption = meta.hero_image_caption
     ? `<figcaption>${meta.hero_image_caption}</figcaption>`
     : '';
   // Reading view: image sits in the article column. On mobile it fills the
   // viewport; on wider screens it caps around 880px (the scene__photo max).
   const sizes = '(max-width: 720px) 100vw, (max-width: 1200px) 72vw, 880px';
-  return `<figure class="scene__photo${orientation}">
-    ${renderResponsiveImage(meta.hero_image, meta.hero_image_alt, sizes)}
+  return `<figure class="scene__photo scene__photo--${orientation}">
+    <div class="scene__photo__matte">
+      ${renderResponsiveImage(meta.hero_image, meta.hero_image_alt, sizes)}
+    </div>
     ${caption}
   </figure>`;
 }

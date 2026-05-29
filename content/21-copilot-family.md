@@ -1,5 +1,5 @@
 ---
-scene: 19
+scene: 21
 act: 3
 title: "The Copilot Family"
 subtitle: "One brand, many surfaces — where each one fits"
@@ -8,6 +8,9 @@ key_idea: "'Copilot' is a family of agents that all speak to the same GitHub bac
 hero_image: "19-copilot-table.png"
 hero_image_alt: "Editorial illustration of a round oak table surrounded by six subtly different chairs — an office chair, a stool, a workshop chair, a wingback, a laptop-on-chair, and one more — each standing in for a Copilot surface"
 hero_image_caption: "One family, many seats — each Copilot meets you where you already work."
+deck_image: "19-copilot-constellation.png"
+deck_image_alt: "Cinematic constellation watercolor: a central GitHub mark with six glowing nodes radiating outward, each labeled IDE, Browser, Code Review, Coding Agent, CLI, M365, with lines of light between them on a dark navy background"
+deck_image_caption: "One backend, many surfaces — all called Copilot."
 bullets:
   - "Copilot in your IDE (VS Code, JetBrains) — chat + completions while you edit code"
   - "Copilot on github.com — chat about a repo, PR, or issue in the browser"

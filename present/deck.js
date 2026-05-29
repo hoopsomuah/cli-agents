@@ -98,6 +98,24 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;');
 }
 
+function buildThesisSlide(manifest) {
+  return {
+    type: 'thesis',
+    actIndex: null,
+    html: `
+      <div class="slide slide--thesis" data-slide-type="thesis">
+        <p class="slide__eyebrow reveal" style="--reveal-delay: 100ms;">The thesis, in one image</p>
+        <figure class="slide__thesis-figure reveal" style="--reveal-delay: 300ms;">
+          <img src="${ASSET_IMG}00-print-to-pixel-mural.png" alt="A mural in two halves. Left: 1960s hard-copy interface — a hand-drawn Teletype Model 33 with fanfold paper, vacuum-tube electronics behind, and office workers from the era. An arrow labeled 'Successor' cuts across to the right half. Right: present-day software-defined terminal — a CRT-style monitor showing a PowerShell session, surrounded by glowing circuits, cloud icons, and modern workers." />
+        </figure>
+        <p class="slide__caption reveal" style="--reveal-delay: 700ms;">
+          From print to pixel — sixty years of the same conversation, in two scenes.
+        </p>
+      </div>
+    `,
+  };
+}
+
 function buildCoverSlide(manifest) {
   const sceneCount = manifest.acts.reduce((n, a) => n + (a.scenes ? a.scenes.length : 0), 0);
   return {
@@ -139,9 +157,25 @@ function buildActSlide(act, actIndex) {
   };
 }
 
+// ---------- Image resolver: prefer deck_image when present ----------
+
+function deckImageOf(meta) {
+  // Each scene may carry a separate cinematic deck variant. When present,
+  // the deck prefers it over the calmer hero_image used by the reading view.
+  return {
+    src: meta.deck_image || meta.hero_image || '',
+    alt: meta.deck_image_alt || meta.hero_image_alt || '',
+    caption: meta.deck_image_caption || meta.hero_image_caption || '',
+    orientation:
+      meta.deck_image_orientation ||
+      meta.hero_image_orientation ||
+      'landscape',
+  };
+}
+
 function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   const { meta } = scene;
-  const hasImage = !!meta.hero_image;
+  const hasImage = !!meta.hero_image || !!meta.deck_image;
   const hasDiagram = !!meta.diagram;
   const hasBullets = Array.isArray(meta.bullets) && meta.bullets.length > 0;
 
@@ -159,6 +193,8 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   // Hero photo only — keep the cinematic editorial layout for historical
   // imagery (teletypes, typewriters, etc.).
   if (hasImage) {
+    const img = deckImageOf(meta);
+    const orientation = img.orientation === 'portrait' ? 'portrait' : 'landscape';
     return {
       type: 'scene',
       actIndex,
@@ -181,9 +217,10 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
             ` : ''}
           </div>
           <div class="slide__right">
-            <figure class="slide__figure reveal" style="--reveal-delay: 100ms;">${responsivePicture(meta.hero_image, meta.hero_image_alt, DECK_SIZES)}
+            <figure class="slide__figure slide__figure--${orientation} reveal" style="--reveal-delay: 100ms;">
+              ${responsivePicture(img.src, img.alt, DECK_SIZES)}
             </figure>
-            ${meta.hero_image_caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: 700ms;">${escapeHtml(meta.hero_image_caption)}</figcaption>` : ''}
+            ${img.caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: 700ms;">${escapeHtml(img.caption)}</figcaption>` : ''}
           </div>
         </div>
       `,
@@ -228,7 +265,9 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
 
 function buildBulletsSlide(scene, sceneId, actIndex) {
   const { meta } = scene;
-  const hasImage = !!meta.hero_image;
+  const hasImage = !!meta.hero_image || !!meta.deck_image;
+  const img = hasImage ? deckImageOf(meta) : null;
+  const orientation = img && img.orientation === 'portrait' ? 'portrait' : 'landscape';
   const bullets = meta.bullets || [];
   const bulletsHtml = bullets
     .map((b, i) => `
@@ -261,9 +300,10 @@ function buildBulletsSlide(scene, sceneId, actIndex) {
         </div>
         ${hasImage ? `
           <div class="slide__right">
-            <figure class="slide__figure reveal" style="--reveal-delay: 100ms;">${responsivePicture(meta.hero_image, meta.hero_image_alt, DECK_SIZES)}
+            <figure class="slide__figure slide__figure--${orientation} reveal" style="--reveal-delay: 100ms;">
+              ${responsivePicture(img.src, img.alt, DECK_SIZES)}
             </figure>
-            ${meta.hero_image_caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(meta.hero_image_caption)}</figcaption>` : ''}
+            ${img.caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(img.caption)}</figcaption>` : ''}
           </div>` : ''}
       </div>
     `,
@@ -273,6 +313,8 @@ function buildBulletsSlide(scene, sceneId, actIndex) {
 function buildInstallSlide(scene, sceneId, actIndex) {
   const { meta } = scene;
   const steps = meta.bullets || [];
+  const hasImage = !!meta.hero_image || !!meta.deck_image;
+  const img = hasImage ? deckImageOf(meta) : null;
   const stepsHtml = steps
     .map((s, i) => `
       <li class="slide__step reveal" style="--reveal-delay: ${400 + i * 130}ms;">
@@ -287,20 +329,29 @@ function buildInstallSlide(scene, sceneId, actIndex) {
     actIndex,
     sceneId,
     html: `
-      <div class="slide slide--install" data-slide-type="install" data-scene-id="${sceneId}">
-        <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
-          <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
-          <span>·</span>
-          <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
-          <span>·</span>
-          <span>Install</span>
-        </p>
-        <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
-        ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 300ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
-        <ol class="slide__steps">${stepsHtml}</ol>
-        ${meta.key_idea ? `
-          <div class="slide__keyidea reveal" style="--reveal-delay: ${keyideaDelay}ms;">
-            <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
+      <div class="slide slide--install ${hasImage ? 'slide--install-image' : ''}" data-slide-type="install" data-scene-id="${sceneId}">
+        <div class="slide__install-text">
+          <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
+            <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
+            <span>·</span>
+            <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
+            <span>·</span>
+            <span>Install</span>
+          </p>
+          <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
+          ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 300ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
+          <ol class="slide__steps">${stepsHtml}</ol>
+          ${meta.key_idea ? `
+            <div class="slide__keyidea reveal" style="--reveal-delay: ${keyideaDelay}ms;">
+              <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
+            </div>` : ''}
+        </div>
+        ${hasImage ? `
+          <div class="slide__install-figure">
+            <figure class="slide__figure slide__figure--install reveal" style="--reveal-delay: 200ms;">
+              ${responsivePicture(img.src, img.alt, DECK_SIZES)}
+            </figure>
+            ${img.caption ? `<figcaption class="slide__caption reveal" style="--reveal-delay: ${keyideaDelay + 200}ms;">${escapeHtml(img.caption)}</figcaption>` : ''}
           </div>` : ''}
       </div>
     `,
@@ -333,6 +384,7 @@ function buildClosingSlide() {
 function expandScenes(manifest, scenes) {
   const slides = [];
   slides.push(buildCoverSlide(manifest));
+  slides.push(buildThesisSlide(manifest));
 
   manifest.acts.forEach((act, actIndex) => {
     slides.push(buildActSlide(act, actIndex));
@@ -495,14 +547,20 @@ function attachControls() {
     showSlide(parseInt(dot.dataset.idx, 10));
   });
 
-  // Click on slide advances (but not when clicking buttons/links)
+  // Click on slide advances (but not when clicking buttons/links or
+  // when the palette picker is open).
   document.getElementById('stage').addEventListener('click', (e) => {
     if (e.target.closest('a, button')) return;
+    if (document.documentElement.hasAttribute('data-picker-open')) return;
     showSlide(state.current + 1);
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.metaKey || e.ctrlKey || e.altKey) return;
+    // Don't hijack keys while the palette picker is open or focused inside.
+    if (document.documentElement.hasAttribute('data-picker-open')) return;
+    const t = e.target;
+    if (t && t.closest && t.closest('[role="dialog"], .palette-picker-wrap')) return;
     switch (e.key) {
       case 'ArrowRight':
       case ' ':

@@ -1,5 +1,5 @@
 ---
-scene: 16
+scene: 18
 act: 3
 title: "GitHub Is the Cloud Home for Your Repos"
 subtitle: "What github.com actually is — and why your enterprise might have its own"
@@ -8,6 +8,9 @@ key_idea: "Git lives on your laptop. GitHub is the social, collaborative cloud w
 hero_image: "16-repo-house.png"
 hero_image_alt: "Editorial illustration of a tall glass-fronted building at dusk with one warm light glowing inside, and a small hand-lettered sign by the door reading REPOS WELCOME"
 hero_image_caption: "GitHub is the cloud home where teams meet their repos and each other."
+deck_image: "16-campus-twilight.png"
+deck_image_alt: "Cinematic aerial watercolor at twilight of a campus of low buildings with lit windows, subtle network-line overlays connecting them"
+deck_image_caption: "GitHub is a campus. Your repos move in."
 bullets:
   - "Git = local version control on your laptop"
   - "GitHub = the cloud host that adds a website, accounts, permissions, and collaboration"

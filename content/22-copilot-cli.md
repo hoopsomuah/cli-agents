@@ -1,5 +1,5 @@
 ---
-scene: 20
+scene: 22
 act: 3
 title: "Copilot CLI — Your Terminal Collaborator"
 subtitle: "Talk to your repo in plain English. Watch what it proposes. Approve each step."
@@ -8,6 +8,9 @@ key_idea: "Copilot CLI turns the terminal into a conversation. You describe what
 hero_image: "13-hands-keyboard-watercolor.png"
 hero_image_alt: "Hand-illustrated watercolor over the shoulder of a person at a wooden desk, hands resting on a mechanical keyboard, laptop showing a friendly Copilot CLI prompt, brick wall behind, warm desk lamp light"
 hero_image_caption: "The agent as something you talk to with your fingers."
+deck_image: "20-copilot-cli-session.png"
+deck_image_alt: "Cinematic watercolor close-up of a real Copilot CLI session: the prompt visible, an agent response streaming in, file diffs scrolling in the background, terminal-screenshot fidelity"
+deck_image_caption: "The agent does not replace your hands. It collaborates with them."
 diagram: "05-agent-loop.svg"
 diagram_alt: "A circular diagram with four nodes — You, Copilot CLI, Files, and Git — connected by arrows showing the loop: you describe in English, the agent edits files, commits to git, and opens a PR back to you"
 diagram_caption: "A small loop. Run it as many times as you need."
