@@ -8,6 +8,9 @@ key_idea: "Windows Terminal is a tabbed browser for command-line sessions. Insta
 hero_image: "03-windows-terminal-desk.png"
 hero_image_alt: "Hand-illustrated watercolor of a modern laptop on a wooden desk, Windows Terminal open on screen with a tabbed PowerShell session, brick wall behind, warm desk lamp light"
 hero_image_caption: "The same terminal, four decades later — on the desk of someone shipping software."
+deck_image: "03-windows-terminal-fourpane.png"
+deck_image_alt: "Cinematic illustration of a tall four-pane Windows Terminal session filling the frame: PowerShell, WSL Ubuntu, cmd, and Azure Cloud Shell each in its own pane against a deep navy backdrop, with soft cyan and amber stage glows"
+deck_image_caption: "One window, four shells — projected for a room."
 bullets:
   - "A free Microsoft app — preinstalled on Windows 11"
   - "Tabs and panes — multiple shells side by side, like browser tabs"

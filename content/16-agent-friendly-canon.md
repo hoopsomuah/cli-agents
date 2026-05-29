@@ -1,5 +1,5 @@
 ---
-scene: 14
+scene: 16
 act: 2
 title: "The Agent-Friendly Living Canon"
 subtitle: "Mission, plan-of-record, and org chart as live URLs — not attachments"
@@ -8,6 +8,9 @@ key_idea: "When the canon lives in a repo, humans and agents read the same files
 hero_image: "14-book-and-markdown.png"
 hero_image_alt: "Editorial still life: a bound leather book open on a desk beside a laptop showing the same content as plain Markdown source, with a fountain pen resting across both"
 hero_image_caption: "The canon and its source are the same words, written once."
+deck_image: "14-canon-living.png"
+deck_image_alt: "Cinematic watercolor of a leather book open on a desk beside a laptop showing the same content as Markdown, with golden afternoon light raking across the desk and the page mid-annotation, ink still wet"
+deck_image_caption: "Same content, two formats — the canon is alive."
 bullets:
   - "Canonical docs live at stable URLs (e.g. canon/mission.md)"
   - "Every change is a PR — reviewed, archived, attributed"

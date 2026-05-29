@@ -1,5 +1,5 @@
 ---
-scene: 21
+scene: 23
 act: 3
 title: "PRs as the Conversation"
 subtitle: "Every change — human, agent, or bot — flows through the same door"
@@ -8,6 +8,9 @@ key_idea: "When PRs are the universal change mechanism, it doesn't matter whethe
 hero_image: "21-converging-door.png"
 hero_image_alt: "Editorial wide illustration of many different delivery routes — bike messenger, van, hand-carried parcel, overhead drone — all approaching the same revolving door of a building"
 hero_image_caption: "Every change — human, agent, or bot — flows through the same door."
+deck_image: "21-pr-door-dusk.png"
+deck_image_alt: "Cinematic watercolor of converging delivery routes — bike, van, hand-carried parcel, drone — approaching a single glowing revolving door at dusk, headlights and motion trails giving a sense that every change flows through this door"
+deck_image_caption: "One door at dusk. Every change passes through it."
 bullets:
   - "Every change to the canon enters via a PR — no exceptions"
   - "Doesn't matter who proposed it: human, Copilot CLI, scheduled bot, external collaborator"

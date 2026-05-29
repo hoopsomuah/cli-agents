@@ -1,5 +1,5 @@
 ---
-scene: 06
+scene: 08
 act: 2
 title: "The Terminal Walks the House Faster"
 subtitle: "Five commands cover ninety percent of the work"
@@ -8,6 +8,9 @@ key_idea: "File Explorer is friendly. The terminal is fast. You'll use both — 
 hero_image: "06-mouse-vs-keyboard.png"
 hero_image_alt: "Split editorial illustration: on the left a person clicks through a file browser with a mouse; on the right the same person, same desk, types in a terminal — the right half visibly faster"
 hero_image_caption: "Same person, same desk — but the terminal walks the house faster."
+deck_image: "06-terminal-velocity.png"
+deck_image_alt: "Cinematic watercolor with motion-blurred files streaming past a screen, a steady hand on a keyboard at the bottom of the frame, conveying velocity"
+deck_image_caption: "When clicking runs out, the terminal scales."
 bullets:
   - "pwd — 'where am I?' Prints the current folder"
   - "ls (or dir) — 'what's here?' Lists files and folders"

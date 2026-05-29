@@ -1,5 +1,5 @@
 ---
-scene: 11
+scene: 13
 act: 2
 title: "Branches — Parallel Drafts of the Same Folder"
 subtitle: "How you try things without stepping on the team"
@@ -8,6 +8,9 @@ key_idea: "A branch is a free, instant, throwaway copy of the whole repo where y
 hero_image: "11-parallel-drafts.png"
 hero_image_alt: "Three identical hardcover notebooks lying open side by side on a wooden desk, annotated in the same handwriting but with slightly different drafts of the same content"
 hero_image_caption: "A branch is just another draft of the same notebook — kept alongside the others, not on top of them."
+deck_image: "11-forked-road.png"
+deck_image_alt: "Cinematic watercolor of a forked road at twilight, two paths diverging then meeting again further on, long shadows and deep contrast"
+deck_image_caption: "A branch is a path that costs nothing to walk."
 diagram: "03-branch-merge.svg"
 diagram_alt: "Diagram showing the main branch as a horizontal line with commits, a feature branch arcing above with its own commits, and the branch merging back into main"
 diagram_caption: "A branch is a safe place to draft. The merge is when it joins reality."

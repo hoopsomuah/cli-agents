@@ -19,15 +19,19 @@
   font-size: var(--text-base);
   color: var(--accent);
   margin: 0 0 var(--space-3);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .act__title {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);
+  font-size: calc(var(--text-3xl) * var(--heading-scale, 1));
   line-height: 1.02;
-  letter-spacing: -0.025em;
-  margin: 0 0 var(--space-3);
+  letter-spacing: var(--heading-tracking, -0.025em);
+  font-weight: var(--heading-weight, 500);
+  font-style: var(--heading-style, normal);
+  margin: 0 0 var(--space-4);
   color: var(--fg);
+  text-wrap: balance;
 }
 .act__subtitle {
   font-family: var(--font-serif);
@@ -35,7 +39,8 @@
   font-size: var(--text-lg);
   color: var(--fg-muted);
   margin: 0;
-  max-width: 48ch;
+  max-width: 52ch;
+  line-height: 1.45;
 }
 
 .scene {
@@ -50,7 +55,7 @@
   display: flex;
   align-items: baseline;
   gap: var(--space-4);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--text-sm);
@@ -60,6 +65,7 @@
   color: var(--accent);
   font-style: normal;
   font-family: var(--font-display);
+  letter-spacing: 0.04em;
 }
 .scene__duration {
   margin-left: auto;
@@ -67,27 +73,32 @@
 
 .scene__title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin: 0 0 var(--space-2);
+  font-size: calc(var(--text-2xl) * var(--heading-scale, 1));
+  line-height: 1.08;
+  letter-spacing: var(--heading-tracking, -0.02em);
+  font-weight: var(--heading-weight, 500);
+  font-style: var(--heading-style, normal);
+  margin: 0 0 var(--space-3);
   color: var(--fg);
+  text-wrap: balance;
+  max-width: 32ch;
 }
 .scene__subtitle {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--text-lg);
   color: var(--fg-muted);
-  margin: 0 0 var(--space-6);
+  margin: 0 0 var(--space-5, var(--space-4));
   max-width: 56ch;
+  line-height: 1.45;
 }
 
 .scene__keyidea {
   background: var(--bg-warm);
   border-left: 3px solid var(--accent-warm);
   padding: var(--space-4) var(--space-6);
-  margin-bottom: var(--space-8);
-  border-radius: 0 4px 4px 0;
+  margin: 0 0 var(--space-6);
+  border-radius: 0 var(--radius-md, 6px) var(--radius-md, 6px) 0;
 }
 .scene__keyidea-label {
   font-family: var(--font-serif);
@@ -95,28 +106,35 @@
   font-size: var(--text-sm);
   color: var(--accent-warm);
   margin: 0 0 var(--space-2);
+  letter-spacing: 0.04em;
 }
 .scene__keyidea-text {
   font-family: var(--font-serif);
   font-size: var(--text-lg);
-  line-height: 1.45;
+  line-height: 1.5;
   color: var(--fg);
   margin: 0;
 }
 
 .scene__body {
-  font-family: var(--font-body);
+  font-family: var(--font-serif);
   font-size: var(--text-base);
-  line-height: 1.7;
+  line-height: calc(1.75 * var(--density, 1));
   color: var(--fg);
-  max-width: var(--max-w-prose);
+  max-width: var(--prose-width, var(--max-w-prose));
+}
+.scene__body > * + * {
+  margin-top: var(--space-4);
 }
 .scene__body h2 {
   font-family: var(--font-display);
-  font-size: var(--text-xl);
+  font-size: calc(var(--text-xl) * var(--heading-scale, 1));
   margin: var(--space-12) 0 var(--space-4);
-  letter-spacing: -0.015em;
+  letter-spacing: var(--heading-tracking, -0.015em);
+  font-weight: var(--heading-weight, 500);
+  font-style: var(--heading-style, normal);
   color: var(--fg);
+  text-wrap: balance;
 }
 .scene__body h2:first-child {
   margin-top: 0;
@@ -127,15 +145,22 @@
   font-size: var(--text-lg);
   margin: var(--space-8) 0 var(--space-3);
   color: var(--fg);
+  letter-spacing: -0.005em;
 }
 .scene__body p {
   font-family: var(--font-serif);
   font-size: var(--text-base);
-  line-height: 1.7;
+  line-height: calc(1.75 * var(--density, 1));
+  margin: 0 0 var(--space-4);
 }
 .scene__body ul,
 .scene__body ol {
   font-family: var(--font-serif);
+  padding-left: 1.4rem;
+}
+.scene__body li {
+  margin-bottom: var(--space-2);
+  line-height: 1.7;
 }
 .scene__body strong {
   font-weight: 600;
@@ -146,48 +171,103 @@
   color: var(--accent);
 }
 .scene__body a {
+  color: var(--accent);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
+.scene__body a:hover {
+  text-decoration-thickness: 2px;
+  color: var(--accent-hover);
+}
 .scene__body table {
   font-family: var(--font-body);
   background: var(--bg-1);
-  border-radius: 8px;
+  border-radius: var(--radius-md, 8px);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
-  border: 1px solid var(--rule);
+  border: var(--rule-w, 1px) solid var(--rule);
+  max-width: 100%;
 }
 .scene__body table p {
   margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-sm);
 }
+.scene__body blockquote {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--text-lg);
+  line-height: 1.55;
+  color: var(--quote-fg);
+  background: var(--quote-bg);
+  border-left: 3px solid var(--accent-warm);
+  margin: var(--space-8) 0;
+  padding: var(--space-5, var(--space-4)) var(--space-6);
+  border-radius: 0 var(--radius-md, 6px) var(--radius-md, 6px) 0;
+}
+.scene__body blockquote p {
+  margin: 0;
+  font-style: italic;
+}
+.scene__body blockquote + blockquote {
+  margin-top: var(--space-4);
+}
 
 .scene__interactive {
-  margin: var(--space-8) 0;
+  margin: var(--space-6) 0;
 }
 
 /* ===== Scene hero image (photo at the top of a scene) ===== */
 .scene__photo {
-  margin: 0 0 var(--space-6);
-  /* break out of the prose column width */
+  margin: 0 0 var(--space-5, var(--space-4));
   width: 100%;
   max-width: var(--max-w-figure);
+}
+.scene__photo__matte {
+  position: relative;
+  background: var(--matte-bg);
+  border: var(--rule-w, 1px) solid var(--matte-rule);
+  border-radius: var(--radius-md, 6px);
+  padding: clamp(0.5rem, 0.9vw, 0.9rem);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scene__photo__matte::after {
+  content: "";
+  position: absolute;
+  inset: clamp(0.5rem, 0.9vw, 0.9rem);
+  border: 1px solid color-mix(in oklch, var(--matte-rule) 70%, transparent);
+  border-radius: var(--radius-sm, 4px);
+  pointer-events: none;
 }
 .scene__photo img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
-  box-shadow: var(--shadow-md);
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+  border-radius: var(--radius-sm, 2px);
+  max-height: clamp(20rem, 55vh, 36rem);
+  object-fit: contain;
 }
-.scene__photo--portrait img {
-  aspect-ratio: 3 / 4;
-  max-width: 32rem;
+.scene__photo--landscape .scene__photo__matte {
+  /* No forced aspect — matte sizes to its contained image. */
+}
+.scene__photo--landscape .scene__photo img {
+  width: 100%;
+  height: auto;
+  max-height: clamp(20rem, 55vh, 36rem);
+  object-fit: contain;
+  border-radius: var(--radius-sm, 2px);
+}
+.scene__photo--portrait .scene__photo__matte {
+  max-width: 28rem;
   margin: 0 auto;
+}
+.scene__photo--portrait .scene__photo img {
+  max-height: 36rem;
+  object-fit: contain;
 }
 .scene__photo figcaption {
   font-family: var(--font-serif);
@@ -196,17 +276,30 @@
   color: var(--fg-muted);
   margin-top: var(--space-3);
   max-width: 60ch;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ===== Inline diagram (SVG) ===== */
 .scene__diagram {
-  margin: var(--space-8) 0;
+  margin: var(--space-5, var(--space-4)) 0 var(--space-6);
   width: 100%;
   max-width: var(--max-w-figure);
-  background: var(--bg-warm);
-  padding: var(--space-6) var(--space-4);
-  border-radius: 6px;
-  border: 1px solid var(--rule);
+  background: var(--paper-bg);
+  padding: var(--space-6) var(--space-5, var(--space-4));
+  border-radius: var(--radius-md, 6px);
+  border: var(--rule-w, 1px) solid var(--paper-rule);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+.scene__diagram::after {
+  content: "";
+  position: absolute;
+  inset: var(--space-3);
+  border: 1px solid color-mix(in oklch, var(--paper-rule) 60%, transparent);
+  border-radius: var(--radius-sm, 4px);
+  pointer-events: none;
 }
 .scene__diagram img,
 .scene__diagram svg {
@@ -214,17 +307,21 @@
   height: auto;
   display: block;
   max-width: 100%;
+  position: relative;
+  z-index: 1;
 }
 .scene__diagram figcaption {
   font-family: var(--font-serif);
   font-style: italic;
   font-size: var(--text-sm);
-  color: var(--fg-muted);
+  color: color-mix(in oklch, var(--paper-ink) 75%, transparent);
   margin-top: var(--space-4);
   text-align: center;
   max-width: 60ch;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  z-index: 1;
 }
 
 /* Allow scene body to host wider figures than the prose column */

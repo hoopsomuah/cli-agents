@@ -1,0 +1,204 @@
+/* ============================================================
+   palette-flavor.css — per-palette layout signatures
+   ------------------------------------------------------------
+   Token overrides in tokens.css change fonts, radii, density,
+   and heading style. This file adds the *signature moves* that
+   make each palette feel like a distinct design language beyond
+   what tokens can express.
+
+   Use sparingly. One or two flagship overrides per palette is
+   enough — the tokens do the heavy lifting.
+   ============================================================ */
+
+
+/* ============================================================
+   INK — book / newspaper. Hairline rules, no card surfaces,
+   small-caps chrome, lighter matte.
+   ============================================================ */
+
+:root[data-palette="ink"] .scene__photo__matte {
+  box-shadow: none;
+  background: var(--bg);
+  padding: 0.5rem;
+}
+:root[data-palette="ink"] .scene__photo__matte::after {
+  display: none;
+}
+:root[data-palette="ink"] .scene__chrome,
+:root[data-palette="ink"] .act__roman {
+  font-variant: small-caps;
+  letter-spacing: 0.08em;
+  font-style: normal;
+}
+:root[data-palette="ink"] .scene__keyidea {
+  background: transparent;
+  border-left-width: 4px;
+  padding-left: var(--space-6);
+  border-radius: 0;
+}
+:root[data-palette="ink"] .scene__diagram {
+  box-shadow: none;
+  border-width: 0;
+  border-top: 1px solid var(--paper-rule);
+  border-bottom: 1px solid var(--paper-rule);
+  border-radius: 0;
+}
+:root[data-palette="ink"] .scene__diagram::after {
+  display: none;
+}
+:root[data-palette="ink"] .hero__figure__matte {
+  box-shadow: none;
+  background: var(--bg);
+  padding: 0.5rem;
+}
+:root[data-palette="ink"] .hero__figure__matte::after {
+  display: none;
+}
+
+
+/* ============================================================
+   SOLAR — warm modernist. Large display titles, italic
+   subtitle flourishes, deeper matte.
+   ============================================================ */
+
+:root[data-palette="solar"] .scene__subtitle,
+:root[data-palette="solar"] .act__subtitle {
+  font-weight: 400;
+}
+:root[data-palette="solar"] .scene__subtitle::before {
+  content: "— ";
+  color: var(--accent);
+  font-style: normal;
+}
+:root[data-palette="solar"] .scene__photo__matte {
+  background: var(--bg-warm);
+}
+
+
+/* ============================================================
+   FOREST — academic warmth. Centered captions, italic
+   subtitles, pillowy soft cards.
+   ============================================================ */
+
+:root[data-palette="forest"] .scene__subtitle,
+:root[data-palette="forest"] .act__subtitle {
+  font-style: italic;
+  text-align: left;
+}
+:root[data-palette="forest"] .scene__photo figcaption,
+:root[data-palette="forest"] .scene__diagram figcaption {
+  font-style: italic;
+}
+:root[data-palette="forest"] .scene__photo figcaption::before,
+:root[data-palette="forest"] .scene__diagram figcaption::before {
+  content: "— ";
+}
+:root[data-palette="forest"] .scene__photo figcaption::after,
+:root[data-palette="forest"] .scene__diagram figcaption::after {
+  content: " —";
+}
+:root[data-palette="forest"] .scene__keyidea {
+  border-left-width: 4px;
+}
+
+
+/* ============================================================
+   SLATE — technical / corporate. Uppercase chrome, sharp
+   accent rule under titles, compact density.
+   ============================================================ */
+
+:root[data-palette="slate"] .scene__chrome,
+:root[data-palette="slate"] .act__roman {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-style: normal;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--text-xs);
+}
+:root[data-palette="slate"] .scene__title {
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  max-width: none;
+}
+:root[data-palette="slate"] .scene__body h2 {
+  font-family: var(--font-body);
+}
+:root[data-palette="slate"] .scene__photo__matte,
+:root[data-palette="slate"] .hero__figure__matte {
+  border-width: 1px;
+}
+
+
+/* ============================================================
+   ROSE — boutique / italic-heavy. Massive italic display,
+   generous gaps, em-dash chrome separators.
+   ============================================================ */
+
+:root[data-palette="rose"] .scene__title,
+:root[data-palette="rose"] .act__title,
+:root[data-palette="rose"] .hero__title {
+  font-style: italic;
+}
+:root[data-palette="rose"] .scene__subtitle,
+:root[data-palette="rose"] .act__subtitle {
+  font-style: italic;
+}
+:root[data-palette="rose"] .scene {
+  margin-bottom: calc(var(--space-24) + var(--space-8));
+}
+
+
+/* ============================================================
+   OCEAN — academic clean. Numbered scene chrome, narrow
+   content column, marginalia-style figcaptions.
+   ============================================================ */
+
+:root[data-palette="ocean"] .scene__chrome {
+  font-family: var(--font-serif);
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+}
+:root[data-palette="ocean"] .scene__body h2 {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: var(--space-2);
+}
+
+
+/* ============================================================
+   SUNSET — zine / brutalist. Oversized titles, uppercase
+   mono chrome, thick rules, sharp corners (tokens already
+   handle most of this — these are just amplifiers).
+   ============================================================ */
+
+:root[data-palette="sunset"] .scene__chrome,
+:root[data-palette="sunset"] .act__roman {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--text-xs);
+}
+:root[data-palette="sunset"] .scene__keyidea {
+  border-left-width: 6px;
+  background: var(--accent-warm);
+  color: var(--bg);
+}
+:root[data-palette="sunset"] .scene__keyidea-label,
+:root[data-palette="sunset"] .scene__keyidea-text {
+  color: var(--bg);
+}
+:root[data-palette="sunset"] .scene__photo__matte,
+:root[data-palette="sunset"] .hero__figure__matte,
+:root[data-palette="sunset"] .scene__diagram {
+  border-width: 2px;
+  box-shadow: 6px 6px 0 var(--accent);
+}
+:root[data-palette="sunset"] .scene__title {
+  text-transform: none;
+}
+:root[data-palette="sunset"] .hero__title {
+  font-size: calc(var(--text-hero) * 1.15);
+}

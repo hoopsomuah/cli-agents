@@ -17,54 +17,58 @@ Filenames mirror the issue's suggestions. Where the issue suggested `.jpg`, the 
 | 01 — The Return of the Teletype | `01-teletype-asr33-watercolor.png` | cover hero: `00-print-to-pixel-mural.png` |
 | 02 — From Paper to Glass | `02-vt100-terminal-still.png` | `02-vt100-cinematic.png` |
 | 03 — Inside Windows Terminal | `03-windows-terminal-desk.png` | `03-windows-terminal-fourpane.png` |
-| 04 — Install: Your Terminal | `04-install-terminal-trio.png` | `04-install-terminal-pedestal.png` |
+| 04 — The Shell Inside the Window | `concept-shells-jars.png` | `concept-shells-glass.png` |
+| 05 — Why PowerShell? ⭐ | `concept-powershell-desk.png` | `concept-powershell-cinematic.png` |
+| 06 — Install: Your Terminal | `04-install-terminal-trio.png` | `04-install-terminal-pedestal.png` |
 
 ## Act II — Files, Repos, and the Living Canon
 
 | Scene | Reading view | Deck |
 | --- | --- | --- |
-| 05 — The Filesystem as a House | `05-house-cutaway.png` | `05-house-night.png` |
-| 06 — The Terminal Walks Faster | `06-mouse-vs-keyboard.png` | `06-terminal-velocity.png` |
-| 07 — File Over App | `10-notebook-handwriting-watercolor.png` | — |
-| 08 — Obsidian | `11-obsidian-desk-watercolor.png` | `08-obsidian-vault.png` |
-| 09 — final_v7_FINAL.docx | `06-stickynotes-chaos-watercolor.png` | — |
-| 10 — A Repository Is a Folder with Memory | `07-annotated-book-watercolor.png` | — |
-| 11 — Branches | `11-parallel-drafts.png` | `11-forked-road.png` |
-| 12 — Pull Requests | `12-manuscript-review.png` | `12-diff-and-paper.png` |
-| 13 — Issues | `13-single-issue-card.png` | `13-issue-wall.png` |
-| 14 — The Agent-Friendly Living Canon | `14-book-and-markdown.png` | `14-canon-living.png` |
-| 15 — Install: Git, Obsidian, First Clone | `15-install-trio.png` | `15-install-plaques.png` |
+| 07 — The Filesystem as a House | `05-house-cutaway.png` | `05-house-night.png` |
+| 08 — The Terminal Walks Faster | `06-mouse-vs-keyboard.png` | `06-terminal-velocity.png` |
+| 09 — File Over App | `10-notebook-handwriting-watercolor.png` | — |
+| 10 — Obsidian | `11-obsidian-desk-watercolor.png` | `08-obsidian-vault.png` |
+| 11 — final_v7_FINAL.docx | `06-stickynotes-chaos-watercolor.png` | — |
+| 12 — A Repository Is a Folder with Memory | `07-annotated-book-watercolor.png` | — |
+| 13 — Branches | `11-parallel-drafts.png` | `11-forked-road.png` |
+| 14 — Pull Requests | `12-manuscript-review.png` | `12-diff-and-paper.png` |
+| 15 — Issues | `13-single-issue-card.png` | `13-issue-wall.png` |
+| 16 — The Agent-Friendly Living Canon | `14-book-and-markdown.png` | `14-canon-living.png` |
+| 17 — Install: Git, Obsidian, First Clone | `15-install-trio.png` | `15-install-plaques.png` |
 
 ## Act III — GitHub and the Copilot CLI
 
 | Scene | Reading view | Deck |
 | --- | --- | --- |
-| 16 — GitHub Is the Cloud Home | `16-repo-house.png` | `16-campus-twilight.png` |
-| 17 — Organizations, Teams, Repositories | `17-nested-drawers.png` | `17-org-architecture.png` |
-| 18 — GitHub at Work | `18-platform-tools.png` | `18-platform-in-use.png` |
-| 19 — The Copilot Family | `19-copilot-table.png` | `19-copilot-constellation.png` |
-| 20 — Copilot CLI | `13-hands-keyboard-watercolor.png` | `20-copilot-cli-session.png` |
-| 21 — PRs as the Conversation | `21-converging-door.png` | `21-pr-door-dusk.png` |
-| 22 — SharePoint vs Repo | `15-cabinet-vs-shelf-watercolor.png` | — |
-| 23 — Install: GitHub, gh CLI, Copilot CLI | `23-install-final-trio.png` | `23-install-final-pedestal.png` |
+| 18 — GitHub Is the Cloud Home | `16-repo-house.png` | `16-campus-twilight.png` |
+| 19 — Organizations, Teams, Repositories | `17-nested-drawers.png` | `17-org-architecture.png` |
+| 20 — GitHub at Work | `18-platform-tools.png` | `18-platform-in-use.png` |
+| 21 — The Copilot Family | `19-copilot-table.png` | `19-copilot-constellation.png` |
+| 22 — Copilot CLI | `13-hands-keyboard-watercolor.png` | `20-copilot-cli-session.png` |
+| 23 — PRs as the Conversation | `21-converging-door.png` | `21-pr-door-dusk.png` |
+| 24 — SharePoint vs Repo | `15-cabinet-vs-shelf-watercolor.png` | — |
+| 25 — Install: GitHub, gh CLI, Copilot CLI | `23-install-final-trio.png` | `23-install-final-pedestal.png` |
 
 ---
 
-## Concepts (no scene yet — pre-built so the next author doesn't have to)
+## Concepts (originally unused — now partially wired into scenes)
 
-| Concept | Reading view | Deck |
-| --- | --- | --- |
-| Shells (the family) | `concept-shells-jars.png` | `concept-shells-glass.png` |
-| PowerShell ⭐ | `concept-powershell-desk.png` | `concept-powershell-cinematic.png` |
-| Pipelines (`\|`) | `concept-pipelines-copper.png` | `concept-pipelines-data.png` |
-| SSH / remote sessions | `concept-ssh-here-and-there.png` | `concept-ssh-globe.png` |
-| Markdown / plain text | `concept-markdown-source-vs-rendered.png` | `concept-markdown-morph.png` |
-| The cloud | `concept-cloud-quiet.png` | `concept-cloud-aerial.png` |
-| Open source / community | `concept-open-source-kitchen.png` | `concept-open-source-barn.png` |
-| Continuous integration | `concept-ci-bakery.png` | `concept-ci-conveyor.png` |
-| The agentic loop | `concept-agent-loop-dominoes.png` | `concept-agent-loop-mobius.png` |
-| The repo as a building | `concept-repo-library.png` | `concept-repo-glass.png` |
-| GitHub workflow (bonus) | `concept-github-workflow-reading.png` | `concept-github-workflow-deck.png` |
+> Shells and PowerShell concepts are **now used as the heroes of scenes 04 and 05** (see Act I above). The remaining concept images are still available for future scenes.
+
+| Concept | Reading view | Deck | Status |
+| --- | --- | --- | --- |
+| Shells (the family) | `concept-shells-jars.png` | `concept-shells-glass.png` | **wired** → scene 04 |
+| PowerShell ⭐ | `concept-powershell-desk.png` | `concept-powershell-cinematic.png` | **wired** → scene 05 |
+| Pipelines (`\|`) | `concept-pipelines-copper.png` | `concept-pipelines-data.png` | available |
+| SSH / remote sessions | `concept-ssh-here-and-there.png` | `concept-ssh-globe.png` | available |
+| Markdown / plain text | `concept-markdown-source-vs-rendered.png` | `concept-markdown-morph.png` | available |
+| The cloud | `concept-cloud-quiet.png` | `concept-cloud-aerial.png` | available |
+| Open source / community | `concept-open-source-kitchen.png` | `concept-open-source-barn.png` | available |
+| Continuous integration | `concept-ci-bakery.png` | `concept-ci-conveyor.png` | available |
+| The agentic loop | `concept-agent-loop-dominoes.png` | `concept-agent-loop-mobius.png` | available |
+| Repo as a building | `concept-repo-library.png` | `concept-repo-glass.png` | available |
+| GitHub workflow (bonus) | `concept-github-workflow-reading.png` | `concept-github-workflow-deck.png` | available |
 
 ---
 

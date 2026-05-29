@@ -1,5 +1,5 @@
 ---
-scene: 23
+scene: 25
 act: 3
 title: "Install: GitHub, the gh CLI, and Copilot CLI"
 subtitle: "Twenty minutes from a cloned repo to your first agent-authored PR"
@@ -9,6 +9,9 @@ key_idea: "You'll be done with this presentation when you've opened a PR — you
 hero_image: "23-install-final-trio.png"
 hero_image_alt: "Three small hand-illustrated object portraits in a row: a GitHub Octocat as a pin, the gh CLI mark as an embroidered patch, and a Copilot mark on a brass tag"
 hero_image_caption: "Three small installs, and the agent loop is on your laptop."
+deck_image: "23-install-final-pedestal.png"
+deck_image_alt: "Cinematic watercolor of the GitHub Octocat pin, gh CLI mark, and Copilot tag arranged on a glowing velvet pedestal under museum spotlights, a small silhouette audience visible at the edge of the frame"
+deck_image_caption: "By the end of these five steps, you own an agent loop."
 bullets:
   - "Sign in to GitHub: gh auth login (choose GitHub.com or your enterprise host)"
   - "Verify: gh auth status → prints your username"

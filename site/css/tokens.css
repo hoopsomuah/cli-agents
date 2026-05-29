@@ -1,129 +1,852 @@
-/* tokens.css — design tokens for both light (default) and dark themes
-   Each view sets data-theme on <html> based on user preference, persisted
-   in localStorage under the key cli-agents-theme. */
+/* ============================================================
+   tokens.css — design tokens, palette × mode
+   ------------------------------------------------------------
+   Eight palettes, each with a light and a dark variant.
+   Selected via two attributes on the root element:
+     <html data-palette="editorial" data-mode="light">
+
+   Defaults (no attributes): editorial + light.
+
+   Palettes (light · dark vibe):
+     editorial  — cream paper / brick      ·  deep navy / peach
+     ink        — paper white / charcoal   ·  near-black / paper
+     solar      — warm sand / amber        ·  midnight plum / gold
+     forest     — sage cream / pine        ·  deep pine / moss
+     slate      — cool gray / navy         ·  charcoal / steel-blue
+     rose       — blush / wine             ·  aubergine / rose-gold
+     ocean      — sky pale / cobalt        ·  abyss navy / cyan
+     sunset     — peach / plum             ·  aubergine / coral
+   ============================================================ */
+
+
+/* ============================================================
+   1. EDITORIAL (default) — magazine editorial
+   ============================================================ */
 
 :root,
-:root[data-theme="light"] {
-  /* --- Editorial light palette --- */
-  --bg: oklch(98.5% 0.005 90);            /* warm paper white */
-  --bg-1: oklch(96% 0.008 90);
-  --bg-2: oklch(93% 0.010 90);
-  --bg-warm: oklch(95% 0.018 80);          /* faint cream for figure backgrounds */
-  --fg: oklch(20% 0.010 250);              /* near-black with warmth */
-  --fg-muted: oklch(45% 0.012 250);
-  --fg-faint: oklch(65% 0.008 250);
-  --rule: oklch(88% 0.008 90);
-  --rule-strong: oklch(78% 0.010 90);
+:root[data-palette="editorial"] {
+  --bg:           oklch(98.5% 0.005 90);
+  --bg-1:         oklch(96%   0.008 90);
+  --bg-2:         oklch(93%   0.010 90);
+  --bg-warm:      oklch(95%   0.018 80);
+  --fg:           oklch(20%   0.010 250);
+  --fg-muted:     oklch(42%   0.014 250);
+  --fg-faint:     oklch(60%   0.010 250);
+  --rule:         oklch(88%   0.008 90);
+  --rule-strong:  oklch(76%   0.010 90);
 
-  --accent: oklch(38% 0.10 240);           /* deep editorial blue */
-  --accent-hover: oklch(28% 0.14 240);
-  --accent-warm: oklch(55% 0.16 35);       /* brick — pull quotes, callouts */
-  --accent-soft: oklch(48% 0.06 240);
+  --accent:        oklch(38% 0.10 240);
+  --accent-hover:  oklch(28% 0.14 240);
+  --accent-warm:   oklch(55% 0.16 35);
+  --accent-soft:   oklch(48% 0.06 240);
 
-  /* Code surfaces only — embedded snippets, not site chrome */
-  --code-bg: oklch(96% 0.012 90);
-  --code-fg: oklch(22% 0.012 250);
+  --code-bg:        oklch(96% 0.012 90);
+  --code-fg:        oklch(22% 0.012 250);
   --code-inline-bg: oklch(92% 0.015 90);
   --code-inline-fg: oklch(28% 0.04 250);
-  --code-border: oklch(86% 0.012 90);
-  --code-accent: oklch(38% 0.12 200);
+  --code-border:    oklch(86% 0.012 90);
+  --code-accent:    oklch(38% 0.12 200);
 
-  /* Blockquote surface */
-  --quote-bg: oklch(96% 0.015 35 / 0.6);
-  --quote-fg: oklch(28% 0.02 35);
+  --quote-bg:  oklch(96% 0.015 35 / 0.55);
+  --quote-fg:  oklch(28% 0.02 35);
 
-  /* Selection */
   --selection-bg: oklch(82% 0.16 145 / 0.35);
 
-  /* Toggle */
-  --toggle-bg: oklch(94% 0.010 90);
-  --toggle-bg-hover: oklch(89% 0.012 90);
-  --toggle-icon: oklch(30% 0.04 250);
+  --toggle-bg:        oklch(94% 0.010 90);
+  --toggle-bg-hover:  oklch(89% 0.012 90);
+  --toggle-icon:      oklch(30% 0.04 250);
+
+  --matte-bg:      oklch(94% 0.012 80);
+  --matte-rule:    oklch(82% 0.014 80);
+
+  /* Typography & layout identity */
+  --font-display: "Boska", "Source Serif 4", Georgia, serif;
+  --font-body:    "Satoshi", "Inter", system-ui, sans-serif;
+  --font-serif:   "Source Serif 4", Georgia, serif;
+  --font-mono:    "JetBrains Mono", "Cascadia Code", ui-monospace, monospace;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --rule-w: 1px;
+  --heading-weight: 500;
+  --heading-tracking: -0.025em;
+  --heading-style: normal;
+  --heading-scale: 1;
+  --prose-width: 64ch;
+  --density: 1;
 
   color-scheme: light;
 }
 
-/* --- Dark theme overrides --- */
-:root[data-theme="dark"] {
-  --bg: oklch(16% 0.018 250);              /* deep navy */
-  --bg-1: oklch(20% 0.020 250);
-  --bg-2: oklch(24% 0.022 250);
-  --bg-warm: oklch(22% 0.020 250);
-  --fg: oklch(94% 0.012 90);               /* warm cream */
-  --fg-muted: oklch(75% 0.012 90);
-  --fg-faint: oklch(55% 0.010 90);
-  --rule: oklch(34% 0.022 250);
-  --rule-strong: oklch(44% 0.024 250);
+:root[data-palette="editorial"][data-mode="dark"] {
+  --bg:           oklch(16% 0.018 250);
+  --bg-1:         oklch(20% 0.020 250);
+  --bg-2:         oklch(24% 0.022 250);
+  --bg-warm:      oklch(22% 0.020 250);
+  --fg:           oklch(94% 0.012 90);
+  --fg-muted:     oklch(76% 0.012 90);
+  --fg-faint:     oklch(58% 0.010 90);
+  --rule:         oklch(34% 0.022 250);
+  --rule-strong:  oklch(44% 0.024 250);
 
-  --accent: oklch(78% 0.14 65);            /* warm peach */
-  --accent-hover: oklch(86% 0.14 65);
-  --accent-warm: oklch(70% 0.16 35);       /* brighter brick on dark */
-  --accent-soft: oklch(65% 0.10 65);
+  --accent:        oklch(78% 0.14 65);
+  --accent-hover:  oklch(86% 0.14 65);
+  --accent-warm:   oklch(72% 0.16 35);
+  --accent-soft:   oklch(66% 0.10 65);
 
-  --code-bg: oklch(22% 0.022 250);
-  --code-fg: oklch(92% 0.010 90);
+  --code-bg:        oklch(22% 0.022 250);
+  --code-fg:        oklch(92% 0.010 90);
   --code-inline-bg: oklch(26% 0.022 250);
   --code-inline-fg: oklch(88% 0.010 90);
-  --code-border: oklch(32% 0.022 250);
-  --code-accent: oklch(78% 0.14 200);
+  --code-border:    oklch(32% 0.022 250);
+  --code-accent:    oklch(78% 0.14 200);
 
-  --quote-bg: oklch(26% 0.028 35 / 0.35);
-  --quote-fg: oklch(92% 0.020 60);
+  --quote-bg:  oklch(26% 0.028 35 / 0.35);
+  --quote-fg:  oklch(92% 0.020 60);
 
   --selection-bg: oklch(60% 0.16 145 / 0.45);
 
-  --toggle-bg: oklch(26% 0.022 250);
-  --toggle-bg-hover: oklch(32% 0.024 250);
-  --toggle-icon: oklch(88% 0.012 90);
+  --toggle-bg:        oklch(26% 0.022 250);
+  --toggle-bg-hover:  oklch(32% 0.024 250);
+  --toggle-icon:      oklch(88% 0.012 90);
+
+  --matte-bg:    oklch(22% 0.024 250);
+  --matte-rule:  oklch(36% 0.024 250);
 
   color-scheme: dark;
 }
 
+
+/* ============================================================
+   2. INK — book / single-serif typography
+   ============================================================ */
+
+:root[data-palette="ink"] {
+  --bg:           oklch(99% 0 0);
+  --bg-1:         oklch(97% 0 0);
+  --bg-2:         oklch(94% 0 0);
+  --bg-warm:      oklch(96% 0 0);
+  --fg:           oklch(15% 0 0);
+  --fg-muted:     oklch(40% 0 0);
+  --fg-faint:     oklch(58% 0 0);
+  --rule:         oklch(88% 0 0);
+  --rule-strong:  oklch(72% 0 0);
+
+  --accent:        oklch(28% 0.02 250);
+  --accent-hover:  oklch(18% 0.02 250);
+  --accent-warm:   oklch(30% 0.04 250);
+  --accent-soft:   oklch(45% 0.01 250);
+
+  --code-bg:        oklch(96% 0 0);
+  --code-fg:        oklch(20% 0 0);
+  --code-inline-bg: oklch(92% 0 0);
+  --code-inline-fg: oklch(22% 0 0);
+  --code-border:    oklch(86% 0 0);
+  --code-accent:    oklch(30% 0.04 250);
+
+  --quote-bg:  oklch(95% 0 0 / 0.7);
+  --quote-fg:  oklch(22% 0 0);
+
+  --selection-bg: oklch(75% 0.02 250 / 0.5);
+
+  --toggle-bg:        oklch(94% 0 0);
+  --toggle-bg-hover:  oklch(88% 0 0);
+  --toggle-icon:      oklch(20% 0 0);
+
+  --matte-bg:    oklch(96% 0 0);
+  --matte-rule:  oklch(82% 0 0);
+
+  /* Typography & layout identity — serif throughout, hairline, no rounding */
+  --font-display: "Source Serif 4", "Boska", Georgia, serif;
+  --font-body:    "Source Serif 4", Georgia, serif;
+  --font-serif:   "Source Serif 4", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --rule-w: 1px;
+  --heading-weight: 700;
+  --heading-tracking: -0.015em;
+  --heading-style: normal;
+  --heading-scale: 1;
+  --prose-width: 60ch;
+  --density: 0.9;
+
+  color-scheme: light;
+}
+
+:root[data-palette="ink"][data-mode="dark"] {
+  --bg:           oklch(12% 0 0);
+  --bg-1:         oklch(16% 0 0);
+  --bg-2:         oklch(20% 0 0);
+  --bg-warm:      oklch(18% 0 0);
+  --fg:           oklch(96% 0 0);
+  --fg-muted:     oklch(76% 0 0);
+  --fg-faint:     oklch(56% 0 0);
+  --rule:         oklch(28% 0 0);
+  --rule-strong:  oklch(42% 0 0);
+
+  --accent:        oklch(88% 0.02 250);
+  --accent-hover:  oklch(96% 0.02 250);
+  --accent-warm:   oklch(80% 0.04 50);
+  --accent-soft:   oklch(70% 0.02 250);
+
+  --code-bg:        oklch(18% 0 0);
+  --code-fg:        oklch(92% 0 0);
+  --code-inline-bg: oklch(22% 0 0);
+  --code-inline-fg: oklch(88% 0 0);
+  --code-border:    oklch(28% 0 0);
+  --code-accent:    oklch(80% 0.04 200);
+
+  --quote-bg:  oklch(22% 0 0 / 0.5);
+  --quote-fg:  oklch(92% 0 0);
+
+  --selection-bg: oklch(60% 0.02 250 / 0.5);
+
+  --toggle-bg:        oklch(22% 0 0);
+  --toggle-bg-hover:  oklch(28% 0 0);
+  --toggle-icon:      oklch(92% 0 0);
+
+  --matte-bg:    oklch(18% 0 0);
+  --matte-rule:  oklch(32% 0 0);
+
+  color-scheme: dark;
+}
+
+
+/* ============================================================
+   3. SOLAR — warm modernist magazine
+   ============================================================ */
+
+:root[data-palette="solar"] {
+  --bg:           oklch(97% 0.020 80);
+  --bg-1:         oklch(94% 0.024 78);
+  --bg-2:         oklch(90% 0.030 78);
+  --bg-warm:      oklch(92% 0.040 75);
+  --fg:           oklch(22% 0.04 40);
+  --fg-muted:     oklch(45% 0.04 40);
+  --fg-faint:     oklch(62% 0.03 40);
+  --rule:         oklch(85% 0.025 75);
+  --rule-strong:  oklch(72% 0.030 75);
+
+  --accent:        oklch(52% 0.16 50);
+  --accent-hover:  oklch(40% 0.18 45);
+  --accent-warm:   oklch(58% 0.18 35);
+  --accent-soft:   oklch(60% 0.10 55);
+
+  --code-bg:        oklch(93% 0.024 80);
+  --code-fg:        oklch(25% 0.04 40);
+  --code-inline-bg: oklch(89% 0.030 78);
+  --code-inline-fg: oklch(30% 0.06 45);
+  --code-border:    oklch(82% 0.025 78);
+  --code-accent:    oklch(48% 0.14 200);
+
+  --quote-bg:  oklch(92% 0.040 50 / 0.55);
+  --quote-fg:  oklch(28% 0.04 40);
+
+  --selection-bg: oklch(80% 0.18 70 / 0.4);
+
+  --toggle-bg:        oklch(91% 0.024 78);
+  --toggle-bg-hover:  oklch(86% 0.026 78);
+  --toggle-icon:      oklch(30% 0.06 45);
+
+  --matte-bg:    oklch(91% 0.028 75);
+  --matte-rule:  oklch(78% 0.030 75);
+
+  /* Typography & layout — Fraunces display, Inter body, generous spacing */
+  --font-display: "Fraunces", "Boska", Georgia, serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-serif:   "Lora", "Source Serif 4", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --rule-w: 1px;
+  --heading-weight: 600;
+  --heading-tracking: -0.02em;
+  --heading-style: normal;
+  --heading-scale: 1.05;
+  --prose-width: 68ch;
+  --density: 1.1;
+
+  color-scheme: light;
+}
+
+:root[data-palette="solar"][data-mode="dark"] {
+  --bg:           oklch(18% 0.040 310);
+  --bg-1:         oklch(22% 0.044 305);
+  --bg-2:         oklch(26% 0.046 305);
+  --bg-warm:      oklch(24% 0.042 310);
+  --fg:           oklch(93% 0.030 70);
+  --fg-muted:     oklch(75% 0.030 70);
+  --fg-faint:     oklch(58% 0.024 70);
+  --rule:         oklch(34% 0.040 305);
+  --rule-strong:  oklch(46% 0.042 305);
+
+  --accent:        oklch(82% 0.16 75);
+  --accent-hover:  oklch(90% 0.14 75);
+  --accent-warm:   oklch(74% 0.18 50);
+  --accent-soft:   oklch(70% 0.12 75);
+
+  --code-bg:        oklch(22% 0.044 310);
+  --code-fg:        oklch(92% 0.020 70);
+  --code-inline-bg: oklch(26% 0.044 310);
+  --code-inline-fg: oklch(88% 0.024 70);
+  --code-border:    oklch(34% 0.044 310);
+  --code-accent:    oklch(80% 0.14 200);
+
+  --quote-bg:  oklch(28% 0.050 50 / 0.35);
+  --quote-fg:  oklch(92% 0.030 60);
+
+  --selection-bg: oklch(70% 0.16 75 / 0.4);
+
+  --toggle-bg:        oklch(26% 0.046 305);
+  --toggle-bg-hover:  oklch(32% 0.048 305);
+  --toggle-icon:      oklch(88% 0.024 70);
+
+  --matte-bg:    oklch(24% 0.046 305);
+  --matte-rule:  oklch(38% 0.048 305);
+
+  color-scheme: dark;
+}
+
+
+/* ============================================================
+   4. FOREST — academic warmth, Crimson Pro throughout
+   ============================================================ */
+
+:root[data-palette="forest"] {
+  --bg:           oklch(97% 0.014 130);
+  --bg-1:         oklch(94% 0.018 128);
+  --bg-2:         oklch(90% 0.022 128);
+  --bg-warm:      oklch(93% 0.024 125);
+  --fg:           oklch(22% 0.04 155);
+  --fg-muted:     oklch(42% 0.04 155);
+  --fg-faint:     oklch(60% 0.03 150);
+  --rule:         oklch(86% 0.020 128);
+  --rule-strong:  oklch(72% 0.024 128);
+
+  --accent:        oklch(40% 0.10 155);
+  --accent-hover:  oklch(30% 0.12 155);
+  --accent-warm:   oklch(56% 0.14 70);
+  --accent-soft:   oklch(50% 0.08 145);
+
+  --code-bg:        oklch(94% 0.020 130);
+  --code-fg:        oklch(24% 0.04 155);
+  --code-inline-bg: oklch(90% 0.024 128);
+  --code-inline-fg: oklch(28% 0.06 155);
+  --code-border:    oklch(83% 0.022 128);
+  --code-accent:    oklch(40% 0.12 195);
+
+  --quote-bg:  oklch(94% 0.024 130 / 0.6);
+  --quote-fg:  oklch(28% 0.04 150);
+
+  --selection-bg: oklch(80% 0.16 140 / 0.4);
+
+  --toggle-bg:        oklch(92% 0.018 128);
+  --toggle-bg-hover:  oklch(87% 0.022 128);
+  --toggle-icon:      oklch(28% 0.06 155);
+
+  --matte-bg:    oklch(92% 0.020 128);
+  --matte-rule:  oklch(78% 0.024 128);
+
+  /* Typography & layout — Crimson Pro for a single-serif academic feel,
+     pillowy radius, italic display */
+  --font-display: "Crimson Pro", Georgia, serif;
+  --font-body:    "Crimson Pro", Georgia, serif;
+  --font-serif:   "Crimson Pro", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --rule-w: 1px;
+  --heading-weight: 600;
+  --heading-tracking: 0;
+  --heading-style: normal;
+  --heading-scale: 1.05;
+  --prose-width: 62ch;
+  --density: 1.1;
+
+  color-scheme: light;
+}
+
+:root[data-palette="forest"][data-mode="dark"] {
+  --bg:           oklch(17% 0.024 160);
+  --bg-1:         oklch(21% 0.026 158);
+  --bg-2:         oklch(25% 0.028 158);
+  --bg-warm:      oklch(23% 0.026 155);
+  --fg:           oklch(93% 0.020 110);
+  --fg-muted:     oklch(74% 0.022 110);
+  --fg-faint:     oklch(56% 0.020 110);
+  --rule:         oklch(32% 0.028 158);
+  --rule-strong:  oklch(44% 0.030 158);
+
+  --accent:        oklch(78% 0.14 140);
+  --accent-hover:  oklch(86% 0.14 140);
+  --accent-warm:   oklch(78% 0.16 85);
+  --accent-soft:   oklch(68% 0.10 140);
+
+  --code-bg:        oklch(21% 0.028 158);
+  --code-fg:        oklch(92% 0.020 110);
+  --code-inline-bg: oklch(25% 0.028 158);
+  --code-inline-fg: oklch(88% 0.020 110);
+  --code-border:    oklch(32% 0.028 158);
+  --code-accent:    oklch(80% 0.14 200);
+
+  --quote-bg:  oklch(26% 0.036 80 / 0.32);
+  --quote-fg:  oklch(92% 0.024 90);
+
+  --selection-bg: oklch(64% 0.16 145 / 0.42);
+
+  --toggle-bg:        oklch(25% 0.028 158);
+  --toggle-bg-hover:  oklch(31% 0.030 158);
+  --toggle-icon:      oklch(88% 0.020 110);
+
+  --matte-bg:    oklch(23% 0.030 158);
+  --matte-rule:  oklch(38% 0.032 158);
+
+  color-scheme: dark;
+}
+
+
+/* ============================================================
+   5. SLATE — technical / corporate, Space Grotesk
+   ============================================================ */
+
+:root[data-palette="slate"] {
+  --bg:           oklch(97% 0.006 240);
+  --bg-1:         oklch(94% 0.008 240);
+  --bg-2:         oklch(90% 0.010 240);
+  --bg-warm:      oklch(93% 0.010 240);
+  --fg:           oklch(20% 0.020 250);
+  --fg-muted:     oklch(42% 0.018 250);
+  --fg-faint:     oklch(60% 0.014 250);
+  --rule:         oklch(86% 0.010 240);
+  --rule-strong:  oklch(72% 0.012 240);
+
+  --accent:        oklch(38% 0.12 245);
+  --accent-hover:  oklch(28% 0.14 245);
+  --accent-warm:   oklch(58% 0.10 210);
+  --accent-soft:   oklch(48% 0.08 245);
+
+  --code-bg:        oklch(94% 0.010 240);
+  --code-fg:        oklch(22% 0.020 250);
+  --code-inline-bg: oklch(90% 0.012 240);
+  --code-inline-fg: oklch(28% 0.04 250);
+  --code-border:    oklch(84% 0.012 240);
+  --code-accent:    oklch(40% 0.12 220);
+
+  --quote-bg:  oklch(94% 0.012 240 / 0.6);
+  --quote-fg:  oklch(28% 0.02 250);
+
+  --selection-bg: oklch(78% 0.14 230 / 0.4);
+
+  --toggle-bg:        oklch(92% 0.010 240);
+  --toggle-bg-hover:  oklch(87% 0.012 240);
+  --toggle-icon:      oklch(28% 0.04 250);
+
+  --matte-bg:    oklch(93% 0.012 240);
+  --matte-rule:  oklch(78% 0.014 240);
+
+  /* Typography & layout — Space Grotesk modernist sans, tight, sharp */
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-serif:   "Source Serif 4", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --rule-w: 1px;
+  --heading-weight: 700;
+  --heading-tracking: -0.03em;
+  --heading-style: normal;
+  --heading-scale: 0.95;
+  --prose-width: 60ch;
+  --density: 0.9;
+
+  color-scheme: light;
+}
+
+:root[data-palette="slate"][data-mode="dark"] {
+  --bg:           oklch(16% 0.014 250);
+  --bg-1:         oklch(20% 0.016 250);
+  --bg-2:         oklch(24% 0.018 250);
+  --bg-warm:      oklch(22% 0.016 250);
+  --fg:           oklch(94% 0.010 240);
+  --fg-muted:     oklch(76% 0.010 240);
+  --fg-faint:     oklch(58% 0.010 240);
+  --rule:         oklch(32% 0.018 250);
+  --rule-strong:  oklch(44% 0.020 250);
+
+  --accent:        oklch(78% 0.12 230);
+  --accent-hover:  oklch(86% 0.12 230);
+  --accent-warm:   oklch(74% 0.10 210);
+  --accent-soft:   oklch(66% 0.10 230);
+
+  --code-bg:        oklch(20% 0.018 250);
+  --code-fg:        oklch(92% 0.010 240);
+  --code-inline-bg: oklch(24% 0.018 250);
+  --code-inline-fg: oklch(88% 0.010 240);
+  --code-border:    oklch(32% 0.018 250);
+  --code-accent:    oklch(80% 0.12 220);
+
+  --quote-bg:  oklch(24% 0.020 240 / 0.35);
+  --quote-fg:  oklch(92% 0.016 230);
+
+  --selection-bg: oklch(60% 0.14 230 / 0.42);
+
+  --toggle-bg:        oklch(24% 0.018 250);
+  --toggle-bg-hover:  oklch(30% 0.020 250);
+  --toggle-icon:      oklch(88% 0.010 240);
+
+  --matte-bg:    oklch(22% 0.018 250);
+  --matte-rule:  oklch(36% 0.020 250);
+
+  color-scheme: dark;
+}
+
+
+/* ============================================================
+   6. ROSE — boutique, italic-heavy display
+   ============================================================ */
+
+:root[data-palette="rose"] {
+  --bg:           oklch(97% 0.016 20);
+  --bg-1:         oklch(94% 0.020 20);
+  --bg-2:         oklch(90% 0.024 20);
+  --bg-warm:      oklch(93% 0.028 15);
+  --fg:           oklch(22% 0.05 10);
+  --fg-muted:     oklch(45% 0.05 10);
+  --fg-faint:     oklch(62% 0.04 10);
+  --rule:         oklch(86% 0.022 20);
+  --rule-strong:  oklch(73% 0.026 20);
+
+  --accent:        oklch(40% 0.14 5);
+  --accent-hover:  oklch(30% 0.16 5);
+  --accent-warm:   oklch(55% 0.16 25);
+  --accent-soft:   oklch(52% 0.10 5);
+
+  --code-bg:        oklch(94% 0.020 20);
+  --code-fg:        oklch(24% 0.05 10);
+  --code-inline-bg: oklch(90% 0.024 20);
+  --code-inline-fg: oklch(30% 0.08 5);
+  --code-border:    oklch(83% 0.024 20);
+  --code-accent:    oklch(42% 0.12 200);
+
+  --quote-bg:  oklch(94% 0.028 15 / 0.6);
+  --quote-fg:  oklch(28% 0.05 10);
+
+  --selection-bg: oklch(80% 0.18 10 / 0.4);
+
+  --toggle-bg:        oklch(92% 0.020 20);
+  --toggle-bg-hover:  oklch(87% 0.022 20);
+  --toggle-icon:      oklch(30% 0.08 5);
+
+  --matte-bg:    oklch(93% 0.022 20);
+  --matte-rule:  oklch(78% 0.024 20);
+
+  /* Typography & layout — DM Serif Display for the romantic display,
+     Lora for body, italic display, generous radius */
+  --font-display: "DM Serif Display", "Boska", Georgia, serif;
+  --font-body:    "Lora", Georgia, serif;
+  --font-serif:   "Lora", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --rule-w: 1px;
+  --heading-weight: 400;
+  --heading-tracking: -0.01em;
+  --heading-style: italic;
+  --heading-scale: 1.1;
+  --prose-width: 66ch;
+  --density: 1.1;
+
+  color-scheme: light;
+}
+
+:root[data-palette="rose"][data-mode="dark"] {
+  --bg:           oklch(17% 0.030 350);
+  --bg-1:         oklch(21% 0.032 350);
+  --bg-2:         oklch(25% 0.034 350);
+  --bg-warm:      oklch(23% 0.032 348);
+  --fg:           oklch(94% 0.022 20);
+  --fg-muted:     oklch(76% 0.022 20);
+  --fg-faint:     oklch(58% 0.020 20);
+  --rule:         oklch(34% 0.034 350);
+  --rule-strong:  oklch(46% 0.036 350);
+
+  --accent:        oklch(78% 0.16 25);
+  --accent-hover:  oklch(86% 0.14 25);
+  --accent-warm:   oklch(74% 0.18 15);
+  --accent-soft:   oklch(68% 0.12 25);
+
+  --code-bg:        oklch(21% 0.034 350);
+  --code-fg:        oklch(92% 0.022 20);
+  --code-inline-bg: oklch(25% 0.034 350);
+  --code-inline-fg: oklch(88% 0.022 20);
+  --code-border:    oklch(34% 0.034 350);
+  --code-accent:    oklch(80% 0.14 200);
+
+  --quote-bg:  oklch(28% 0.044 15 / 0.35);
+  --quote-fg:  oklch(92% 0.024 30);
+
+  --selection-bg: oklch(66% 0.16 15 / 0.42);
+
+  --toggle-bg:        oklch(25% 0.034 350);
+  --toggle-bg-hover:  oklch(31% 0.036 350);
+  --toggle-icon:      oklch(88% 0.022 20);
+
+  --matte-bg:    oklch(23% 0.036 350);
+  --matte-rule:  oklch(38% 0.038 350);
+
+  color-scheme: dark;
+}
+
+
+/* ============================================================
+   7. OCEAN — academic clean, Source Serif throughout
+   ============================================================ */
+
+:root[data-palette="ocean"] {
+  --bg:           oklch(97% 0.014 220);
+  --bg-1:         oklch(94% 0.018 220);
+  --bg-2:         oklch(90% 0.022 220);
+  --bg-warm:      oklch(93% 0.022 215);
+  --fg:           oklch(22% 0.04 230);
+  --fg-muted:     oklch(44% 0.04 230);
+  --fg-faint:     oklch(60% 0.03 230);
+  --rule:         oklch(86% 0.020 220);
+  --rule-strong:  oklch(72% 0.024 220);
+
+  --accent:        oklch(42% 0.16 235);
+  --accent-hover:  oklch(32% 0.18 235);
+  --accent-warm:   oklch(58% 0.16 195);
+  --accent-soft:   oklch(52% 0.12 235);
+
+  --code-bg:        oklch(94% 0.020 220);
+  --code-fg:        oklch(24% 0.04 230);
+  --code-inline-bg: oklch(90% 0.024 220);
+  --code-inline-fg: oklch(28% 0.06 230);
+  --code-border:    oklch(83% 0.022 220);
+  --code-accent:    oklch(42% 0.14 200);
+
+  --quote-bg:  oklch(94% 0.022 215 / 0.6);
+  --quote-fg:  oklch(28% 0.04 220);
+
+  --selection-bg: oklch(78% 0.18 215 / 0.4);
+
+  --toggle-bg:        oklch(92% 0.018 220);
+  --toggle-bg-hover:  oklch(87% 0.020 220);
+  --toggle-icon:      oklch(28% 0.06 230);
+
+  --matte-bg:    oklch(93% 0.020 220);
+  --matte-rule:  oklch(78% 0.022 220);
+
+  /* Typography & layout — Source Serif 4 display + body, Inter for chrome */
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+  --font-serif:   "Source Serif 4", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --rule-w: 1px;
+  --heading-weight: 600;
+  --heading-tracking: -0.02em;
+  --heading-style: normal;
+  --heading-scale: 0.95;
+  --prose-width: 64ch;
+  --density: 0.95;
+
+  color-scheme: light;
+}
+
+:root[data-palette="ocean"][data-mode="dark"] {
+  --bg:           oklch(15% 0.030 245);
+  --bg-1:         oklch(19% 0.032 245);
+  --bg-2:         oklch(23% 0.034 245);
+  --bg-warm:      oklch(21% 0.032 243);
+  --fg:           oklch(94% 0.016 220);
+  --fg-muted:     oklch(76% 0.018 220);
+  --fg-faint:     oklch(58% 0.016 220);
+  --rule:         oklch(32% 0.034 245);
+  --rule-strong:  oklch(44% 0.036 245);
+
+  --accent:        oklch(80% 0.14 215);
+  --accent-hover:  oklch(88% 0.14 215);
+  --accent-warm:   oklch(76% 0.16 195);
+  --accent-soft:   oklch(70% 0.12 215);
+
+  --code-bg:        oklch(19% 0.034 245);
+  --code-fg:        oklch(92% 0.016 220);
+  --code-inline-bg: oklch(23% 0.034 245);
+  --code-inline-fg: oklch(88% 0.016 220);
+  --code-border:    oklch(32% 0.034 245);
+  --code-accent:    oklch(80% 0.14 200);
+
+  --quote-bg:  oklch(26% 0.040 195 / 0.32);
+  --quote-fg:  oklch(92% 0.020 215);
+
+  --selection-bg: oklch(62% 0.18 215 / 0.42);
+
+  --toggle-bg:        oklch(23% 0.034 245);
+  --toggle-bg-hover:  oklch(29% 0.036 245);
+  --toggle-icon:      oklch(88% 0.016 220);
+
+  --matte-bg:    oklch(21% 0.034 245);
+  --matte-rule:  oklch(36% 0.036 245);
+
+  color-scheme: dark;
+}
+
+
+/* ============================================================
+   8. SUNSET — zine / brutalist, mono body
+   ============================================================ */
+
+:root[data-palette="sunset"] {
+  --bg:           oklch(97% 0.018 60);
+  --bg-1:         oklch(94% 0.022 58);
+  --bg-2:         oklch(90% 0.028 55);
+  --bg-warm:      oklch(93% 0.034 50);
+  --fg:           oklch(22% 0.05 310);
+  --fg-muted:     oklch(45% 0.05 310);
+  --fg-faint:     oklch(62% 0.04 310);
+  --rule:         oklch(86% 0.024 55);
+  --rule-strong:  oklch(72% 0.028 55);
+
+  --accent:        oklch(50% 0.18 25);
+  --accent-hover:  oklch(40% 0.20 20);
+  --accent-warm:   oklch(58% 0.18 50);
+  --accent-soft:   oklch(58% 0.12 25);
+
+  --code-bg:        oklch(94% 0.022 60);
+  --code-fg:        oklch(24% 0.05 310);
+  --code-inline-bg: oklch(90% 0.026 58);
+  --code-inline-fg: oklch(30% 0.06 310);
+  --code-border:    oklch(83% 0.026 55);
+  --code-accent:    oklch(46% 0.14 320);
+
+  --quote-bg:  oklch(94% 0.034 50 / 0.55);
+  --quote-fg:  oklch(28% 0.05 310);
+
+  --selection-bg: oklch(80% 0.18 60 / 0.4);
+
+  --toggle-bg:        oklch(92% 0.022 58);
+  --toggle-bg-hover:  oklch(87% 0.024 58);
+  --toggle-icon:      oklch(30% 0.06 310);
+
+  --matte-bg:    oklch(93% 0.024 55);
+  --matte-rule:  oklch(78% 0.028 55);
+
+  /* Typography & layout — Boska 700 brutalist heads, mono body, sharp */
+  --font-display: "Boska", "Fraunces", Georgia, serif;
+  --font-body:    "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --font-serif:   "Lora", Georgia, serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --rule-w: 2px;
+  --heading-weight: 700;
+  --heading-tracking: -0.04em;
+  --heading-style: normal;
+  --heading-scale: 1.15;
+  --prose-width: 60ch;
+  --density: 0.85;
+
+  color-scheme: light;
+}
+
+:root[data-palette="sunset"][data-mode="dark"] {
+  --bg:           oklch(17% 0.038 320);
+  --bg-1:         oklch(21% 0.040 320);
+  --bg-2:         oklch(25% 0.042 320);
+  --bg-warm:      oklch(23% 0.040 322);
+  --fg:           oklch(94% 0.022 50);
+  --fg-muted:     oklch(76% 0.022 50);
+  --fg-faint:     oklch(58% 0.020 50);
+  --rule:         oklch(34% 0.042 320);
+  --rule-strong:  oklch(46% 0.044 320);
+
+  --accent:        oklch(80% 0.16 50);
+  --accent-hover:  oklch(88% 0.14 50);
+  --accent-warm:   oklch(76% 0.18 30);
+  --accent-soft:   oklch(70% 0.12 50);
+
+  --code-bg:        oklch(21% 0.042 320);
+  --code-fg:        oklch(92% 0.022 50);
+  --code-inline-bg: oklch(25% 0.042 320);
+  --code-inline-fg: oklch(88% 0.022 50);
+  --code-border:    oklch(34% 0.042 320);
+  --code-accent:    oklch(80% 0.14 200);
+
+  --quote-bg:  oklch(28% 0.044 30 / 0.35);
+  --quote-fg:  oklch(92% 0.024 50);
+
+  --selection-bg: oklch(68% 0.18 50 / 0.42);
+
+  --toggle-bg:        oklch(25% 0.042 320);
+  --toggle-bg-hover:  oklch(31% 0.044 320);
+  --toggle-icon:      oklch(88% 0.022 50);
+
+  --matte-bg:    oklch(23% 0.044 320);
+  --matte-rule:  oklch(38% 0.046 320);
+
+  color-scheme: dark;
+}
+
+
+/* ============================================================
+   Typography, layout, motion, shadows — palette-independent
+   ============================================================ */
+
 :root {
-  --font-display: "Boska", "Source Serif 4", Georgia, serif;
-  --font-body: "Satoshi", "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Cascadia Code", ui-monospace, monospace;
-  --font-serif: "Source Serif 4", Georgia, serif;
+  /* Diagrams are SVGs designed for cream paper. Keep this palette-independent
+     so the figures read consistently in every theme/mode. */
+  --paper-bg:   oklch(95% 0.018 80);
+  --paper-rule: oklch(82% 0.014 80);
+  --paper-ink:  oklch(20% 0.010 80);
 
-  --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
-  --text-sm: clamp(0.875rem, 0.84rem + 0.18vw, 0.9375rem);
-  --text-base: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
-  --text-lg: clamp(1.125rem, 1.05rem + 0.4vw, 1.25rem);
-  --text-xl: clamp(1.35rem, 1.2rem + 0.7vw, 1.6rem);
-  --text-2xl: clamp(1.8rem, 1.5rem + 1.4vw, 2.4rem);
-  --text-3xl: clamp(2.4rem, 1.8rem + 2.8vw, 3.8rem);
-  --text-hero: clamp(2.8rem, 2.0rem + 4.4vw, 5.4rem);
+  --text-xs:   clamp(0.78rem, 0.74rem + 0.18vw, 0.84rem);
+  --text-sm:   clamp(0.9rem,  0.86rem + 0.20vw, 0.96rem);
+  --text-base: clamp(1.02rem, 0.98rem + 0.22vw, 1.10rem);
+  --text-lg:   clamp(1.18rem, 1.10rem + 0.42vw, 1.34rem);
+  --text-xl:   clamp(1.40rem, 1.25rem + 0.75vw, 1.70rem);
+  --text-2xl:  clamp(1.85rem, 1.55rem + 1.40vw, 2.50rem);
+  --text-3xl:  clamp(2.40rem, 1.85rem + 2.80vw, 3.80rem);
+  --text-hero: clamp(2.80rem, 2.00rem + 4.40vw, 5.40rem);
 
-  /* --- Spacing --- */
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
   --space-12: 3rem;
   --space-16: 4rem;
   --space-20: 5rem;
   --space-24: 6rem;
   --space-32: 8rem;
 
-  /* --- Layout --- */
-  --max-w-prose: 68ch;
-  --max-w-wide: 78rem;
+  --max-w-prose:   64ch;
+  --max-w-wide:    78rem;
   --max-w-content: 56rem;
-  --max-w-figure: 64rem;
+  --max-w-figure:  64rem;
 
-  /* --- Motion --- */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 160ms;
-  --dur-base: 280ms;
-  --dur-slow: 520ms;
+  --dur-fast:    160ms;
+  --dur-base:    280ms;
+  --dur-slow:    520ms;
 
-  /* --- Shadows --- */
-  --shadow-sm: 0 1px 2px oklch(20% 0.01 250 / 0.06), 0 2px 6px oklch(20% 0.01 250 / 0.04);
-  --shadow-md: 0 4px 10px oklch(20% 0.01 250 / 0.08), 0 12px 30px oklch(20% 0.01 250 / 0.06);
-  --shadow-lg: 0 12px 30px oklch(20% 0.01 250 / 0.12), 0 30px 60px oklch(20% 0.01 250 / 0.08);
+  --shadow-sm: 0 1px 2px oklch(20% 0.01 250 / 0.06),
+               0 2px 6px oklch(20% 0.01 250 / 0.04);
+  --shadow-md: 0 4px 10px oklch(20% 0.01 250 / 0.08),
+               0 12px 30px oklch(20% 0.01 250 / 0.06);
+  --shadow-lg: 0 12px 30px oklch(20% 0.01 250 / 0.12),
+               0 30px 60px oklch(20% 0.01 250 / 0.08);
 }
 
 @media (prefers-reduced-motion: reduce) {

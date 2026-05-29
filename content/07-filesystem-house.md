@@ -1,5 +1,5 @@
 ---
-scene: 05
+scene: 07
 act: 2
 title: "The Filesystem as a House"
 subtitle: "Folders, files, and the addresses they live at"
@@ -8,6 +8,9 @@ key_idea: "Every doc, every photo, every program on your computer is a file in a
 hero_image: "05-house-cutaway.png"
 hero_image_alt: "Architectural watercolor cutaway of a two-story house with rooms labeled Documents, Pictures, Projects, and a hallway labeled /Users/hoop/"
 hero_image_caption: "Your computer is a house. Folders are rooms. Paths are directions."
+deck_image: "05-house-night.png"
+deck_image_alt: "Cinematic watercolor of the filesystem house at night, each labeled room glowing a different color, with a small figure in the front hallway carrying a terminal cursor as a flashlight"
+deck_image_caption: "Every folder is a room. The cursor is your flashlight."
 bullets:
   - "Computer = a house. Folders = rooms. Files = objects in those rooms."
   - "A 'path' is the address: drive → folder → folder → file"

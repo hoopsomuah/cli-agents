@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -35,16 +35,29 @@
     <link rel="stylesheet" href="site/css/layout.css" />
     <link rel="stylesheet" href="site/css/components.css" />
     <link rel="stylesheet" href="site/css/interactive.css" />
+    <link rel="stylesheet" href="site/css/palette-flavor.css" />
 
     <script>
-      // Anti-FOUC: set theme before stylesheets paint.
+      // Anti-FOUC: set palette + mode before stylesheets paint.
       (function () {
         try {
-          var key = 'cli-agents-theme';
-          var stored = localStorage.getItem(key);
-          if (stored === 'light' || stored === 'dark') {
-            document.documentElement.setAttribute('data-theme', stored);
+          var pKey = 'cli-agents-palette';
+          var mKey = 'cli-agents-mode';
+          var legacy = 'cli-agents-theme';
+          var validPalettes = ['editorial','ink','solar','forest','slate','rose','ocean','sunset'];
+          var palette = localStorage.getItem(pKey);
+          var mode = localStorage.getItem(mKey);
+          if (!mode) {
+            var old = localStorage.getItem(legacy);
+            if (old === 'light' || old === 'dark') {
+              mode = old;
+              localStorage.setItem(mKey, mode);
+            }
           }
+          if (validPalettes.indexOf(palette) === -1) palette = 'editorial';
+          if (mode !== 'light' && mode !== 'dark') mode = 'light';
+          document.documentElement.setAttribute('data-palette', palette);
+          document.documentElement.setAttribute('data-mode', mode);
         } catch (e) {}
       })();
     </script>
@@ -75,6 +88,38 @@
           <a href="#act-3">III</a>
         </nav>
         <div class="site-header__actions">
+          <div class="palette-picker-wrap">
+            <button
+              id="palette-toggle"
+              class="theme-toggle palette-toggle"
+              type="button"
+              aria-label="Choose color theme"
+              aria-haspopup="dialog"
+              aria-expanded="false"
+              aria-controls="palette-picker"
+              title="Choose color theme"
+            >
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="7.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="12" cy="7" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="16.5" cy="10" r="1.2" fill="currentColor" stroke="none" />
+                <circle cx="15.5" cy="15" r="1.2" fill="currentColor" stroke="none" />
+                <path d="M12 21 a3 3 0 0 1 0 -6" />
+              </svg>
+            </button>
+            <div
+              id="palette-picker"
+              class="palette-picker"
+              role="dialog"
+              aria-label="Color theme"
+              hidden
+            >
+              <p class="palette-picker__label">Color theme</p>
+              <ul class="palette-picker__grid" data-picker-grid></ul>
+              <p class="palette-picker__current" data-picker-current>Editorial · Light</p>
+            </div>
+          </div>
           <button
             id="theme-toggle"
             class="theme-toggle"
@@ -113,19 +158,21 @@
             <div class="hero__cta-row">
               <a href="#act-1" class="hero__cta">Begin Act I</a>
               <a href="present/" class="hero__cta hero__cta--secondary">Present mode →</a>
-              <a href="#scene-23" class="hero__cta hero__cta--secondary">Skip to the checklist</a>
+              <a href="#scene-25" class="hero__cta hero__cta--secondary">Skip to the checklist</a>
             </div>
             <div class="hero__meta">
               <span>30-minute live walkthrough</span>
               <span aria-hidden="true">·</span>
-              <span>23 scenes</span>
+              <span>25 scenes</span>
               <span aria-hidden="true">·</span>
               <span>~20% covered live, the rest is yours</span>
             </div>
           </div>
-          <figure class="hero__figure">
-            <img src="site/assets/images/01-teletype-asr33.jpg" alt="A Teletype Model 33 ASR: tan plastic body, round-capped typewriter keys, a roll of fanfold paper feeding through the printer head, with FORTRAN source code printed on the paper holder above" />
-            <figcaption>Teletype Model 33, c. 1963 — the great-great-grandparent of every terminal window on Earth.</figcaption>
+          <figure class="hero__figure hero__figure--landscape">
+            <div class="hero__figure__matte">
+              <img src="site/assets/images/00-print-to-pixel-mural.png" alt="A wall-mural illustration in two halves. On the left, '1960s: Hard-Copy Interface' — a hand-drawn Teletype Model 33 spilling fanfold paper, with a 1960s office scene and a rack of vacuum-tube electronics behind it. An arrow labeled 'Successor' cuts across the centre. On the right, 'Present Day: The Software-Defined Terminal' — a VT100-style CRT showing a PowerShell session, surrounded by glowing circuits, cloud icons, and modern office workers." />
+            </div>
+            <figcaption>From print to pixel — sixty years of the same conversation, in two scenes.</figcaption>
           </figure>
         </div>
       </section>
