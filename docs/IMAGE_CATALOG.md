@@ -52,6 +52,52 @@ Filenames mirror the issue's suggestions. Where the issue suggested `.jpg`, the 
 
 ---
 
+## The Loops of GitHub — Storyboard
+
+A 15-scene watercolor walk through git's mental model — inner loop, branches & worktrees, push/fetch/pull, pull requests, automation — anchored by a recurring cast (Ada, Kenji, Rosa, Sam) and four agents (Cog, Quill, Loom, Ember). Both variants exist for every scene; the deck variant adds cinematic staging with audience silhouettes.
+
+### Act I — The Inner Loop
+
+| Scene | Reading view | Deck |
+| --- | --- | --- |
+| 01 — An Idea Strikes | `loops-01-spark-reading.png` | `loops-01-spark-deck.png` |
+| 02 — The Inner Loop | `loops-02-inner-loop-reading.png` | `loops-02-inner-loop-deck.png` |
+
+### Act II — Branches, Switching, Worktrees, Agents
+
+| Scene | Reading view | Deck |
+| --- | --- | --- |
+| 03 — A Branch Is a Line of Work | `loops-03-branches-reading.png` | `loops-03-branches-deck.png` |
+| 04 — Switching Branches | `loops-04-switching-reading.png` | `loops-04-switching-deck.png` |
+| 05 — Worktrees: Many Rooms, One Repo | `loops-05-worktrees-reading.png` | `loops-05-worktrees-deck.png` |
+| 06 — You and Your Agents, in Parallel | `loops-06-agents-parallel-reading.png` | `loops-06-agents-parallel-deck.png` |
+
+### Act III — Push, Fetch, Pull
+
+| Scene | Reading view | Deck |
+| --- | --- | --- |
+| 07 — Push | `loops-07-push-reading.png` | `loops-07-push-deck.png` |
+| 08 — Fetch | `loops-08-fetch-reading.png` | `loops-08-fetch-deck.png` |
+| 09 — Pull | `loops-09-pull-reading.png` | `loops-09-pull-deck.png` |
+
+### Act IV — Pull Requests
+
+| Scene | Reading view | Deck |
+| --- | --- | --- |
+| 10 — A Proposal: Opening the PR | `loops-10-proposal-reading.png` | `loops-10-proposal-deck.png` |
+| 11 — The PR Lives (loop within a loop) | `loops-11-pr-lives-reading.png` | `loops-11-pr-lives-deck.png` |
+| 12 — Many PRs, Many Loops | `loops-12-many-loops-reading.png` | `loops-12-many-loops-deck.png` |
+
+### Act V — Events, Workflows, the Gate
+
+| Scene | Reading view | Deck |
+| --- | --- | --- |
+| 13 — Events: The Repo Speaks | `loops-13-events-reading.png` | `loops-13-events-deck.png` |
+| 14 — Workflows: Listening Machines | `loops-14-workflows-reading.png` | `loops-14-workflows-deck.png` |
+| 15 — The Gate: Rulesets Decide | `loops-15-gate-reading.png` | `loops-15-gate-deck.png` |
+
+---
+
 ## Concepts (originally unused — now partially wired into scenes)
 
 > Shells and PowerShell concepts are **now used as the heroes of scenes 04 and 05** (see Act I above). The remaining concept images are still available for future scenes.
