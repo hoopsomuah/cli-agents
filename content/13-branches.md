@@ -1,55 +1,59 @@
 ---
 scene: 13
 act: 2
-title: "Branches — Parallel Drafts of the Same Folder"
-subtitle: "How you try things without stepping on the team"
+title: "Branches — A Safe Place to Try a Change"
+subtitle: "How you draft an edit without touching the version everyone relies on"
 duration_seconds: 120
-key_idea: "A branch is a free, instant, throwaway copy of the whole repo where you can edit without affecting anyone else. You can have as many as you want."
-hero_image: "11-parallel-drafts.png"
-hero_image_alt: "Three identical hardcover notebooks lying open side by side on a wooden desk, annotated in the same handwriting but with slightly different drafts of the same content"
-hero_image_caption: "A branch is just another draft of the same notebook — kept alongside the others, not on top of them."
-deck_image: "11-forked-road.png"
-deck_image_alt: "Cinematic watercolor of a forked road at twilight, two paths diverging then meeting again further on, long shadows and deep contrast"
-deck_image_caption: "A branch is a path that costs nothing to walk."
+key_idea: "A branch is your own private copy of the whole repo's history, made in an instant. You can edit, commit, and experiment on it freely — the shared version everyone else uses stays untouched until you decide to bring your changes back."
+hero_image: "loops-03-branches-reading.png"
+hero_image_alt: "Hand-painted storyboard panel on a warm brick wall: a woman holds up a lantern beside a flagged fork in a glowing trail. A banner reads 'A branch is a line of work — you stand on one at a time.' A bright branch labelled 'chapter-7/rewrite' arcs up and away from a straight amber line labelled 'manuscript/main', a draft of chapter-7/rewrite resting on a desk below."
+hero_image_caption: "A branch forks off the main line — and you only ever stand on one at a time."
+deck_image: "loops-03-branches-deck.png"
+deck_image_alt: "Cinematic watercolor of the same scene — a lantern-lit fork where the 'chapter-7/rewrite' branch glows away from 'manuscript/main' — staged dramatically for projection."
+deck_image_caption: "One line forks into two. You only ever stand on one."
 diagram: "03-branch-merge.svg"
-diagram_alt: "Diagram showing the main branch as a horizontal line with commits, a feature branch arcing above with its own commits, and the branch merging back into main"
-diagram_caption: "A branch is a safe place to draft. The merge is when it joins reality."
+diagram_alt: "Diagram showing the main branch as a horizontal line with commits, a feature branch arcing above with its own commits, and the branch joining back into main"
+diagram_caption: "main is the shared version. A branch splits off, collects a few commits, then rejoins."
 bullets:
-  - "A branch is a parallel copy of the entire repo"
-  - "Free, instant, and as many as you want"
-  - "The team's shared truth lives on the 'main' branch"
-  - "You work on your own branch (e.g. 'q2-launch-shift')"
-  - "Nothing on your branch affects main until you merge"
+  - "The shared, trusted version of a repo lives on a branch named main"
+  - "A branch is your own copy of that history — created in an instant, costing nothing"
+  - "On your branch you edit and commit freely; main is never affected"
+  - "You can keep several branches at once, one per idea you're trying"
+  - "When a draft is ready, its commits are brought back into main; if not, you throw the branch away"
 ---
 
-## The diagram in words
+## The problem branches solve
+
+Imagine your team keeps its plans in one repo. There is one version everyone trusts — the current, agreed-upon truth. Now you want to try a sizeable edit: shift the Q2 launch, reflow the budget, rewrite the summary. You don't want half-finished edits visible to everyone while you think. And you certainly don't want two people overwriting each other on the same file at the same time.
+
+A **branch** is the answer. It is your own copy of the repo's entire history, created in a fraction of a second. You make your edits and commits *on your branch*, in private. The shared version is completely unaffected by anything you do until you choose to bring your work back.
+
+## Picture it as two lines
+
+The trusted, shared version lives on a branch called **`main`**. When you start a change, you create a branch off it — say `q2-launch-shift`:
 
 ```
-main:           A ──► B ──► C ──► D                  ← the team's shared truth
-                          └──► X ──► Y                ← Hoop's branch, drafting a change
+main:           A ──► B ──► C ──► D            ← the version everyone trusts
+                          └──► X ──► Y          ← your branch, drafting a change
 ```
 
-The team's shared version of the canon lives on a branch called `main`. When you want to try a change, you create your own branch (let's call it `q2-launch-shift`). That branch is **a parallel copy of the entire folder**. You can edit any file freely. You can commit several drafts. You can throw the whole branch away if you change your mind.
+`A`, `B`, `C`, `D` are commits on `main`. The moment you branch, you get your own line — `X`, `Y` — that starts from wherever `main` was. You commit as many drafts as you like on that line. None of `X` or `Y` touches `main`. When the draft is good, those commits get folded back into `main` (a **merge**), and the two lines become one again. If the idea doesn't work out, you delete the branch and `main` never knew it existed.
 
 ## Three things to internalize
 
-1. **Branches are free and instant.** You make a branch in under a second.
-2. **You can have many branches at once.** Each unfinished idea lives in its own branch.
-3. **A branch never affects `main` until you explicitly merge it.**
+1. **Branches are free and instant.** Creating one takes under a second and copies nothing physically — Git is clever about that.
+2. **You can have many at once.** Each unfinished idea lives on its own branch. Sarah drafts the Q2 plan on hers while you rewrite the mission on yours — neither sees the other's work-in-progress, and `main` stays clean.
+3. **A branch never affects `main` until you merge it.** That is the whole safety guarantee.
 
-This solves the "stepping on each other" problem. Sarah can draft changes to the Q2 plan on her branch while Hoop drafts changes to the team mission on his — neither sees the other's work-in-progress, and `main` stays clean.
-
-## Four commands to know about (not to memorize today)
+## The vocabulary (to recognize, not memorize)
 
 | Command | What it does |
 | --- | --- |
 | `git branch` | List your branches |
 | `git checkout -b <name>` | Create a new branch and switch to it |
 | `git checkout main` | Switch back to main |
-| `git merge <name>` | Merge a branch into the one you're on |
+| `git merge <name>` | Fold a branch's commits into the one you're on |
 
-You will not memorize these. Copilot CLI will type them for you. But once you can *picture* a branch as a parallel copy of the folder, the rest of the vocabulary clicks into place.
+You will not memorize these — Copilot CLI will type them for you. But once you can *picture* a branch as a private line of commits that splits off `main` and later rejoins it, the rest of Git clicks into place.
 
-## Why this matters before we get to PRs
-
-A pull request — the next scene — is fundamentally a request to **merge your branch into main**. It is the conversation about whether your draft is good enough to become the new shared truth. None of that makes sense without first picturing branches as parallel drafts.
+That picture — your branch versus the shared `main` — is also the foundation of how whole teams collaborate on GitHub. That's where Act III begins.

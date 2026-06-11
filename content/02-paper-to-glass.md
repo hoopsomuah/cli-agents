@@ -4,6 +4,7 @@ act: 1
 title: "From Paper to Glass"
 subtitle: "A 60-second bridge from the teletype on the previous slide to the app on the next one"
 duration_seconds: 60
+deck_layout: "image-behind"
 key_idea: "The screen replaced the paper. The software pipe replaced the cable. The conversation stayed identical."
 hero_image: "02-vt100-terminal-still.png"
 hero_image_alt: "Hand-illustrated watercolor still life of a VT100 terminal sitting on a wooden desk with brick wall behind, soft warm window light from the left"

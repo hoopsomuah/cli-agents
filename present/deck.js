@@ -88,6 +88,17 @@ async function loadScene(sceneId) {
 
 const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
+// Act metadata captured at expand time so slide builders can label chrome.
+// An act flagged { kind: "appendix" } is labelled "APPENDIX" instead of "ACT N".
+let ACTS_META = [];
+
+function actLabel(actIndex) {
+  const a = ACTS_META[actIndex];
+  if (a && a.kind === 'appendix') return 'APPENDIX';
+  return `ACT ${ROMAN[actIndex] || actIndex + 1}`;
+}
+
+
 // ---------- Slide builders ----------
 
 function escapeHtml(s) {
@@ -98,26 +109,9 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;');
 }
 
-function buildThesisSlide(manifest) {
-  return {
-    type: 'thesis',
-    actIndex: null,
-    html: `
-      <div class="slide slide--thesis" data-slide-type="thesis">
-        <p class="slide__eyebrow reveal" style="--reveal-delay: 100ms;">The thesis, in one image</p>
-        <figure class="slide__thesis-figure reveal" style="--reveal-delay: 300ms;">
-          <img src="${ASSET_IMG}00-print-to-pixel-mural.png" alt="A mural in two halves. Left: 1960s hard-copy interface — a hand-drawn Teletype Model 33 with fanfold paper, vacuum-tube electronics behind, and office workers from the era. An arrow labeled 'Successor' cuts across to the right half. Right: present-day software-defined terminal — a CRT-style monitor showing a PowerShell session, surrounded by glowing circuits, cloud icons, and modern workers." />
-        </figure>
-        <p class="slide__caption reveal" style="--reveal-delay: 700ms;">
-          From print to pixel — sixty years of the same conversation, in two scenes.
-        </p>
-      </div>
-    `,
-  };
-}
-
 function buildCoverSlide(manifest) {
   const sceneCount = manifest.acts.reduce((n, a) => n + (a.scenes ? a.scenes.length : 0), 0);
+  const actCount = manifest.acts.filter((a) => a.kind !== 'appendix').length;
   return {
     type: 'cover',
     actIndex: null,
@@ -125,8 +119,8 @@ function buildCoverSlide(manifest) {
       <div class="slide slide--cover" data-slide-type="cover">
         <p class="slide__eyebrow reveal" style="--reveal-delay: 100ms;">A presentation by Hoop Somuah · 2026</p>
         <h1 class="slide__title">
-          <span class="reveal" style="--reveal-delay: 200ms;">From Teletype</span>
-          <span class="slide__title-accent reveal" style="--reveal-delay: 400ms;">to Rhythm of Business</span>
+          <span class="reveal" style="--reveal-delay: 200ms;">A Friendly Guide to</span>
+          <span class="slide__title-accent reveal" style="--reveal-delay: 400ms;">Terminals, CLIs &amp; TUIs</span>
         </h1>
         <p class="slide__sub reveal" style="--reveal-delay: 600ms;">
           ${escapeHtml(manifest.tagline || manifest.subtitle)}
@@ -134,7 +128,7 @@ function buildCoverSlide(manifest) {
         <div class="slide__meta reveal" style="--reveal-delay: 800ms;">
           <span>${manifest.meeting_target_minutes || 30}-minute walkthrough</span>
           <span>·</span>
-          <span>${manifest.acts.length} acts</span>
+          <span>${actCount} acts</span>
           <span>·</span>
           <span>${sceneCount} scenes</span>
         </div>
@@ -143,15 +137,38 @@ function buildCoverSlide(manifest) {
   };
 }
 
-function buildActSlide(act, actIndex) {
+function buildActSlide(act, actIndex, manifest) {
+  // Act I folds in the thesis mural (formerly a standalone slide). The print-to-pixel
+  // image becomes a faded full-bleed backdrop so more of it shows behind the intro text.
+  const isFirst = actIndex === 0;
+  if (isFirst) {
+    return {
+      type: 'act',
+      actIndex,
+      html: `
+        <div class="slide slide--act slide--act-thesis" data-slide-type="act" data-act="${act.id}">
+          <div class="slide__bg">
+            <img src="${ASSET_IMG}00-print-to-pixel-mural.png" alt="A mural in two halves. Left: 1960s hard-copy interface — a hand-drawn Teletype Model 33 with fanfold paper, vacuum-tube electronics behind, and office workers from the era. An arrow labeled 'Successor' cuts across to the right half. Right: present-day software-defined terminal — a CRT-style monitor showing a PowerShell session, surrounded by glowing circuits, cloud icons, and modern workers." />
+            <div class="slide__bg-scrim"></div>
+          </div>
+          <div class="slide__act-text">
+            <p class="slide__roman reveal" style="--reveal-delay: 100ms;">${actLabel(actIndex)}</p>
+          </div>
+          <p class="slide__banner reveal" style="--reveal-delay: 500ms;">${escapeHtml(act.subtitle)}</p>
+        </div>
+      `,
+    };
+  }
   return {
     type: 'act',
     actIndex,
     html: `
       <div class="slide slide--act" data-slide-type="act" data-act="${act.id}">
-        <p class="slide__roman reveal" style="--reveal-delay: 100ms;">ACT ${ROMAN[actIndex]}</p>
-        <h2 class="slide__title reveal" style="--reveal-delay: 300ms;">${escapeHtml(act.title)}</h2>
-        <p class="slide__sub reveal" style="--reveal-delay: 500ms;">${escapeHtml(act.subtitle)}</p>
+        <div class="slide__act-text">
+          <p class="slide__roman reveal" style="--reveal-delay: 100ms;">${actLabel(actIndex)}</p>
+          <h2 class="slide__title reveal" style="--reveal-delay: 300ms;">${escapeHtml(act.title)}</h2>
+          <p class="slide__sub reveal" style="--reveal-delay: 500ms;">${escapeHtml(act.subtitle)}</p>
+        </div>
       </div>
     `,
   };
@@ -173,6 +190,57 @@ function deckImageOf(meta) {
   };
 }
 
+function warningBlock(meta, delay) {
+  if (!meta.warning) return '';
+  return `
+    <div class="slide__warning reveal" style="--reveal-delay: ${delay}ms;">
+      <span class="slide__warning-icon" aria-hidden="true">⚠️</span>
+      <p class="slide__warning-text">${escapeHtml(meta.warning)}</p>
+    </div>`;
+}
+
+// Full-bleed layout: the deck image fills the slide and the text sits on top of a
+// scrim. Used by scenes flagged deck_layout: "image-behind" so the art can breathe.
+function buildImageBehindSlide(scene, sceneId, actIndex) {
+  const { meta } = scene;
+  const img = deckImageOf(meta);
+  const bullets = Array.isArray(meta.bullets) ? meta.bullets : [];
+  const bulletsHtml = bullets
+    .map((b, i) => `
+      <li class="slide__bullet reveal" style="--reveal-delay: ${500 + i * 150}ms;">
+        <span class="slide__bullet-marker" aria-hidden="true">→</span>
+        <span class="slide__bullet-text">${escapeHtml(b)}</span>
+      </li>`)
+    .join('');
+  return {
+    type: 'image-behind',
+    actIndex,
+    sceneId,
+    html: `
+      <div class="slide slide--image-behind" data-slide-type="image-behind" data-scene-id="${sceneId}">
+        <div class="slide__bg" aria-hidden="true">
+          ${responsivePicture(img.src, img.alt, '100vw')}
+          <div class="slide__bg-scrim"></div>
+        </div>
+        <div class="slide__overlay">
+          <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
+            <span class="slide__chrome-act">${actLabel(actIndex)}</span>
+            <span>·</span>
+            <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
+          </p>
+          <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
+          ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 350ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
+          ${bullets.length ? `<ul class="slide__bullets">${bulletsHtml}</ul>` : ''}
+          ${meta.key_idea ? `
+            <div class="slide__keyidea reveal" style="--reveal-delay: ${500 + bullets.length * 150 + 200}ms;">
+              <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
+            </div>` : ''}
+        </div>
+      </div>
+    `,
+  };
+}
+
 function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   const { meta } = scene;
   const hasImage = !!meta.hero_image || !!meta.deck_image;
@@ -182,6 +250,11 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
   // Explicit install layout takes precedence.
   if (meta.layout === 'install') {
     return buildInstallSlide(scene, sceneId, actIndex);
+  }
+
+  // Full-bleed "image behind text" layout, opt-in via frontmatter.
+  if (meta.deck_layout === 'image-behind' && hasImage) {
+    return buildImageBehindSlide(scene, sceneId, actIndex);
   }
 
   // Bullets become the dominant layout. If a hero image is present, render it
@@ -203,7 +276,7 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
         <div class="slide slide--scene" data-slide-type="scene" data-scene-id="${sceneId}">
           <div class="slide__left">
             <div class="slide__chrome reveal" style="--reveal-delay: 50ms;">
-              <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
+              <span class="slide__chrome-act">${actLabel(actIndex)}</span>
               <span>·</span>
               <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
             </div>
@@ -215,6 +288,7 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
                 <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
               </div>
             ` : ''}
+            ${warningBlock(meta, 750)}
           </div>
           <div class="slide__right">
             <figure class="slide__figure slide__figure--${orientation} reveal" style="--reveal-delay: 100ms;">
@@ -234,7 +308,7 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
       sceneId,
       html: `
         <div class="slide slide--diagram" data-slide-type="diagram" data-scene-id="${sceneId}">
-          <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">ACT ${ROMAN[actIndex]} · Scene ${String(meta.scene).padStart(2, '0')}</p>
+          <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">${actLabel(actIndex)} · Scene ${String(meta.scene).padStart(2, '0')}</p>
           <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
           ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 350ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
           <div class="slide__figure-wrap reveal" style="--reveal-delay: 500ms;">
@@ -253,7 +327,7 @@ function buildSceneSlide(scene, sceneId, actIndex, actTitle) {
     sceneId,
     html: `
       <div class="slide slide--quote" data-slide-type="quote" data-scene-id="${sceneId}">
-        <p class="slide__roman reveal" style="--reveal-delay: 100ms;">ACT ${ROMAN[actIndex]} · Scene ${String(meta.scene).padStart(2, '0')} — ${escapeHtml(meta.title || '')}</p>
+        <p class="slide__roman reveal" style="--reveal-delay: 100ms;">${actLabel(actIndex)} · Scene ${String(meta.scene).padStart(2, '0')} — ${escapeHtml(meta.title || '')}</p>
         <blockquote class="reveal" style="--reveal-delay: 300ms;">
           ${escapeHtml(meta.key_idea || meta.subtitle || meta.title)}
         </blockquote>
@@ -286,7 +360,7 @@ function buildBulletsSlide(scene, sceneId, actIndex) {
       <div class="slide slide--bullets ${hasImage ? 'slide--bullets-image' : ''}" data-slide-type="bullets" data-scene-id="${sceneId}">
         <div class="slide__left">
           <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
-            <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
+            <span class="slide__chrome-act">${actLabel(actIndex)}</span>
             <span>·</span>
             <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
           </p>
@@ -297,6 +371,7 @@ function buildBulletsSlide(scene, sceneId, actIndex) {
             <div class="slide__keyidea reveal" style="--reveal-delay: ${keyideaDelay}ms;">
               <p class="slide__keyidea-text">${escapeHtml(meta.key_idea)}</p>
             </div>` : ''}
+          ${warningBlock(meta, keyideaDelay + 150)}
         </div>
         ${hasImage ? `
           <div class="slide__right">
@@ -332,7 +407,7 @@ function buildInstallSlide(scene, sceneId, actIndex) {
       <div class="slide slide--install ${hasImage ? 'slide--install-image' : ''}" data-slide-type="install" data-scene-id="${sceneId}">
         <div class="slide__install-text">
           <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">
-            <span class="slide__chrome-act">ACT ${ROMAN[actIndex]}</span>
+            <span class="slide__chrome-act">${actLabel(actIndex)}</span>
             <span>·</span>
             <span>Scene ${String(meta.scene).padStart(2, '0')}</span>
             <span>·</span>
@@ -382,12 +457,12 @@ function buildClosingSlide() {
 // right after the scene slide so neither asset gets buried.
 
 function expandScenes(manifest, scenes) {
+  ACTS_META = manifest.acts;
   const slides = [];
   slides.push(buildCoverSlide(manifest));
-  slides.push(buildThesisSlide(manifest));
 
   manifest.acts.forEach((act, actIndex) => {
-    slides.push(buildActSlide(act, actIndex));
+    slides.push(buildActSlide(act, actIndex, manifest));
     act.scenes.forEach((sceneId) => {
       const scene = scenes[sceneId];
       if (!scene) return;
@@ -405,14 +480,19 @@ function expandScenes(manifest, scenes) {
         !meta.hero_image &&
         meta.layout !== 'install';
 
-      if (meta.diagram && !diagramOnPrimary) {
+      // deck_diagram: false suppresses the auto-generated diagram slide in the
+      // deck while keeping the diagram in the reading view.
+      const deckDiagramOff =
+        meta.deck_diagram === false || meta.deck_diagram === 'false';
+
+      if (meta.diagram && !diagramOnPrimary && !deckDiagramOff) {
         slides.push({
           type: 'diagram',
           actIndex,
           sceneId,
           html: `
             <div class="slide slide--diagram" data-slide-type="diagram" data-scene-id="${sceneId}-diagram">
-              <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">ACT ${ROMAN[actIndex]} · Scene ${String(meta.scene).padStart(2, '0')}</p>
+              <p class="slide__chrome reveal" style="--reveal-delay: 50ms;">${actLabel(actIndex)} · Scene ${String(meta.scene).padStart(2, '0')}</p>
               <h2 class="slide__title reveal" style="--reveal-delay: 200ms;">${escapeHtml(meta.title || sceneId)}</h2>
               ${meta.subtitle ? `<p class="slide__sub reveal" style="--reveal-delay: 350ms;">${escapeHtml(meta.subtitle)}</p>` : ''}
               <div class="slide__figure-wrap reveal" style="--reveal-delay: 500ms;">

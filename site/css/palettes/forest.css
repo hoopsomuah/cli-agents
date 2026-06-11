@@ -1,0 +1,438 @@
+/* ============================================================
+   palettes/forest.css — palette "forest"  ·  gestalt: ALMANAC
+   ------------------------------------------------------------
+   The naturalist field journal. ZEN deep-reading: a single
+   centered narrow measure, no TOC rail, ruled-paper feel,
+   generous leading, italic captions with leader marks. Sage /
+   pine. The palette that SUBTRACTS chrome for focus.
+
+   This file owns forest's ENTIRE identity and is linked after the
+   base palette files, so it wins the cascade. Override the
+   baseline by re-declaring; cover BOTH light and dark modes.
+   ============================================================ */
+
+:root[data-palette="forest"] {
+  --bg: oklch(97.6% 0.018 116);
+  --bg-1: oklch(95% 0.020 116);
+  --bg-2: oklch(91.5% 0.024 118);
+  --bg-warm: oklch(94.2% 0.026 96);
+  --fg: oklch(23% 0.038 154);
+  --fg-muted: oklch(43% 0.034 145);
+  --fg-faint: oklch(60% 0.026 134);
+  --rule: oklch(84% 0.024 118);
+  --rule-strong: oklch(69% 0.030 126);
+
+  --accent: oklch(40% 0.082 142);
+  --accent-hover: oklch(31% 0.092 144);
+  --accent-warm: oklch(55% 0.090 88);
+  --accent-soft: oklch(50% 0.055 128);
+
+  --code-bg: oklch(94% 0.020 118);
+  --code-fg: oklch(25% 0.038 154);
+  --code-inline-bg: oklch(90% 0.026 116);
+  --code-inline-fg: oklch(28% 0.058 150);
+  --code-border: oklch(82% 0.026 120);
+  --code-accent: oklch(42% 0.090 178);
+
+  --quote-bg: oklch(93.5% 0.030 108 / 0.55);
+  --quote-fg: oklch(30% 0.040 140);
+  --selection-bg: oklch(80% 0.105 132 / 0.38);
+
+  --toggle-bg: oklch(92.5% 0.020 116);
+  --toggle-bg-hover: oklch(87.5% 0.024 118);
+  --toggle-icon: oklch(27% 0.052 152);
+
+  --matte-bg: oklch(92.5% 0.020 108);
+  --matte-rule: oklch(76% 0.030 120);
+
+  --font-display: "Crimson Pro", Spectral, Lora, Georgia, serif;
+  --font-body: "Crimson Pro", Spectral, Lora, Georgia, serif;
+  --font-serif: "Crimson Pro", Spectral, Lora, Georgia, serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --rule-w: 1px;
+  --heading-weight: 500;
+  --heading-tracking: -0.012em;
+  --heading-style: normal;
+  --heading-scale: 1.02;
+  --prose-width: 62ch;
+  --density: 1.18;
+
+  color-scheme: light;
+}
+
+:root[data-palette="forest"][data-mode="dark"] {
+  --bg: oklch(15.5% 0.024 158);
+  --bg-1: oklch(19% 0.026 156);
+  --bg-2: oklch(23% 0.028 154);
+  --bg-warm: oklch(21% 0.024 132);
+  --fg: oklch(91% 0.024 106);
+  --fg-muted: oklch(75% 0.026 110);
+  --fg-faint: oklch(57% 0.022 112);
+  --rule: oklch(30% 0.026 154);
+  --rule-strong: oklch(42% 0.030 144);
+
+  --accent: oklch(74% 0.105 132);
+  --accent-hover: oklch(83% 0.110 132);
+  --accent-warm: oklch(76% 0.110 88);
+  --accent-soft: oklch(66% 0.070 126);
+
+  --code-bg: oklch(20% 0.026 156);
+  --code-fg: oklch(90% 0.022 106);
+  --code-inline-bg: oklch(24% 0.028 154);
+  --code-inline-fg: oklch(88% 0.026 108);
+  --code-border: oklch(34% 0.030 150);
+  --code-accent: oklch(78% 0.110 178);
+
+  --quote-bg: oklch(24% 0.036 120 / 0.38);
+  --quote-fg: oklch(90% 0.026 100);
+  --selection-bg: oklch(62% 0.110 134 / 0.42);
+
+  --toggle-bg: oklch(24% 0.028 154);
+  --toggle-bg-hover: oklch(30% 0.030 150);
+  --toggle-icon: oklch(88% 0.024 106);
+
+  --matte-bg: oklch(22% 0.028 148);
+  --matte-rule: oklch(38% 0.030 142);
+
+  --font-display: "Crimson Pro", Spectral, Lora, Georgia, serif;
+  --font-body: "Crimson Pro", Spectral, Lora, Georgia, serif;
+  --font-serif: "Crimson Pro", Spectral, Lora, Georgia, serif;
+  --font-mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --rule-w: 1px;
+  --heading-weight: 500;
+  --heading-tracking: -0.012em;
+  --heading-style: normal;
+  --heading-scale: 1.02;
+  --prose-width: 62ch;
+  --density: 1.18;
+
+  color-scheme: dark;
+}
+
+:root[data-palette="forest"] body {
+  background:
+    radial-gradient(circle at 50% -18rem, oklch(90% 0.040 118 / 0.32), transparent 38rem),
+    linear-gradient(180deg, var(--bg), var(--bg-warm));
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 0.98rem + 0.25vw, 1.18rem);
+  font-variant-numeric: oldstyle-nums proportional-nums;
+}
+
+:root[data-palette="forest"][data-mode="dark"] body {
+  background:
+    radial-gradient(circle at 50% -18rem, oklch(33% 0.050 142 / 0.28), transparent 36rem),
+    linear-gradient(180deg, var(--bg), oklch(13.5% 0.024 160));
+}
+
+:root[data-palette="forest"] ::selection {
+  background: var(--selection-bg);
+}
+
+:root[data-palette="forest"] .reading {
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+:root[data-palette="forest"] .reading__toc {
+  border-left-color: var(--rule);
+  color: var(--fg-muted);
+}
+
+:root[data-palette="forest"] .reading__toc-list a {
+  color: var(--fg-muted);
+  border-radius: var(--radius-sm);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+:root[data-palette="forest"] .reading__toc-list a:hover,
+:root[data-palette="forest"] .reading__toc-list a.is-active {
+  color: var(--accent-hover);
+  background: oklch(88% 0.030 116 / 0.38);
+}
+
+:root[data-palette="forest"][data-mode="dark"] .reading__toc-list a:hover,
+:root[data-palette="forest"][data-mode="dark"] .reading__toc-list a.is-active {
+  color: var(--accent-hover);
+  background: oklch(28% 0.034 132 / 0.42);
+}
+
+:root[data-palette="forest"] .reading__toc-list a:focus-visible,
+:root[data-palette="forest"] a:focus-visible,
+:root[data-palette="forest"] button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+@media (min-width: 961px) {
+  :root[data-palette="forest"] .reading {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+  }
+
+  :root[data-palette="forest"] .reading__toc {
+    display: none;
+  }
+
+  :root[data-palette="forest"] .reading__content {
+    width: min(100%, calc(var(--prose-width) + 8rem));
+    margin-inline: auto;
+  }
+}
+
+:root[data-palette="forest"] .act {
+  margin-block: clamp(5rem, 10vw, 9rem) clamp(3rem, 8vw, 6rem);
+}
+
+:root[data-palette="forest"] .act__header {
+  max-width: var(--prose-width);
+  margin-inline: auto;
+  text-align: center;
+}
+
+:root[data-palette="forest"] .act__roman {
+  color: var(--accent-soft);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+:root[data-palette="forest"] .act__title,
+:root[data-palette="forest"] .scene__title {
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--heading-tracking);
+  text-wrap: balance;
+}
+
+:root[data-palette="forest"] .act__subtitle,
+:root[data-palette="forest"] .scene__subtitle {
+  color: var(--fg-muted);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+:root[data-palette="forest"] .scene {
+  position: relative;
+  max-width: var(--prose-width);
+  margin-inline: auto;
+  margin-bottom: clamp(5.5rem, 11vw, 9rem);
+  padding-inline: clamp(0rem, 2vw, 1rem);
+}
+
+:root[data-palette="forest"] .scene + .scene::before {
+  content: "❦";
+  display: block;
+  margin: 0 auto clamp(3rem, 7vw, 5rem);
+  color: var(--accent-soft);
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  line-height: 1;
+  text-align: center;
+  opacity: 0.68;
+}
+
+:root[data-palette="forest"] .scene__chrome {
+  justify-content: center;
+  gap: 0.85rem;
+  margin-bottom: 1.05rem;
+  color: var(--fg-faint);
+  font-size: 0.72rem;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  opacity: 0.62;
+  text-transform: lowercase;
+}
+
+:root[data-palette="forest"] .scene__duration {
+  margin-left: 0;
+}
+
+:root[data-palette="forest"] .scene__title,
+:root[data-palette="forest"] .scene__subtitle {
+  max-width: var(--prose-width);
+  margin-inline: auto;
+  text-align: center;
+}
+
+:root[data-palette="forest"] .scene__subtitle {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+:root[data-palette="forest"] .scene__body {
+  max-width: var(--prose-width);
+  margin-inline: auto;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.88em - 1px),
+    oklch(72% 0.026 118 / 0.17) calc(1.88em - 1px),
+    oklch(72% 0.026 118 / 0.17) 1.88em
+  );
+  background-position: 0 0.32em;
+  background-size: 100% 1.88em;
+  color: var(--fg);
+  font-size: 1.04em;
+  line-height: 1.88;
+  text-align: left;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+:root[data-palette="forest"][data-mode="dark"] .scene__body {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.88em - 1px),
+    oklch(48% 0.028 132 / 0.14) calc(1.88em - 1px),
+    oklch(48% 0.028 132 / 0.14) 1.88em
+  );
+}
+
+@media (min-width: 961px) {
+  :root[data-palette="forest"] .scene__body {
+    text-align: justify;
+  }
+}
+
+:root[data-palette="forest"] .scene__body > p,
+:root[data-palette="forest"] .scene__body > ul,
+:root[data-palette="forest"] .scene__body > ol,
+:root[data-palette="forest"] .scene__body > blockquote {
+  margin-block: 0 1.22em;
+}
+
+:root[data-palette="forest"] .scene__body > p + p {
+  margin-top: 0;
+  text-indent: 1.35em;
+}
+
+:root[data-palette="forest"] .scene__body h2,
+:root[data-palette="forest"] .scene__body h3 {
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 2.4em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+:root[data-palette="forest"] .scene__body h2::after,
+:root[data-palette="forest"] .scene__body h3::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 1px;
+  margin: 0.85rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--rule-strong), transparent);
+}
+
+:root[data-palette="forest"] .scene__body a {
+  color: var(--accent-hover);
+  text-decoration-color: color-mix(in oklch, var(--accent) 50%, transparent);
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.16em;
+}
+
+:root[data-palette="forest"] .scene__body a:hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+:root[data-palette="forest"] .scene__body blockquote,
+:root[data-palette="forest"] .scene__keyidea,
+:root[data-palette="forest"] .scene__warning {
+  background: var(--quote-bg);
+  border: 0;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+  border-radius: 0;
+  box-shadow: none;
+  color: var(--quote-fg);
+}
+
+:root[data-palette="forest"] .scene__keyidea {
+  margin-block: clamp(2rem, 5vw, 3.4rem);
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 4vw, 2.5rem);
+  text-align: center;
+}
+
+:root[data-palette="forest"] .scene__keyidea-label {
+  color: var(--accent-soft);
+  font-size: 0.68rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+}
+
+:root[data-palette="forest"] .scene__keyidea-text {
+  color: var(--quote-fg);
+  font-family: var(--font-serif);
+  font-size: clamp(1.12rem, 1rem + 0.5vw, 1.38rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+:root[data-palette="forest"] .scene__photo,
+:root[data-palette="forest"] .scene__diagram {
+  max-width: min(100%, calc(var(--prose-width) + 6rem));
+  margin: clamp(2.2rem, 5vw, 3.8rem) auto;
+}
+
+:root[data-palette="forest"] .scene__photo__matte,
+:root[data-palette="forest"] .hero__figure__matte,
+:root[data-palette="forest"] .scene__diagram {
+  background: color-mix(in oklch, var(--matte-bg) 84%, var(--bg));
+  border: 1px solid var(--matte-rule);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 1.1rem 3.2rem oklch(28% 0.040 130 / 0.08);
+}
+
+:root[data-palette="forest"][data-mode="dark"] .scene__photo__matte,
+:root[data-palette="forest"][data-mode="dark"] .hero__figure__matte,
+:root[data-palette="forest"][data-mode="dark"] .scene__diagram {
+  box-shadow: 0 1.1rem 3.2rem oklch(0% 0 0 / 0.22);
+}
+
+:root[data-palette="forest"] .scene__photo__matte::after,
+:root[data-palette="forest"] .hero__figure__matte::after {
+  opacity: 0.12;
+}
+
+:root[data-palette="forest"] .scene__photo figcaption,
+:root[data-palette="forest"] .scene__diagram figcaption {
+  max-width: 48ch;
+  margin-inline: auto;
+  color: var(--fg-muted);
+  font-family: var(--font-serif);
+  font-style: italic;
+  line-height: 1.55;
+  text-align: center;
+}
+
+:root[data-palette="forest"] .scene__interactive {
+  max-width: min(100%, calc(var(--prose-width) + 6rem));
+  margin-inline: auto;
+  border-color: var(--rule);
+  border-radius: var(--radius-lg);
+  background: color-mix(in oklch, var(--bg-1) 72%, transparent);
+  box-shadow: none;
+}
+
+:root[data-palette="forest"] code,
+:root[data-palette="forest"] pre,
+:root[data-palette="forest"] kbd,
+:root[data-palette="forest"] samp {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}

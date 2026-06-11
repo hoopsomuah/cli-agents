@@ -18,14 +18,14 @@ const DEFAULT_PALETTE = 'editorial';
 const DEFAULT_MODE    = 'light';
 
 export const PALETTES = [
-  { id: 'editorial', label: 'Editorial', light: ['#f7f3ea', '#1a2236', '#b6532f'], dark: ['#161e2e', '#f0e7d3', '#e8a87c'] },
-  { id: 'ink',       label: 'Ink',       light: ['#fdfdfd', '#1a1a1a', '#3a3a3a'], dark: ['#141414', '#f5f5f5', '#bababa'] },
-  { id: 'solar',     label: 'Solar',     light: ['#f1e8d4', '#3a2914', '#c2772b'], dark: ['#1f1730', '#efd9a3', '#e6b34a'] },
-  { id: 'forest',    label: 'Forest',    light: ['#eaf0e1', '#1f3325', '#3b6b3a'], dark: ['#142420', '#cfddc0', '#7fb86a'] },
-  { id: 'slate',     label: 'Slate',     light: ['#eceef3', '#1a2236', '#2a4a8a'], dark: ['#121823', '#dbe1ec', '#8fb1d8'] },
-  { id: 'rose',      label: 'Rose',      light: ['#f4e3e3', '#3a1820', '#8e2c3a'], dark: ['#231422', '#f0c8c5', '#e09096'] },
-  { id: 'ocean',     label: 'Ocean',     light: ['#e3edf2', '#10283a', '#1e5687'], dark: ['#0d1c2a', '#cae0ed', '#6fc3e8'] },
-  { id: 'sunset',    label: 'Sunset',    light: ['#f5e3d4', '#2c1530', '#c8513a'], dark: ['#1f1428', '#f0cfa5', '#e89370'] },
+  { id: 'editorial', label: 'Editorial',    light: ['#f7f3ea', '#1a2236', '#b6532f'], dark: ['#161e2e', '#f0e7d3', '#e8a87c'] },
+  { id: 'ink',       label: 'Broadsheet',   light: ['#f2eee4', '#181615', '#9b1c1f'], dark: ['#13110f', '#eee6d6', '#d34a43'] },
+  { id: 'solar',     label: 'Glossy',       light: ['#fff3db', '#270901', '#b33e00'], dark: ['#180420', '#f8e9d2', '#ffba01'] },
+  { id: 'forest',    label: 'Almanac',      light: ['#f6f9eb', '#0d2215', '#2c5328'], dark: ['#040f08', '#e3e3d1', '#92b972'] },
+  { id: 'slate',     label: 'Spec',         light: ['#f0f4f7', '#0e141c', '#004576'], dark: ['#080d12', '#e3e9ee', '#62bae5'] },
+  { id: 'rose',      label: 'Atelier',      light: ['#fbf0f0', '#3c1f27', '#88363a'], dark: ['#21101d', '#f1dfdb', '#d7a06f'] },
+  { id: 'ocean',     label: 'Encyclopedia', light: ['#f7fbff', '#202936', '#005fc8'], dark: ['#071326', '#e8f0f2', '#6fcfff'] },
+  { id: 'sunset',    label: 'Riso',         light: ['#ffeccf', '#280432', '#df2321'], dark: ['#190220', '#ffe5c5', '#ff664a'] },
 ];
 
 const PALETTE_IDS = new Set(PALETTES.map((p) => p.id));

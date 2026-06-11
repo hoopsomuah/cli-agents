@@ -1,0 +1,541 @@
+/* ============================================================
+   palettes/sunset.css — palette "sunset"  ·  gestalt: RISO
+   ------------------------------------------------------------
+   The risograph zine / DIY poster. Brutalist hard-offset block
+   shadows, slightly rotated photo plates, overprint duotone feel,
+   mono uppercase labels, poster-scale display type. Peach / plum /
+   coral. Loud, hand-made, unafraid.
+
+   This file owns sunset's ENTIRE identity and is linked after the
+   base palette files, so it wins the cascade. Override the
+   baseline by re-declaring; cover BOTH light and dark modes.
+   ============================================================ */
+
+/* ============================================================
+   SUNSET / RISO — loud zine identity override
+   ============================================================ */
+
+:root[data-palette="sunset"] {
+  --bg:           oklch(96% 0.050 67);
+  --bg-1:         oklch(92% 0.060 62);
+  --bg-2:         oklch(86% 0.070 56);
+  --bg-warm:      oklch(90% 0.085 48);
+  --fg:           oklch(21% 0.090 318);
+  --fg-muted:     oklch(38% 0.080 318);
+  --fg-faint:     oklch(52% 0.065 318);
+  --rule:         oklch(75% 0.070 55);
+  --rule-strong:  oklch(21% 0.090 318);
+
+  --accent:        oklch(58% 0.220 28);
+  --accent-hover:  oklch(50% 0.240 24);
+  --accent-warm:   oklch(70% 0.180 58);
+  --accent-soft:   oklch(62% 0.150 340);
+
+  --code-bg:        oklch(91% 0.060 65);
+  --code-fg:        oklch(21% 0.090 318);
+  --code-inline-bg: oklch(85% 0.080 58);
+  --code-inline-fg: oklch(24% 0.110 318);
+  --code-border:    oklch(21% 0.090 318);
+  --code-accent:    oklch(48% 0.180 326);
+
+  --quote-bg: oklch(70% 0.180 58 / 0.45);
+  --quote-fg: oklch(21% 0.090 318);
+
+  --selection-bg: oklch(70% 0.180 58 / 0.60);
+
+  --toggle-bg:       oklch(88% 0.070 58);
+  --toggle-bg-hover: oklch(82% 0.090 52);
+  --toggle-icon:     oklch(21% 0.090 318);
+
+  --matte-bg:   oklch(93% 0.055 64);
+  --matte-rule: oklch(21% 0.090 318);
+
+  --font-display: "Archivo Black", "Boska", "Fraunces", system-ui, sans-serif;
+  --font-body: "Satoshi", "Inter", system-ui, sans-serif;
+  --font-serif: "Boska", "Source Serif 4", Georgia, serif;
+  --font-mono: "Space Mono", "JetBrains Mono", ui-monospace, monospace;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --rule-w: 3px;
+  --heading-weight: 900;
+  --heading-tracking: -0.065em;
+  --heading-style: normal;
+  --heading-scale: 1.28;
+  --prose-width: 62ch;
+  --density: 0.88;
+
+  --riso-paper: oklch(96% 0.050 67);
+  --riso-ink-plum: oklch(21% 0.090 318);
+  --riso-ink-coral: oklch(58% 0.220 28);
+  --riso-ink-peach: oklch(70% 0.180 58);
+  --riso-shadow: 6px 6px 0 var(--accent);
+  --riso-shadow-big: 10px 10px 0 var(--accent);
+  --riso-shadow-alt: 6px 6px 0 var(--fg);
+  --riso-band-fg: var(--fg);
+  --riso-band-shadow: var(--accent-warm);
+
+  color-scheme: light;
+}
+
+:root[data-palette="sunset"][data-mode="dark"] {
+  --bg:           oklch(16% 0.070 318);
+  --bg-1:         oklch(20% 0.075 318);
+  --bg-2:         oklch(25% 0.080 318);
+  --bg-warm:      oklch(23% 0.090 330);
+  --fg:           oklch(94% 0.055 66);
+  --fg-muted:     oklch(78% 0.055 62);
+  --fg-faint:     oklch(63% 0.045 60);
+  --rule:         oklch(40% 0.085 318);
+  --rule-strong:  oklch(94% 0.055 66);
+
+  --accent:        oklch(72% 0.205 32);
+  --accent-hover:  oklch(80% 0.190 38);
+  --accent-warm:   oklch(78% 0.170 58);
+  --accent-soft:   oklch(70% 0.140 345);
+
+  --code-bg:        oklch(21% 0.075 318);
+  --code-fg:        oklch(94% 0.055 66);
+  --code-inline-bg: oklch(26% 0.080 318);
+  --code-inline-fg: oklch(92% 0.065 58);
+  --code-border:    oklch(72% 0.205 32);
+  --code-accent:    oklch(78% 0.170 58);
+
+  --quote-bg: oklch(72% 0.205 32 / 0.22);
+  --quote-fg: oklch(94% 0.055 66);
+
+  --selection-bg: oklch(72% 0.205 32 / 0.50);
+
+  --toggle-bg:       oklch(25% 0.080 318);
+  --toggle-bg-hover: oklch(31% 0.085 318);
+  --toggle-icon:     oklch(94% 0.055 66);
+
+  --matte-bg:   oklch(22% 0.075 318);
+  --matte-rule: oklch(72% 0.205 32);
+
+  --riso-paper: oklch(16% 0.070 318);
+  --riso-ink-plum: oklch(94% 0.055 66);
+  --riso-ink-coral: oklch(72% 0.205 32);
+  --riso-ink-peach: oklch(78% 0.170 58);
+  --riso-shadow: 6px 6px 0 var(--accent);
+  --riso-shadow-big: 10px 10px 0 var(--accent);
+  --riso-shadow-alt: 6px 6px 0 var(--fg);
+  --riso-band-fg: var(--bg);
+  --riso-band-shadow: var(--fg);
+
+  color-scheme: dark;
+}
+
+:root[data-palette="sunset"] body {
+  background:
+    radial-gradient(circle at 14% 10%, color-mix(in oklch, var(--accent-warm) 28%, transparent) 0 13rem, transparent 13.2rem),
+    radial-gradient(circle at 88% 6%, color-mix(in oklch, var(--accent-soft) 22%, transparent) 0 10rem, transparent 10.2rem),
+    linear-gradient(135deg, color-mix(in oklch, var(--bg) 92%, var(--accent-warm)) 0%, var(--bg) 52%, color-mix(in oklch, var(--bg) 88%, var(--accent-soft)) 100%);
+}
+
+:root[data-palette="sunset"] ::selection {
+  background: var(--selection-bg);
+  color: var(--fg);
+}
+
+:root[data-palette="sunset"] .reading {
+  overflow-x: clip;
+}
+
+:root[data-palette="sunset"] .reading__toc {
+  border: 3px solid var(--fg);
+  background:
+    linear-gradient(90deg, color-mix(in oklch, var(--accent-warm) 18%, transparent) 0 50%, transparent 50% 100%) 0 0 / 0.9rem 0.9rem,
+    var(--bg-1);
+  box-shadow: var(--riso-shadow);
+  color: var(--fg);
+  padding: clamp(1rem, 1.6vw, 1.35rem);
+  transform: rotate(-0.7deg);
+}
+
+:root[data-palette="sunset"] .reading__toc-label,
+:root[data-palette="sunset"] .scene__chrome,
+:root[data-palette="sunset"] .act__roman,
+:root[data-palette="sunset"] .scene__keyidea-label,
+:root[data-palette="sunset"] .scene__warning,
+:root[data-palette="sunset"] figcaption {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root[data-palette="sunset"] .reading__toc-label {
+  display: inline-block;
+  margin-bottom: 0.95rem;
+  padding: 0.25rem 0.45rem;
+  background: var(--fg);
+  color: var(--bg);
+  box-shadow: 3px 3px 0 var(--accent);
+}
+
+:root[data-palette="sunset"] .reading__toc-list {
+  gap: 0.35rem;
+}
+
+:root[data-palette="sunset"] .reading__toc-list a {
+  border: 2px solid transparent;
+  color: var(--fg);
+  display: block;
+  padding: 0.28rem 0.35rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-underline-offset: 0.18em;
+}
+
+:root[data-palette="sunset"] .reading__toc-list .toc-act > a {
+  border-color: var(--fg);
+  background: var(--accent-warm);
+  box-shadow: 4px 4px 0 var(--fg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  margin: 0.45rem 0 0.25rem;
+}
+
+:root[data-palette="sunset"] .reading__toc-list .toc-scene {
+  padding-left: 0.4rem;
+}
+
+:root[data-palette="sunset"] .reading__toc-list a:hover,
+:root[data-palette="sunset"] .reading__toc-list a:focus-visible {
+  border-color: var(--fg);
+  background: color-mix(in oklch, var(--accent-warm) 45%, var(--bg));
+  color: var(--fg);
+}
+
+:root[data-palette="sunset"] .reading__toc-list a.is-active {
+  border-color: var(--fg);
+  background: var(--accent);
+  color: var(--bg);
+  box-shadow: 4px 4px 0 var(--fg);
+  font-weight: 900;
+}
+
+:root[data-palette="sunset"] .reading__toc-list a:focus-visible,
+:root[data-palette="sunset"] a:focus-visible,
+:root[data-palette="sunset"] button:focus-visible {
+  outline: 3px solid var(--accent-warm);
+  outline-offset: 3px;
+}
+
+:root[data-palette="sunset"] .act {
+  border-top: 5px solid var(--fg);
+  padding-top: clamp(1.75rem, 4vw, 3rem);
+}
+
+:root[data-palette="sunset"] .act__header {
+  background: var(--accent-warm);
+  border: 3px solid var(--fg);
+  box-shadow: var(--riso-shadow-alt);
+  color: var(--fg);
+  margin-bottom: clamp(2.25rem, 5vw, 4rem);
+  padding: clamp(1rem, 3vw, 2rem);
+  transform: rotate(0.55deg);
+}
+
+:root[data-palette="sunset"] .act:nth-of-type(even) .act__header {
+  transform: rotate(-0.55deg);
+}
+
+:root[data-palette="sunset"] .act__roman {
+  background: var(--fg);
+  color: var(--bg);
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+:root[data-palette="sunset"] .act__title,
+:root[data-palette="sunset"] .scene__title {
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 900;
+  letter-spacing: var(--heading-tracking);
+  line-height: 0.86;
+  text-shadow:
+    0.045em 0.045em 0 var(--accent),
+    -0.035em 0.025em 0 var(--accent-warm);
+}
+
+:root[data-palette="sunset"] .act__title {
+  font-size: clamp(3rem, 10vw, 8rem);
+  max-width: 11ch;
+  text-transform: uppercase;
+}
+
+:root[data-palette="sunset"] .act__subtitle,
+:root[data-palette="sunset"] .scene__subtitle {
+  color: var(--fg-muted);
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 1rem + 0.8vw, 1.55rem);
+  font-weight: 800;
+  line-height: 1.12;
+}
+
+:root[data-palette="sunset"] .scene {
+  border-top: 3px solid var(--fg);
+  margin-bottom: clamp(5rem, 12vw, 8rem);
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+:root[data-palette="sunset"] .scene__chrome {
+  align-items: center;
+  border: 3px solid var(--fg);
+  box-shadow: 4px 4px 0 var(--accent);
+  color: var(--fg);
+  display: inline-flex;
+  gap: 0.75rem;
+  padding: 0.35rem 0.55rem;
+  transform: rotate(-0.85deg);
+}
+
+:root[data-palette="sunset"] .scene:nth-of-type(even) .scene__chrome {
+  transform: rotate(0.85deg);
+}
+
+:root[data-palette="sunset"] .scene__number {
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.12rem 0.35rem;
+}
+
+:root[data-palette="sunset"] .scene__duration {
+  margin-left: 0;
+}
+
+:root[data-palette="sunset"] .scene__title {
+  font-size: clamp(3.2rem, 12vw, 9.5rem);
+  max-width: 12ch;
+  text-transform: uppercase;
+}
+
+:root[data-palette="sunset"] .scene__body {
+  color: var(--fg);
+  font-size: clamp(1rem, 0.96rem + 0.25vw, 1.16rem);
+}
+
+:root[data-palette="sunset"] .scene__body h2,
+:root[data-palette="sunset"] .scene__body h3 {
+  display: inline;
+  background: linear-gradient(transparent 56%, var(--accent-warm) 56% 88%, transparent 88%);
+  color: var(--fg);
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+:root[data-palette="sunset"] .scene__body p,
+:root[data-palette="sunset"] .scene__body li {
+  line-height: 1.62;
+}
+
+:root[data-palette="sunset"] .scene__body a,
+:root[data-palette="sunset"] .scene__interactive a {
+  color: var(--fg);
+  font-weight: 900;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 0.22em;
+  text-underline-offset: 0.12em;
+}
+
+:root[data-palette="sunset"] .scene__body a:hover,
+:root[data-palette="sunset"] .scene__interactive a:hover {
+  background: var(--accent-warm);
+  color: var(--fg);
+}
+
+:root[data-palette="sunset"] .scene__keyidea {
+  background: var(--accent);
+  border: 3px solid var(--fg);
+  box-shadow: var(--riso-shadow-alt);
+  color: var(--riso-band-fg);
+  margin: clamp(1.6rem, 4vw, 2.5rem) 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  transform: rotate(-0.65deg);
+}
+
+:root[data-palette="sunset"] .scene:nth-of-type(even) .scene__keyidea {
+  transform: rotate(0.65deg);
+}
+
+:root[data-palette="sunset"] .scene__keyidea-label {
+  background: var(--riso-band-fg);
+  color: var(--accent);
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  padding: 0.22rem 0.45rem;
+}
+
+:root[data-palette="sunset"] .scene__keyidea-text {
+  color: var(--riso-band-fg);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 4.5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  text-shadow: 0.045em 0.045em 0 var(--riso-band-shadow);
+}
+
+:root[data-palette="sunset"] .scene__warning,
+:root[data-palette="sunset"] .scene__interactive,
+:root[data-palette="sunset"] .scene__diagram,
+:root[data-palette="sunset"] .scene__photo__matte {
+  border: 3px solid var(--fg);
+  border-radius: 0;
+  box-shadow: var(--riso-shadow);
+}
+
+:root[data-palette="sunset"] .scene__warning,
+:root[data-palette="sunset"] .scene__interactive {
+  background: var(--bg-1);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+:root[data-palette="sunset"] .scene__photo {
+  max-width: min(100%, 54rem);
+  transform: rotate(-1.25deg);
+  transform-origin: 52% 52%;
+}
+
+:root[data-palette="sunset"] .scene:nth-of-type(even) .scene__photo {
+  transform: rotate(1.25deg);
+}
+
+:root[data-palette="sunset"] .scene__photo__matte {
+  background:
+    linear-gradient(135deg, color-mix(in oklch, var(--accent-warm) 18%, transparent) 0 25%, transparent 25% 50%, color-mix(in oklch, var(--accent-soft) 16%, transparent) 50% 75%, transparent 75%) 0 0 / 1.1rem 1.1rem,
+    var(--matte-bg);
+  padding: clamp(0.55rem, 1vw, 0.85rem);
+  transform: none;
+}
+
+:root[data-palette="sunset"] .scene__photo__matte img {
+  border: 2px solid var(--fg);
+  filter: saturate(1.18) contrast(1.07);
+}
+
+:root[data-palette="sunset"] .scene__photo figcaption,
+:root[data-palette="sunset"] .scene__diagram figcaption {
+  color: var(--fg-muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  margin-top: 0.85rem;
+}
+
+:root[data-palette="sunset"] .scene__diagram {
+  background: var(--paper-bg);
+  color: var(--paper-ink);
+  padding: clamp(0.75rem, 2vw, 1.25rem);
+  transform: rotate(0.75deg);
+}
+
+:root[data-palette="sunset"] .scene:nth-of-type(even) .scene__diagram {
+  transform: rotate(-0.75deg);
+}
+
+:root[data-palette="sunset"] .scene__diagram img,
+:root[data-palette="sunset"] .scene__diagram svg {
+  border: 2px solid var(--paper-ink);
+}
+
+:root[data-palette="sunset"] code,
+:root[data-palette="sunset"] pre {
+  border: 2px solid var(--code-border);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--accent-warm);
+  font-family: var(--font-mono);
+}
+
+:root[data-palette="sunset"] :is(button, .button, .theme-toggle, .palette-toggle) {
+  border: 2px solid var(--fg);
+  border-radius: 0;
+  box-shadow: 4px 4px 0 var(--accent);
+}
+
+@media (min-width: 961px) {
+  :root[data-palette="sunset"] .reading {
+    grid-template-columns: 17rem minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 4.5rem);
+  }
+
+  :root[data-palette="sunset"] .reading__toc {
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    position: sticky;
+    top: 5rem;
+  }
+
+  :root[data-palette="sunset"] .scene__title {
+    margin-left: calc(clamp(1rem, 3vw, 2.25rem) * -1);
+  }
+
+  :root[data-palette="sunset"] .scene__body {
+    border-left: 5px solid var(--fg);
+    padding-left: clamp(1rem, 2vw, 1.6rem);
+  }
+
+  :root[data-palette="sunset"] .scene__photo__matte,
+  :root[data-palette="sunset"] .scene__diagram,
+  :root[data-palette="sunset"] .scene__keyidea,
+  :root[data-palette="sunset"] .reading__toc {
+    box-shadow: var(--riso-shadow-big);
+  }
+}
+
+@media (max-width: 960px) {
+  :root[data-palette="sunset"] .reading__toc,
+  :root[data-palette="sunset"] .act__header,
+  :root[data-palette="sunset"] .scene__chrome,
+  :root[data-palette="sunset"] .scene__keyidea,
+  :root[data-palette="sunset"] .scene__photo,
+  :root[data-palette="sunset"] .scene__diagram {
+    max-width: calc(100vw - 2rem);
+  }
+
+  :root[data-palette="sunset"] .scene__photo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :root[data-palette="sunset"] .scene__title {
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root[data-palette="sunset"] .scene__photo,
+  :root[data-palette="sunset"] .scene__diagram,
+  :root[data-palette="sunset"] .scene__keyidea,
+  :root[data-palette="sunset"] .reading__toc-list a,
+  :root[data-palette="sunset"] :is(button, .button, .theme-toggle, .palette-toggle) {
+    transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+  }
+
+  :root[data-palette="sunset"] .scene__photo:hover,
+  :root[data-palette="sunset"] .scene:nth-of-type(even) .scene__photo:hover,
+  :root[data-palette="sunset"] .scene__diagram:hover,
+  :root[data-palette="sunset"] .scene:nth-of-type(even) .scene__diagram:hover,
+  :root[data-palette="sunset"] .scene__keyidea:hover,
+  :root[data-palette="sunset"] .scene:nth-of-type(even) .scene__keyidea:hover {
+    transform: rotate(0deg) translate(-2px, -2px);
+  }
+
+  :root[data-palette="sunset"] .reading__toc-list a:hover,
+  :root[data-palette="sunset"] :is(button, .button, .theme-toggle, .palette-toggle):hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--fg);
+  }
+}

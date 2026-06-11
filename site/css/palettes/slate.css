@@ -1,0 +1,399 @@
+/* ============================================================
+   palettes/slate.css — palette "slate"  ·  gestalt: SPEC
+   ------------------------------------------------------------
+   The engineering specification / API manual. Decimal section
+   numbering (1.1, 1.2), a wordless tick-rail TOC that doubles as a
+   scroll-progress gauge, scroll-snap "settle", monospace labels, a
+   tight grid. Cool gray / steel-blue, grotesque + mono type.
+
+   This file owns slate's ENTIRE identity and is linked after the
+   base palette files, so it wins the cascade. Override the
+   baseline by re-declaring; cover BOTH light and dark modes.
+   ============================================================ */
+
+/* ============================================================
+   SPEC — complete slate palette identity
+   ============================================================ */
+
+:root[data-palette="slate"] {
+  --bg: oklch(96.5% 0.006 245);
+  --bg-1: oklch(93.5% 0.007 245);
+  --bg-2: oklch(89.5% 0.009 245);
+  --bg-warm: oklch(92.5% 0.006 245);
+  --fg: oklch(19% 0.018 252);
+  --fg-muted: oklch(40% 0.016 252);
+  --fg-faint: oklch(58% 0.013 252);
+  --rule: oklch(84% 0.009 245);
+  --rule-strong: oklch(68% 0.012 245);
+  --accent: oklch(38% 0.105 247);
+  --accent-hover: oklch(29% 0.12 247);
+  --accent-warm: oklch(55% 0.075 218);
+  --accent-soft: oklch(50% 0.055 247);
+  --code-bg: oklch(92% 0.009 245);
+  --code-fg: oklch(20% 0.018 252);
+  --code-inline-bg: oklch(88.5% 0.010 245);
+  --code-inline-fg: oklch(25% 0.04 250);
+  --code-border: oklch(80% 0.010 245);
+  --code-accent: oklch(42% 0.10 230);
+  --quote-bg: oklch(93% 0.010 245 / 0.78);
+  --quote-fg: oklch(24% 0.018 252);
+  --selection-bg: oklch(76% 0.12 235 / 0.38);
+  --toggle-bg: oklch(91% 0.009 245);
+  --toggle-bg-hover: oklch(85% 0.010 245);
+  --toggle-icon: oklch(25% 0.035 252);
+  --matte-bg: oklch(92.5% 0.009 245);
+  --matte-rule: oklch(74% 0.012 245);
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-mono: "IBM Plex Mono", "Space Mono", "JetBrains Mono", ui-monospace, monospace;
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --rule-w: 1px;
+  --heading-weight: 700;
+  --heading-tracking: -0.025em;
+  --heading-style: normal;
+  --heading-scale: 0.92;
+  --prose-width: 62ch;
+  --density: 0.84;
+  color-scheme: light;
+}
+
+:root[data-palette="slate"][data-mode="dark"] {
+  --bg: oklch(15.5% 0.013 252);
+  --bg-1: oklch(19% 0.014 252);
+  --bg-2: oklch(23% 0.016 252);
+  --bg-warm: oklch(21% 0.014 252);
+  --fg: oklch(93% 0.009 245);
+  --fg-muted: oklch(75% 0.010 245);
+  --fg-faint: oklch(57% 0.010 245);
+  --rule: oklch(30% 0.016 252);
+  --rule-strong: oklch(43% 0.018 252);
+  --accent: oklch(75% 0.105 232);
+  --accent-hover: oklch(84% 0.11 232);
+  --accent-warm: oklch(71% 0.085 215);
+  --accent-soft: oklch(64% 0.075 232);
+  --code-bg: oklch(19% 0.015 252);
+  --code-fg: oklch(91% 0.009 245);
+  --code-inline-bg: oklch(23% 0.016 252);
+  --code-inline-fg: oklch(88% 0.010 245);
+  --code-border: oklch(32% 0.017 252);
+  --code-accent: oklch(78% 0.11 222);
+  --quote-bg: oklch(22% 0.018 252 / 0.72);
+  --quote-fg: oklch(91% 0.012 235);
+  --selection-bg: oklch(57% 0.13 232 / 0.45);
+  --toggle-bg: oklch(23% 0.016 252);
+  --toggle-bg-hover: oklch(29% 0.018 252);
+  --toggle-icon: oklch(88% 0.010 245);
+  --matte-bg: oklch(20.5% 0.016 252);
+  --matte-rule: oklch(36% 0.018 252);
+  color-scheme: dark;
+}
+
+:root[data-palette="slate"] body {
+  font-family: var(--font-body);
+  background:
+    linear-gradient(90deg, color-mix(in oklch, var(--rule) 38%, transparent) 1px, transparent 1px) 0 0 / 4rem 4rem,
+    linear-gradient(180deg, color-mix(in oklch, var(--rule) 30%, transparent) 1px, transparent 1px) 0 0 / 100% 1.5rem,
+    var(--bg);
+  color: var(--fg);
+}
+
+:root[data-palette="slate"] ::selection {
+  background: var(--selection-bg);
+}
+
+:root[data-palette="slate"] .reading__content {
+  counter-reset: spec-act;
+}
+
+:root[data-palette="slate"] .act {
+  counter-increment: spec-act;
+  counter-reset: spec-scene;
+  border-top: 1px solid var(--rule-strong);
+  padding-top: clamp(1.5rem, 5vw, 3rem);
+}
+
+:root[data-palette="slate"] .scene {
+  counter-increment: spec-scene;
+  border-top: 1px solid var(--rule);
+  padding-top: clamp(1.25rem, 3vw, 2rem);
+}
+
+:root[data-palette="slate"] .act__header,
+:root[data-palette="slate"] .scene__chrome,
+:root[data-palette="slate"] .scene__body,
+:root[data-palette="slate"] .scene__interactive,
+:root[data-palette="slate"] .scene__photo,
+:root[data-palette="slate"] .scene__diagram {
+  max-width: var(--prose-width);
+}
+
+:root[data-palette="slate"] .act__roman,
+:root[data-palette="slate"] .scene__chrome,
+:root[data-palette="slate"] .scene__number,
+:root[data-palette="slate"] .scene__duration,
+:root[data-palette="slate"] .reading__toc-label,
+:root[data-palette="slate"] .scene__keyidea-label,
+:root[data-palette="slate"] .scene__warning,
+:root[data-palette="slate"] .scene__photo figcaption,
+:root[data-palette="slate"] .scene__diagram figcaption {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+}
+
+:root[data-palette="slate"] .act__roman,
+:root[data-palette="slate"] .scene__chrome,
+:root[data-palette="slate"] .reading__toc-label {
+  color: var(--fg-muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+:root[data-palette="slate"] .act__title,
+:root[data-palette="slate"] .scene__title,
+:root[data-palette="slate"] .scene__body h2 {
+  font-family: var(--font-display);
+  font-weight: var(--heading-weight);
+  letter-spacing: var(--heading-tracking);
+  color: var(--fg);
+}
+
+:root[data-palette="slate"] .act__title::before {
+  content: "§" counter(spec-act) "  ";
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.58em;
+  letter-spacing: 0.02em;
+  vertical-align: 0.16em;
+}
+
+:root[data-palette="slate"] .scene__title {
+  display: block;
+  max-width: 30ch;
+  padding-bottom: 0.45rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+:root[data-palette="slate"] .scene__title::before {
+  content: "§" counter(spec-act) "." counter(spec-scene) "  ";
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.5em;
+  letter-spacing: 0.02em;
+  vertical-align: 0.2em;
+}
+
+:root[data-palette="slate"] .scene__subtitle,
+:root[data-palette="slate"] .act__subtitle {
+  color: var(--fg-muted);
+}
+
+:root[data-palette="slate"] .scene__body {
+  counter-reset: spec-clause;
+  line-height: 1.62;
+}
+
+:root[data-palette="slate"] .scene__body > h2 {
+  counter-increment: spec-clause;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.35rem;
+  margin-top: 2rem;
+  font-size: clamp(1.1rem, 1rem + 0.45vw, 1.45rem);
+}
+
+:root[data-palette="slate"] .scene__body > h2::before {
+  content: counter(spec-act) "." counter(spec-scene) "." counter(spec-clause) "  ";
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  letter-spacing: 0;
+}
+
+:root[data-palette="slate"] .scene__body p,
+:root[data-palette="slate"] .scene__body li {
+  color: var(--fg);
+}
+
+:root[data-palette="slate"] .scene__body a,
+:root[data-palette="slate"] .reading__toc-list a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+:root[data-palette="slate"] .scene__body code,
+:root[data-palette="slate"] .scene__body pre,
+:root[data-palette="slate"] .scene__body pre code {
+  font-family: var(--font-mono);
+  font-variant-ligatures: none;
+}
+
+:root[data-palette="slate"] .scene__body pre,
+:root[data-palette="slate"] .scene__body code {
+  border-color: var(--code-border);
+}
+
+:root[data-palette="slate"] .scene__keyidea,
+:root[data-palette="slate"] .scene__warning {
+  background: var(--quote-bg);
+  border: 1px solid var(--rule-strong);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+}
+
+:root[data-palette="slate"] .scene__keyidea-text,
+:root[data-palette="slate"] .scene__warning {
+  color: var(--quote-fg);
+}
+
+:root[data-palette="slate"] .scene__photo__matte,
+:root[data-palette="slate"] .hero__figure__matte,
+:root[data-palette="slate"] .scene__diagram {
+  background: var(--matte-bg);
+  border: 1px solid var(--matte-rule);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+
+:root[data-palette="slate"] .scene__photo__matte::after,
+:root[data-palette="slate"] .hero__figure__matte::after,
+:root[data-palette="slate"] .scene__diagram::after {
+  display: none;
+}
+
+:root[data-palette="slate"] .scene__photo figcaption,
+:root[data-palette="slate"] .scene__diagram figcaption {
+  color: var(--fg-faint);
+  font-size: 0.72rem;
+  line-height: 1.45;
+}
+
+:root[data-palette="slate"] .scene__interactive {
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  background: color-mix(in oklch, var(--bg-1) 72%, transparent);
+}
+
+@media (min-width: 961px) {
+  :root[data-palette="slate"] .reading {
+    grid-template-columns: 3rem minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+  }
+
+  :root[data-palette="slate"] .reading__toc {
+    border-left: 0;
+    padding-left: 0;
+    max-height: calc(100vh - 7rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: none;
+  }
+
+  :root[data-palette="slate"] .reading__toc::-webkit-scrollbar {
+    display: none;
+  }
+
+  :root[data-palette="slate"] .reading__toc-label {
+    writing-mode: vertical-rl;
+    margin: 0 0 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+
+  :root[data-palette="slate"] .reading__toc-list {
+    gap: 0.48rem;
+    align-items: flex-start;
+  }
+
+  :root[data-palette="slate"] .reading__toc-list .toc-scene {
+    padding-left: 0;
+  }
+
+  :root[data-palette="slate"] .reading__toc-list a {
+    position: relative;
+    display: block;
+    width: 2.7rem;
+    height: 0.62rem;
+    padding: 0;
+    overflow: hidden;
+    color: transparent;
+    text-indent: -100vw;
+    white-space: nowrap;
+    border-radius: 0;
+  }
+
+  :root[data-palette="slate"] .reading__toc-list a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0.8rem;
+    height: 2px;
+    transform: translateY(-50%);
+    background: var(--rule-strong);
+    transition: width var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), height var(--dur-fast) var(--ease-out);
+  }
+
+  :root[data-palette="slate"] .reading__toc-list .toc-act a {
+    height: 0.8rem;
+  }
+
+  :root[data-palette="slate"] .reading__toc-list .toc-act a::before {
+    width: 1.45rem;
+    height: 2px;
+    background: var(--fg-muted);
+  }
+
+  :root[data-palette="slate"] .reading__toc-list a:hover::before,
+  :root[data-palette="slate"] .reading__toc-list a:focus-visible::before {
+    width: 2.2rem;
+    background: var(--accent-hover);
+  }
+
+  :root[data-palette="slate"] .reading__toc-list a.is-active::before {
+    width: 2.55rem;
+    height: 3px;
+    background: var(--accent);
+  }
+
+  :root[data-palette="slate"] .reading__toc-list a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    background: color-mix(in oklch, var(--accent) 12%, transparent);
+  }
+
+  :root[data-palette="slate"] .scene {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    column-gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  :root[data-palette="slate"] .scene__chrome {
+    top: 6rem;
+    border-top: 2px solid var(--accent);
+    border-bottom: 1px solid var(--rule);
+    padding: 0.55rem 0 0.65rem;
+  }
+
+  :root[data-palette="slate"] .scene__keyidea {
+    align-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 961px) {
+  :root[data-palette="slate"] {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+  }
+
+  :root[data-palette="slate"] .scene {
+    scroll-snap-align: start;
+    scroll-margin-top: 6rem;
+  }
+}

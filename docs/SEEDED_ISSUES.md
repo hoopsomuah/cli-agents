@@ -94,7 +94,7 @@ If the proposal gets a thumbs-up, open a PR adding a draft of the scene.
 **Labels:** `step-4`, `experiment`
 **Description:**
 
-Walk through the [Copilot CLI install checklist (scene 25)](https://hoopsomuah.github.io/cli-agents/#scene-25) to get Copilot CLI working. Then:
+Install Copilot CLI by following [GitHub's Copilot CLI documentation](https://docs.github.com/en/copilot/github-copilot-in-the-cli) to get it working. Then:
 
 1. Run `copilot` from inside the `cli-agents` folder.
 2. Ask it: *"Summarize what this repo is for."*

@@ -1,7 +1,7 @@
 ---
 scene: 04
 act: 1
-title: "The Shell Inside the Window"
+title: "What Is a Shell?"
 subtitle: "The terminal is the window. The shell is the program reading what you type."
 duration_seconds: 120
 key_idea: "The terminal is just a piece of furniture. The real thing — the program that reads your words and answers — is the shell. Every operating system ships at least one; most ship several."
@@ -12,11 +12,10 @@ deck_image: "concept-shells-glass.png"
 deck_image_alt: "Cinematic watercolor of five translucent glass seashells arranged in a row on a dark surface, each shell containing a tiny glowing terminal cursor at its centre, with soft cyan and amber stage light catching the spirals"
 deck_image_caption: "Many shells. One conversation."
 bullets:
-  - "Terminal = the window. Shell = the program running inside it"
-  - "Linux / macOS ship bash and zsh — the same shell family as servers everywhere"
-  - "Windows ships two: cmd (1980s, still around) and PowerShell (modern, default)"
-  - "fish, nushell, others exist — same contract: read a line, do work, print a line"
-  - "You can swap shells without changing terminals — same window, different brain"
+  - "The terminal is the window on screen; the shell is the program inside it that reads your commands and answers."
+  - "It is a real back-and-forth: you type a line, the shell does the work, then prints a line back — the same contract as the 1960s teletype."
+  - "Linux and macOS ship bash and zsh; Windows ships cmd (legacy) and PowerShell (the modern default)."
+  - "You can swap the shell without changing the terminal — same window, a different brain inside."
 ---
 
 ## The two-piece confusion

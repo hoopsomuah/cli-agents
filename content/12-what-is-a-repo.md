@@ -1,26 +1,26 @@
 ---
 scene: 12
 act: 2
-title: "A Repository Is a Folder with Memory"
-subtitle: "The single mental model that unlocks Git, GitHub, and everything after"
+title: "Git: A System for Managing Repositories"
+subtitle: "A repository is a folder with a memory — Git is the tool that gives it one"
 duration_seconds: 120
-key_idea: "A repo is a regular folder on your computer that has been given a memory. Every change is recorded forever. You can rewind to any moment in its history."
-hero_image: "07-annotated-book-watercolor.png"
-hero_image_alt: "Hand-illustrated watercolor of an open hardcover book on a desk, pages dense with handwritten margin notes in several different inks, magnifying glass and fountain pen alongside, brick wall behind"
-hero_image_caption: "A repository is a folder that remembers everything written in its margins."
+key_idea: "Git turns an ordinary folder into a repository: a folder that records every change forever and lets you rewind to any moment. GitHub takes those same repositories and makes them a place to collaborate — more on that in Act III."
+diagram: "12-git-glyph.svg"
+diagram_alt: "Abstract diagram of version control: commit dots on a main line labelled init, draft, edit, merge, with a branch splitting off to try and fix before merging back"
+diagram_caption: "A repository remembers every change as a commit. A branch is a safe place to try one."
 bullets:
-  - "A folder + a hidden .git subfolder = a repository"
-  - "Files behave normally — open, edit, save in any app"
-  - "When you 'commit', the repo takes a snapshot + your one-line note explaining why"
-  - "Commits live forever — you can travel back to any one"
-  - "Works fully offline; you 'push' to GitHub when you want to share or back up"
+  - "Git is version control: it gives a folder a memory of every change"
+  - "A folder plus a hidden .git inside it is a repository"
+  - "Each commit is a snapshot plus a one-line note saying who, when, and why"
+  - "Commits live forever — you can rewind to any of them, fully offline"
+  - "GitHub is where teams share repositories and collaborate — that's Act III"
 ---
 
-## What a repository actually is
+## What Git is
 
-A **repository** (or **repo**) is a folder on your computer with a hidden `.git` subfolder inside it. That hidden folder is the **memory**. Everything else — your documents, your spreadsheets, your code, your notes — sits in the folder as normal files.
+**Git** is a system for managing repositories. A **repository** (or **repo**) is just an ordinary folder on your computer that Git has given a *memory*. From the outside it looks like any other folder — your documents, spreadsheets, notes, and code sit inside it as normal files, and you open and edit them with the same apps you always use. The memory lives in a hidden `.git` subfolder.
 
-You interact with the files exactly the same way you always have: open them in Word, edit them in Obsidian, view them in Explorer. The difference is that every time you decide a change is worth keeping, you **commit** it. A commit is a snapshot: *here is what every file looked like at 2:47pm on Tuesday, May 19, and here is the one-line note explaining why I changed them.*
+Every time you decide a change is worth keeping, you **commit** it. A commit is a snapshot: *here is exactly what every file looked like at 2:47pm on Tuesday, and here is the one-line note explaining why I changed them.*
 
 ```
 hoop@laptop ~/team-canon $ git commit -m "Update Q2 plan: shifted launch to June 15"
@@ -28,24 +28,21 @@ hoop@laptop ~/team-canon $ git commit -m "Update Q2 plan: shifted launch to June
  1 file changed, 4 insertions(+), 2 deletions(-)
 ```
 
-That commit lives forever. Three weeks from now, three years from now, anyone can ask: *"Show me what the Q2 plan looked like on May 19."* The repo will show them.
+That commit lives forever. Three weeks or three years from now, anyone can ask *"show me what the Q2 plan looked like on May 19"* and the repo will answer. This is the cure for the `Final_v7_FINAL` problem from the last scene: the history is attached to the files themselves, not to anyone's memory.
 
-## Local first, then shared
-
-The part most newcomers miss: **a Git repo works completely offline.** The repository on your laptop has the full history. You can commit on a plane. You can rewind. You can compare any two versions. None of this requires a server.
-
-When you are ready to share — or just want a backup — you **push** the repo to GitHub. Now it lives in two places: your laptop and a cloud server your teammates can access. If a teammate **clones** the repo, they get a complete copy on their machine, with the entire history. Three teammates, three full copies, all in sync.
-
-This is fundamentally different from SharePoint or OneDrive, where the "real" version lives on a server you don't control and your local copy is a temporary cache.
-
-## What you get for free
+## What Git gives you for free
 
 Once a folder is a repo:
 
-- **Every change is timestamped and attributed.** No more "who edited this?"
-- **Every change has a message** — a one-line note explaining the *why*.
-- **You can diff** any two versions and see exactly what changed.
-- **You can revert** to any prior state, instantly.
-- **You can branch** — copy the whole folder to try something, then keep or throw it away. (Next scene.)
+- **Every change is timestamped and attributed** — no more "who edited this?"
+- **Every change carries a message** explaining the *why*.
+- **You can compare** any two versions and see exactly what changed.
+- **You can rewind** to any prior state, instantly.
 
-A repo is not a folder *with* version control bolted on. A repo is **a folder where version control is the floor**.
+And crucially, all of this works **completely offline**. The repository on your laptop holds the full history. You can commit on a plane and rewind with no network at all.
+
+## Where GitHub comes in
+
+Git lives on your machine. **GitHub** is a service built on Git's principles that takes those same repositories and turns them into a place to *collaborate* — a shared home in the cloud where a whole team works on one repository together, with reviews, discussion, and a complete shared history.
+
+We're not there yet. For now, hold onto one line: **Git is the memory; GitHub is the meeting place.** We'll spend all of Act III on GitHub. First, the one Git idea that makes collaboration possible at all — the **branch** — is next.

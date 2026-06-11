@@ -188,7 +188,7 @@ Both views share a deliberate aesthetic. Hold the line.
 
 The visual surface is driven by two HTML attributes on `<html>`:
 
-- `data-palette` — one of `editorial`, `ink`, `solar`, `forest`, `slate`, `rose`, `ocean`, `sunset`
+- `data-palette` — one of `editorial`, `ink`, `solar`, `forest`, `slate`, `rose`, `ocean`, `sunset` (the picker shows their *gestalt* display names: Editorial, Broadsheet, Glossy, Almanac, Spec, Atelier, Encyclopedia, Riso — the `id`s never change)
 - `data-mode` — `light` or `dark`
 
 Both views ship with all 8 palettes × 2 modes. The defaults are:
@@ -199,6 +199,14 @@ Both views ship with all 8 palettes × 2 modes. The defaults are:
 Selection is persisted in `localStorage` (`cli-agents-palette` + `cli-agents-mode`) and synced across tabs/views via the `storage` event. Each view has a palette-swatch popover next to its dark/light toggle. The editorial palette is the canonical reference; the others are alternatives that respect the same hierarchy.
 
 Palette tokens live in **one place** — `site/css/tokens.css` — and are imported into `present/deck.css`, which aliases deck-specific variable names (`--ink`, `--ink-soft`, ...) onto the shared semantic tokens (`--fg`, `--fg-muted`, ...). Add a new palette in one file; both views pick it up.
+
+A palette is more than color and type — each one is a distinct **gestalt**: its own publication medium, with its own fonts, color logic, *and* layout language. Switching `data-palette` re-flows the *same* content into a recognizably different artifact. Each non-editorial palette owns one complete-identity file, loaded **last** in the cascade so it wins:
+
+- `site/css/palettes/<id>.css` — one file per palette (`ink`, `solar`, `forest`, `slate`, `rose`, `ocean`, `sunset`). Linked after `palette-layout.css` in `index.html`, and after `deck-palette-layout.css` in `present/index.html` (so each palette's color/type **tokens** also flow into the deck; the reading-layout rules are inert there).
+
+Each file is fully self-contained and **scoped to `:root[data-palette="<id>"]`** (plus a `[data-mode="dark"]` block) — it never references another palette or `editorial`, never uses `!important`, and collapses to a single clean column ≤960px. The earlier shared layers (`palette-flavor.css`, `palette-layout.css`) and the per-palette token blocks in `tokens.css` remain as a baseline the per-palette files override.
+
+The gestalts: `editorial` = clean baseline (untouched); `ink`/**Broadsheet** = newsprint daily (masthead acts, dense justified serif, drop caps, ruled index TOC); `solar`/**Glossy** = warm fashion magazine (huge Fraunces headlines, right-side TOC, bleeding imagery, pull-quote cards); `forest`/**Almanac** = zen deep-reading field guide (hidden desktop TOC, narrow centered measure, ruled-paper texture, botanical dividers); `slate`/**Spec** = technical manual (decimal §-numbering, mono metadata, tick-rail TOC, reduced-motion-safe scroll-snap); `rose`/**Atelier** = boutique lookbook (oversized italic Cormorant, image-first asymmetry, soft photo mattes, floating edge-drawer TOC); `ocean`/**Encyclopedia** = reference wiki (numbered headings, boxed Contents card, right-floated infoboxes); `sunset`/**Riso** = brutalist zine (poster-scale Archivo Black, mono chrome, hard borders/shadows, rotated plates, screaming key-idea bands). To restyle a palette, edit only its file; to add one, create `site/css/palettes/<id>.css`, link it in both HTML heads, and register the `id`+label+swatches in `site/js/theme.js`.
 
 What we are not:
 - **Not a terminal-themed site.** No scanlines, no CRT glow, no phosphor green, no mono-everywhere. That aesthetic was deliberately removed in the editorial overhaul.
