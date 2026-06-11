@@ -1,16 +1,16 @@
 ---
 scene: 14
-act: 2
+act: 3
 title: "Pull Requests — Change as a Conversation"
 subtitle: "The most auditable, lowest-friction sign-off process ever invented for knowledge work"
 duration_seconds: 240
 key_idea: "A PR turns 'I changed something' into 'I am proposing this change, here is exactly what I'm changing, and here is why' — and it preserves the whole conversation forever."
-hero_image: "12-manuscript-review.png"
-hero_image_alt: "Overhead editorial illustration of a printed manuscript between two reviewers, marked up in red and blue pen with line-level comments in the margins"
-hero_image_caption: "A pull request is a manuscript with the margins open for everyone."
-deck_image: "12-diff-and-paper.png"
-deck_image_alt: "Cinematic split watercolor: a green and red code diff at high zoom on the left, a handwritten review comment on real paper on the right, both lit with warm overhead light against a dark room"
-deck_image_caption: "Code on one side, conversation on the other."
+hero_image: "loops-10-proposal-reading.png"
+hero_image_alt: "Watercolor courtyard between 'Ada's Workshop' and the 'Shared Repository Library'. Ada stands at a lectern holding open a book stamped 'PULL REQUEST', pointing to a branch labelled 'feature/auth', presenting to three seated colleagues — Kenji ('tests everything'), Rosa ('thinks in diagrams') and Sam ('ships with care'). A banner overhead reads 'The Proposal — asking the world to accept your work.'"
+hero_image_caption: "A pull request is a proposal — your branch, presented to the people it affects."
+deck_image: "loops-10-proposal-deck.png"
+deck_image_alt: "Cinematic staging of the proposal scene: Ada presenting a 'PULL REQUEST' from the lectern between workshop and library, colleagues watching from the foreground."
+deck_image_caption: "You're not just merging code. You're asking the world to accept your work."
 bullets:
   - "A pull request (PR) says: please merge my branch into main"
   - "It shows the diff — every added, removed, and changed line"

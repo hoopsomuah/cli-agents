@@ -1,13 +1,13 @@
 ---
 scene: 08
 act: 2
-title: "The Terminal Walks the House Faster"
+title: "The Terminal Is Faster Than Clicking"
 subtitle: "Five commands cover ninety percent of the work"
 duration_seconds: 120
 key_idea: "File Explorer is friendly. The terminal is fast. You'll use both — but the terminal is the one that scales."
 hero_image: "06-mouse-vs-keyboard.png"
 hero_image_alt: "Split editorial illustration: on the left a person clicks through a file browser with a mouse; on the right the same person, same desk, types in a terminal — the right half visibly faster"
-hero_image_caption: "Same person, same desk — but the terminal walks the house faster."
+hero_image_caption: "Same person, same desk — but the terminal moves faster."
 deck_image: "06-terminal-velocity.png"
 deck_image_alt: "Cinematic watercolor with motion-blurred files streaming past a screen, a steady hand on a keyboard at the bottom of the frame, conveying velocity"
 deck_image_caption: "When clicking runs out, the terminal scales."
@@ -63,7 +63,7 @@ ls
 cd ..
 ```
 
-Five commands, three rooms walked. The same pattern works for every folder on the machine.
+Five commands, three folders walked. The same pattern works for every folder on the machine.
 
 ## What a TUI is (and why you've already used one)
 

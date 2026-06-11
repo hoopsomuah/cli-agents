@@ -1,0 +1,429 @@
+{
+  "generated": "2026-06-04T13:42:05.383Z",
+  "imageDir": "site/assets/images/",
+  "diagramDir": "site/assets/diagrams/",
+  "images": [
+    {
+      "file": "00-print-to-pixel-mural.png",
+      "ext": "png",
+      "bytes": 2198207
+    },
+    {
+      "file": "01-teletype-asr33-watercolor.png",
+      "ext": "png",
+      "bytes": 3120743
+    },
+    {
+      "file": "01-teletype-asr33.jpg",
+      "ext": "jpg",
+      "bytes": 415873
+    },
+    {
+      "file": "02-teletype-keys.png",
+      "ext": "png",
+      "bytes": 2506624
+    },
+    {
+      "file": "02-vt100-cinematic.png",
+      "ext": "png",
+      "bytes": 2865951
+    },
+    {
+      "file": "02-vt100-terminal-still.png",
+      "ext": "png",
+      "bytes": 3006829
+    },
+    {
+      "file": "02-vt100-terminal.jpg",
+      "ext": "jpg",
+      "bytes": 161793
+    },
+    {
+      "file": "03-modern-terminal-desk.png",
+      "ext": "png",
+      "bytes": 1844603
+    },
+    {
+      "file": "03-windows-terminal-consoles.jpg",
+      "ext": "jpg",
+      "bytes": 503795
+    },
+    {
+      "file": "03-windows-terminal-desk.png",
+      "ext": "png",
+      "bytes": 3206995
+    },
+    {
+      "file": "03-windows-terminal-fourpane.png",
+      "ext": "png",
+      "bytes": 2933374
+    },
+    {
+      "file": "04-install-terminal-pedestal.png",
+      "ext": "png",
+      "bytes": 2640930
+    },
+    {
+      "file": "04-install-terminal-trio.png",
+      "ext": "png",
+      "bytes": 3008056
+    },
+    {
+      "file": "04-server-room.png",
+      "ext": "png",
+      "bytes": 2106198
+    },
+    {
+      "file": "05-house-cutaway.png",
+      "ext": "png",
+      "bytes": 3148761
+    },
+    {
+      "file": "05-house-night.png",
+      "ext": "png",
+      "bytes": 2691950
+    },
+    {
+      "file": "06-mouse-vs-keyboard.png",
+      "ext": "png",
+      "bytes": 3707211
+    },
+    {
+      "file": "06-stickynotes-chaos-watercolor.png",
+      "ext": "png",
+      "bytes": 3391809
+    },
+    {
+      "file": "06-stickynotes-chaos.png",
+      "ext": "png",
+      "bytes": 3003672
+    },
+    {
+      "file": "06-terminal-velocity.png",
+      "ext": "png",
+      "bytes": 3247632
+    },
+    {
+      "file": "07-annotated-book-watercolor.png",
+      "ext": "png",
+      "bytes": 3112747
+    },
+    {
+      "file": "07-annotated-book.png",
+      "ext": "png",
+      "bytes": 2462239
+    },
+    {
+      "file": "08-obsidian-vault.png",
+      "ext": "png",
+      "bytes": 2927960
+    },
+    {
+      "file": "10-notebook-handwriting-watercolor.png",
+      "ext": "png",
+      "bytes": 3104019
+    },
+    {
+      "file": "10-notebook-handwriting.png",
+      "ext": "png",
+      "bytes": 2458432
+    },
+    {
+      "file": "11-forked-road.png",
+      "ext": "png",
+      "bytes": 3046424
+    },
+    {
+      "file": "11-obsidian-desk-watercolor.png",
+      "ext": "png",
+      "bytes": 3036903
+    },
+    {
+      "file": "11-obsidian-desk.png",
+      "ext": "png",
+      "bytes": 2194883
+    },
+    {
+      "file": "11-parallel-drafts.png",
+      "ext": "png",
+      "bytes": 3056673
+    },
+    {
+      "file": "12-diff-and-paper.png",
+      "ext": "png",
+      "bytes": 2592555
+    },
+    {
+      "file": "12-manuscript-review.png",
+      "ext": "png",
+      "bytes": 3192871
+    },
+    {
+      "file": "13-hands-keyboard-watercolor.png",
+      "ext": "png",
+      "bytes": 2982420
+    },
+    {
+      "file": "13-hands-keyboard.png",
+      "ext": "png",
+      "bytes": 1829483
+    },
+    {
+      "file": "13-issue-wall.png",
+      "ext": "png",
+      "bytes": 2379610
+    },
+    {
+      "file": "13-single-issue-card.png",
+      "ext": "png",
+      "bytes": 3140702
+    },
+    {
+      "file": "14-book-and-markdown.png",
+      "ext": "png",
+      "bytes": 3428780
+    },
+    {
+      "file": "14-canon-living.png",
+      "ext": "png",
+      "bytes": 2823841
+    },
+    {
+      "file": "15-cabinet-vs-shelf-watercolor.png",
+      "ext": "png",
+      "bytes": 3128931
+    },
+    {
+      "file": "15-cabinet-vs-shelf.png",
+      "ext": "png",
+      "bytes": 2436259
+    },
+    {
+      "file": "15-install-plaques.png",
+      "ext": "png",
+      "bytes": 2870436
+    },
+    {
+      "file": "15-install-trio.png",
+      "ext": "png",
+      "bytes": 3081442
+    },
+    {
+      "file": "16-campus-twilight.png",
+      "ext": "png",
+      "bytes": 3073451
+    },
+    {
+      "file": "16-fresh-start.png",
+      "ext": "png",
+      "bytes": 2829161
+    },
+    {
+      "file": "16-repo-house.png",
+      "ext": "png",
+      "bytes": 3197020
+    },
+    {
+      "file": "17-nested-drawers.png",
+      "ext": "png",
+      "bytes": 3002102
+    },
+    {
+      "file": "17-org-architecture.png",
+      "ext": "png",
+      "bytes": 3277935
+    },
+    {
+      "file": "18-platform-in-use.png",
+      "ext": "png",
+      "bytes": 3142071
+    },
+    {
+      "file": "18-platform-tools.png",
+      "ext": "png",
+      "bytes": 3141594
+    },
+    {
+      "file": "19-copilot-constellation.png",
+      "ext": "png",
+      "bytes": 3052878
+    },
+    {
+      "file": "19-copilot-table.png",
+      "ext": "png",
+      "bytes": 3108491
+    },
+    {
+      "file": "20-copilot-cli-session.png",
+      "ext": "png",
+      "bytes": 2692291
+    },
+    {
+      "file": "21-converging-door.png",
+      "ext": "png",
+      "bytes": 3846599
+    },
+    {
+      "file": "21-pr-door-dusk.png",
+      "ext": "png",
+      "bytes": 2952596
+    },
+    {
+      "file": "23-install-final-pedestal.png",
+      "ext": "png",
+      "bytes": 2889064
+    },
+    {
+      "file": "23-install-final-trio.png",
+      "ext": "png",
+      "bytes": 3026951
+    },
+    {
+      "file": "concept-agent-loop-dominoes.png",
+      "ext": "png",
+      "bytes": 3252972
+    },
+    {
+      "file": "concept-agent-loop-mobius.png",
+      "ext": "png",
+      "bytes": 2875081
+    },
+    {
+      "file": "concept-ci-bakery.png",
+      "ext": "png",
+      "bytes": 3761991
+    },
+    {
+      "file": "concept-ci-conveyor.png",
+      "ext": "png",
+      "bytes": 3031592
+    },
+    {
+      "file": "concept-cloud-aerial.png",
+      "ext": "png",
+      "bytes": 3347166
+    },
+    {
+      "file": "concept-cloud-quiet.png",
+      "ext": "png",
+      "bytes": 2832816
+    },
+    {
+      "file": "concept-github-workflow-deck.png",
+      "ext": "png",
+      "bytes": 3124190
+    },
+    {
+      "file": "concept-github-workflow-reading.png",
+      "ext": "png",
+      "bytes": 3441780
+    },
+    {
+      "file": "concept-markdown-morph.png",
+      "ext": "png",
+      "bytes": 3021846
+    },
+    {
+      "file": "concept-markdown-source-vs-rendered.png",
+      "ext": "png",
+      "bytes": 2958426
+    },
+    {
+      "file": "concept-open-source-barn.png",
+      "ext": "png",
+      "bytes": 3052950
+    },
+    {
+      "file": "concept-open-source-kitchen.png",
+      "ext": "png",
+      "bytes": 3245898
+    },
+    {
+      "file": "concept-pipelines-copper.png",
+      "ext": "png",
+      "bytes": 3083129
+    },
+    {
+      "file": "concept-pipelines-data.png",
+      "ext": "png",
+      "bytes": 2960223
+    },
+    {
+      "file": "concept-powershell-cinematic.png",
+      "ext": "png",
+      "bytes": 2518055
+    },
+    {
+      "file": "concept-powershell-desk.png",
+      "ext": "png",
+      "bytes": 3013986
+    },
+    {
+      "file": "concept-repo-glass.png",
+      "ext": "png",
+      "bytes": 3041988
+    },
+    {
+      "file": "concept-repo-library.png",
+      "ext": "png",
+      "bytes": 3154135
+    },
+    {
+      "file": "concept-shells-glass.png",
+      "ext": "png",
+      "bytes": 2782840
+    },
+    {
+      "file": "concept-shells-jars.png",
+      "ext": "png",
+      "bytes": 3205719
+    },
+    {
+      "file": "concept-ssh-globe.png",
+      "ext": "png",
+      "bytes": 3014996
+    },
+    {
+      "file": "concept-ssh-here-and-there.png",
+      "ext": "png",
+      "bytes": 3072598
+    }
+  ],
+  "diagrams": [
+    {
+      "file": "01-teletype-lineage.svg",
+      "ext": "svg",
+      "bytes": 4496
+    },
+    {
+      "file": "02-tty-vs-pty.svg",
+      "ext": "svg",
+      "bytes": 4749
+    },
+    {
+      "file": "03-branch-merge.svg",
+      "ext": "svg",
+      "bytes": 3470
+    },
+    {
+      "file": "04-file-over-app.svg",
+      "ext": "svg",
+      "bytes": 5950
+    },
+    {
+      "file": "05-agent-loop.svg",
+      "ext": "svg",
+      "bytes": 3182
+    },
+    {
+      "file": "06-sharepoint-vs-repo.svg",
+      "ext": "svg",
+      "bytes": 6642
+    },
+    {
+      "file": "12-git-glyph.svg",
+      "ext": "svg",
+      "bytes": 1882
+    }
+  ]
+}

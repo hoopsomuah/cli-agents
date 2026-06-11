@@ -1,6 +1,6 @@
 {
   "title": "CLI Agents",
-  "subtitle": "From Teletype to Rhythm of Business",
+  "subtitle": "A Friendly Guide to Terminals, CLIs and TUIs",
   "tagline": "A guided tour of the terminal, repositories, GitHub, and the Copilot CLI — for the people who keep the team running.",
   "meeting_target_minutes": 30,
   "live_coverage_percent": 20,
@@ -20,35 +20,41 @@
     },
     {
       "id": "act-2",
-      "title": "Files, Repos, and the Living Canon",
-      "subtitle": "From the filesystem on your laptop to a shared, versioned source of truth",
+      "title": "Files, Repositories, and Version Control",
+      "subtitle": "From the filesystem on your laptop to a versioned history you can trust",
       "scenes": [
         "07-filesystem-house",
         "08-terminal-walks-faster",
-        "09-file-over-app",
-        "10-obsidian",
         "11-final-v7-final",
         "12-what-is-a-repo",
         "13-branches",
-        "14-pull-requests",
-        "15-issues",
-        "16-agent-friendly-canon",
         "17-install-git-obsidian"
       ]
     },
     {
       "id": "act-3",
       "title": "GitHub and the Copilot CLI",
-      "subtitle": "How the cloud platform and the agent in your terminal fit together",
+      "subtitle": "How teams collaborate in the cloud — and how the agent in your terminal joins them",
       "scenes": [
         "18-github-cloud-home",
         "19-orgs-and-repos",
         "20-github-at-work",
+        "14-pull-requests",
+        "15-issues",
+        "16-agent-friendly-canon",
         "21-copilot-family",
         "22-copilot-cli",
-        "23-pr-as-conversation",
-        "24-sharepoint-vs-repo",
-        "25-install-gh-copilot-cli"
+        "23-pr-as-conversation"
+      ]
+    },
+    {
+      "id": "appendix",
+      "kind": "appendix",
+      "title": "Appendix",
+      "subtitle": "Optional extras — tools and ideas worth a look once the core lands",
+      "scenes": [
+        "10-obsidian",
+        "09-file-over-app"
       ]
     }
   ]

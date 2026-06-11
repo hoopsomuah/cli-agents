@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CLI Agents — From Teletype to Rhythm of Business</title>
+    <title>A Friendly Guide to Terminals, CLIs and TUIs</title>
     <meta
       name="description"
       content="A guided tour of the terminal, version control, and agentic operations — for the people who keep the team running."
     />
 
-    <meta property="og:title" content="CLI Agents — From Teletype to Rhythm of Business" />
+    <meta property="og:title" content="A Friendly Guide to Terminals, CLIs and TUIs" />
     <meta
       property="og:description"
       content="A guided tour of the terminal, version control, and agentic operations — for the people who keep the team running."
@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Serif+Display:ital@0;1&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=Space+Grotesk:wght@400;500;600;700&family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -36,6 +36,18 @@
     <link rel="stylesheet" href="site/css/components.css" />
     <link rel="stylesheet" href="site/css/interactive.css" />
     <link rel="stylesheet" href="site/css/palette-flavor.css" />
+    <link rel="stylesheet" href="site/css/palette-layout.css" />
+
+    <!-- Per-palette gestalt overrides. Each file owns ONE palette's full
+         identity (color tokens, type, structure) and is linked last so it
+         wins the cascade. editorial keeps the untouched baseline above. -->
+    <link rel="stylesheet" href="site/css/palettes/ink.css" />
+    <link rel="stylesheet" href="site/css/palettes/solar.css" />
+    <link rel="stylesheet" href="site/css/palettes/forest.css" />
+    <link rel="stylesheet" href="site/css/palettes/slate.css" />
+    <link rel="stylesheet" href="site/css/palettes/rose.css" />
+    <link rel="stylesheet" href="site/css/palettes/ocean.css" />
+    <link rel="stylesheet" href="site/css/palettes/sunset.css" />
 
     <script>
       // Anti-FOUC: set palette + mode before stylesheets paint.
@@ -148,17 +160,20 @@
           <div class="hero__text">
             <p class="hero__eyebrow">A presentation by Hoop Somuah · 2026</p>
             <h1 class="hero__title">
-              <span class="hero__title-line">From Teletype</span>
-              <span class="hero__title-line">to Rhythm of Business</span>
+              <span class="hero__title-line">A Friendly Guide to</span>
+              <span class="hero__title-line">Terminals, CLIs &amp; TUIs</span>
             </h1>
             <p class="hero__lede">
-              The terminal is sixty-three years old, and the most agent-friendly interface
-              humans have ever built. Three acts on how to put it to work for an executive team.
+              You've seen it in every hacker movie: the black window full of text, someone
+              typing fast, green letters flying by. It looks intimidating — but it's really
+              just the oldest, simplest way to talk to a computer: you type a line, it does
+              a thing, it types back. This is a friendly, no-jargon tour of that window —
+              what it is, why it has quietly outlasted every shiny app around it, and how it
+              became the place where AI agents now do real work.
             </p>
             <div class="hero__cta-row">
               <a href="#act-1" class="hero__cta">Begin Act I</a>
               <a href="present/" class="hero__cta hero__cta--secondary">Present mode →</a>
-              <a href="#scene-25" class="hero__cta hero__cta--secondary">Skip to the checklist</a>
             </div>
             <div class="hero__meta">
               <span>30-minute live walkthrough</span>
@@ -227,5 +242,6 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script type="module" src="site/js/main.js"></script>
     <script type="module" src="site/js/theme.js"></script>
+    <script type="module" src="site/js/konami.js"></script>
   </body>
 </html>

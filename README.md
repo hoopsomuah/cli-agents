@@ -1,4 +1,4 @@
-# CLI Agents — From Teletype to Rhythm of Business
+# CLI Agents — A Friendly Guide to Terminals, CLIs and TUIs
 
 A 30-minute walkthrough that introduces a non-technical executive team to:
 
@@ -115,10 +115,10 @@ Cover ~20% of the content live and leave the rest for self-serve. Suggested live
 
 1. **Hero + teletype animation** (2 min) — the 63-year hook
 2. **Scene 03–05: Windows Terminal, shells, PowerShell** (5 min) — the actual machinery
-3. **Scene 11–14: filenames → repos → branches → PRs** (10 min) — the core arc
-4. **Scene 22: Copilot CLI** (5 min) — the magic moment
-5. **Scene 24: SharePoint vs repo** (3 min) — the strategic question
-6. **Scene 25 + issues** (5 min) — the homework
+3. **Scene 11–13: filenames → repos → branches** (8 min) — the version-control core
+4. **Scene 14–16: pull requests, issues, the agent-ready canon** (6 min) — collaboration on GitHub
+5. **Scene 22: Copilot CLI** (5 min) — the magic moment
+6. **Scene 25 + issues** (4 min) — the homework
 
 Send the URL. Let the issues drive the next week.
 

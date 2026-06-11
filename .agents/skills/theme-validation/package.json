@@ -1,0 +1,14 @@
+{
+  "name": "theme-validation-harness",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Screenshot + probe harness for auditing every scene across every palette/mode. Self-contained tool dir; keeps the site itself build-step-free.",
+  "scripts": {
+    "audit": "node audit.mjs",
+    "postinstall-browser": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}

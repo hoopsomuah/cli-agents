@@ -89,6 +89,14 @@ function renderScene(scene, sceneId) {
           </div>`
         : ''
     }
+    ${
+      meta.warning
+        ? `<div class="scene__warning">
+            <span class="scene__warning-icon" aria-hidden="true">⚠️</span>
+            <p class="scene__warning-text">${meta.warning}</p>
+          </div>`
+        : ''
+    }
     ${renderDiagram(meta)}
     ${renderInteractive(meta.interactive)}
     <div class="scene__body">${bodyHtml}</div>
@@ -101,9 +109,10 @@ export function renderActs(root, manifest, scenes) {
       const sceneHtml = act.scenes
         .map((sid) => renderScene(scenes[sid], sid))
         .join('\n');
+      const label = act.kind === 'appendix' ? 'Appendix' : `Act ${romanize(i + 1)}`;
       return `<section class="act" id="${act.id}">
         <header class="act__header">
-          <p class="act__roman">Act ${romanize(i + 1)}</p>
+          <p class="act__roman">${label}</p>
           <h2 class="act__title">${act.title}</h2>
           <p class="act__subtitle">${act.subtitle}</p>
         </header>

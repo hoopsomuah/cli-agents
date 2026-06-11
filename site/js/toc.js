@@ -13,8 +13,10 @@ export function initTOC(manifest) {
           return `<li class="toc-scene"><a href="#scene-${sid.slice(0, 2)}">${title}</a></li>`;
         })
         .join('');
-      return `<li class="toc-act"><a href="#${act.id}">Act ${
-        ['I', 'II', 'III', 'IV', 'V', 'VI'][i]
+      return `<li class="toc-act"><a href="#${act.id}">${
+        act.kind === 'appendix'
+          ? 'Appendix'
+          : `Act ${['I', 'II', 'III', 'IV', 'V', 'VI'][i]}`
       } — ${act.title}</a></li>${sceneLinks}`;
     })
     .join('');

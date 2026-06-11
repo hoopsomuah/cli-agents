@@ -4,22 +4,16 @@ act: 2
 title: "Final_v7_FINAL_actually-final.docx"
 subtitle: "Why filenames are not a version-control strategy"
 duration_seconds: 90
-key_idea: "Every team has lived through the 'which version is the real one?' nightmare. The software world solved this twenty years ago. We should borrow the cure."
+key_idea: "Every team has lived the 'which version is the real one?' nightmare. The software world solved it twenty years ago — and we can borrow the cure."
 hero_image: "06-stickynotes-chaos-watercolor.png"
 hero_image_alt: "Hand-illustrated watercolor overhead of a wooden desk in chaos: a printed document labeled PROPOSAL_FINAL_v7_FINAL.docx surrounded by overlapping sticky notes with conflicting revisions"
 hero_image_caption: "The version-naming disaster as still life."
 hero_image_orientation: "portrait"
-bullets:
-  - "Filenames-as-versions doesn't scale: who, when, why, which one is real?"
-  - "Email and shared drives have no audit trail — only tribal memory"
-  - "Programmers solved this in the 1990s with version control (Git)"
-  - "The team's hub for that history is GitHub"
-  - "The pattern for proposing a change is the pull request — coming up"
 ---
 
-## A familiar drive
+## You have lived this
 
-You open the team's shared drive and see:
+It's Thursday afternoon and the board deck is due Friday. You open the team's shared drive to grab the latest roadmap and this is what greets you:
 
 ```
 Roadmap_Q1.docx
@@ -31,25 +25,20 @@ Roadmap_Q1_FINAL_actually-final.docx
 Roadmap_Q1_FINAL_actually-final_USE-THIS-ONE.docx
 ```
 
-You ask three people which one is "real." Two of them disagree. The third says she thinks she emailed a newer version. Nobody is wrong, and nobody is right.
+So you do what everyone does. You message three people and ask which one is real. Two of them disagree. The third says she's pretty sure she emailed a newer version Tuesday, but it might have been to the old thread. Nobody is lying. Nobody actually knows. And the one number on the slide that the CFO will read out loud lives somewhere in that pile.
 
-This is **distributed authority over change**, and it scales terribly. It is the single biggest hidden tax on operational work.
+This is the quiet tax on operational work: not that people make mistakes, but that **nobody can say with certainty which version is the truth, who changed it, or why.** Multiply it across every proposal, budget, and plan your team touches in a year.
 
-## The questions you cannot answer
+## The questions a filename can't answer
 
-With files-by-filename, you cannot cleanly answer:
+When the version *is* the filename, there are four questions you simply cannot answer cleanly:
 
-- **Who** changed this, **when**, and **why**?
-- **What exactly** changed between this version and the last one?
-- **Was it reviewed** before it became the new "real" version?
-- **How do I get back** to the version from three weeks ago?
+**Who** changed this, **when**, and **why**? **What exactly** is different from the last version? **Did anyone review it** before it became the new "real" one? And **how do I get back** to how it looked three weeks ago, before the change that broke the numbers?
 
-Every team eventually invents a half-solution — a shared OneNote log, an email chain, a SharePoint approval flow. None survive contact with reality, because none of them are tied to **the file itself**.
+Every team eventually invents a half-fix — a shared log, an email chain, an approval flow. None of them survive contact with reality, because none of them are tied to **the file itself**. The history lives in people's memories, and memory doesn't scale.
 
-## What the software world built
+## Somebody already solved this
 
-Programmers had this same problem in the 1990s, except worse — a one-line change in a program can break everything. Their answer was **version control**: a system where the file *remembers its own history*. Every change is stamped with who, when, why. Every change can be reviewed before it becomes the new truth. Every old version is retrievable.
+Programmers hit this exact wall in the 1990s, except worse: in software, a single mistyped line can take down the whole system. So they built a system where the file *remembers its own history* — every change stamped with who, when, and why; every old version recoverable; nothing overwritten and forgotten.
 
-That tool is called **Git**. The team hub where Git histories are shared is **GitHub**. The pattern of "propose a change → review it → accept it" is called a **pull request**.
-
-The next four scenes break those apart.
+That system is called **version control**, and the tool nearly everyone uses is **Git**. That's the next scene.

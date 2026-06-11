@@ -1,0 +1,173 @@
+/* ============================================================
+   deck-palette-layout.css — per-palette STRUCTURAL signatures (deck)
+   ------------------------------------------------------------
+   The reading view has site/css/palette-layout.css; this is its
+   slide-deck twin. deck.js never changes — the same scene slide
+   re-composes per palette: image side, grid ratio, figure framing,
+   title weight, chrome treatment.
+
+   `editorial` is the baseline and appears nowhere here. Loaded
+   AFTER deck.css so these win the cascade.
+   ============================================================ */
+
+
+/* ============================================================
+   INK — NEWSPAPER: text-dominant, hairline-framed inset image.
+   ============================================================ */
+:root[data-palette="ink"] .slide--scene {
+  grid-template-columns: 1.7fr 1fr;
+}
+:root[data-palette="ink"] .slide--scene .slide__title {
+  font-style: normal;
+}
+:root[data-palette="ink"] .slide--scene .slide__chrome {
+  border-bottom: 1px solid var(--ink-mute);
+  padding-bottom: 0.6rem;
+  font-style: normal;
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+}
+:root[data-palette="ink"] .slide--scene .slide__figure,
+:root[data-palette="ink"] .slide--bullets-image .slide__figure {
+  border-radius: 0;
+  box-shadow: 0 0 0 1px var(--ink-mute);
+}
+
+
+/* ============================================================
+   SOLAR — MODERNIST MAGAZINE: image-forward, edge-to-edge plate,
+   oversized headline.
+   ============================================================ */
+:root[data-palette="solar"] .slide--scene {
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(1.5rem, 3vw, 3.5rem);
+}
+:root[data-palette="solar"] .slide--scene .slide__title {
+  font-size: clamp(2.6rem, 5.4vw, 5.6rem);
+  line-height: 0.98;
+}
+:root[data-palette="solar"] .slide--scene .slide__figure,
+:root[data-palette="solar"] .slide--bullets-image .slide__figure {
+  border-radius: 0;
+  padding: 0;
+  max-height: 82vh;
+}
+:root[data-palette="solar"] .slide--scene .slide__figure img {
+  max-height: 82vh;
+}
+
+
+/* ============================================================
+   FOREST — ACADEMIC JOURNAL: centered, restrained, framed plate.
+   ============================================================ */
+:root[data-palette="forest"] .slide--scene {
+  grid-template-columns: 1fr 0.9fr;
+}
+:root[data-palette="forest"] .slide--scene .slide__left {
+  text-align: center;
+  align-items: center;
+}
+:root[data-palette="forest"] .slide--scene .slide__sub {
+  max-width: 34ch;
+}
+:root[data-palette="forest"] .slide--scene .slide__keyidea {
+  border-left: 0;
+  border-top: 1px solid var(--ink-mute);
+  border-bottom: 1px solid var(--ink-mute);
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+:root[data-palette="forest"] .slide--scene .slide__keyidea-text {
+  max-width: none;
+}
+
+
+/* ============================================================
+   SLATE — TECHNICAL MANUAL: image plate on the LEFT, spec-style
+   chrome with an accent top rule.
+   ============================================================ */
+:root[data-palette="slate"] .slide--scene {
+  grid-template-columns: 1fr 1.1fr;
+}
+:root[data-palette="slate"] .slide--scene .slide__right { order: 1; }
+:root[data-palette="slate"] .slide--scene .slide__left  { order: 2; }
+:root[data-palette="slate"] .slide--scene .slide__chrome {
+  font-family: var(--font-mono, monospace);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(0.7rem, 0.9vw, 0.95rem);
+  border-top: 2px solid var(--accent);
+  padding-top: 0.6rem;
+}
+:root[data-palette="slate"] .slide--scene .slide__figure,
+:root[data-palette="slate"] .slide--bullets-image .slide__figure {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--ink-mute), 0 18px 50px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ============================================================
+   ROSE — BOUTIQUE LOOKBOOK: image dominant on the LEFT, soft frame,
+   large italic title.
+   ============================================================ */
+:root[data-palette="rose"] .slide--scene {
+  grid-template-columns: 1.3fr 0.85fr;
+}
+:root[data-palette="rose"] .slide--scene .slide__right { order: 1; }
+:root[data-palette="rose"] .slide--scene .slide__left  { order: 2; }
+:root[data-palette="rose"] .slide--scene .slide__title {
+  font-style: italic;
+  font-size: clamp(2.4rem, 5vw, 5.2rem);
+}
+:root[data-palette="rose"] .slide--scene .slide__figure,
+:root[data-palette="rose"] .slide--bullets-image .slide__figure {
+  border-radius: 14px;
+  box-shadow: 0 40px 90px rgba(0, 0, 0, 0.4);
+}
+:root[data-palette="rose"] .slide--quote blockquote {
+  font-style: italic;
+}
+
+
+/* ============================================================
+   OCEAN — REFERENCE / WIKI: numbered chrome, left rule on the text
+   column, clean square plate.
+   ============================================================ */
+:root[data-palette="ocean"] .slide--scene .slide__left {
+  border-left: 3px solid var(--accent);
+  padding-left: clamp(1rem, 2vw, 2rem);
+}
+:root[data-palette="ocean"] .slide--scene .slide__chrome {
+  font-variant: small-caps;
+  letter-spacing: 0.06em;
+}
+:root[data-palette="ocean"] .slide--scene .slide__figure,
+:root[data-palette="ocean"] .slide--bullets-image .slide__figure {
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   SUNSET — ZINE / BRUTALIST: oversized offset title, hard-shadow
+   rotated plate, thick accents.
+   ============================================================ */
+:root[data-palette="sunset"] .slide--scene .slide__title {
+  font-size: clamp(2.6rem, 5.6vw, 6rem);
+  line-height: 0.9;
+}
+:root[data-palette="sunset"] .slide--scene .slide__figure,
+:root[data-palette="sunset"] .slide--bullets-image .slide__figure {
+  border-radius: 0;
+  transform: rotate(-1.6deg);
+  box-shadow: 14px 14px 0 var(--accent);
+}
+:root[data-palette="sunset"] .slide--scene .slide__chrome {
+  font-family: var(--font-mono, monospace);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+:root[data-palette="sunset"] .slide--scene .slide__keyidea {
+  border-left-width: 6px;
+}
