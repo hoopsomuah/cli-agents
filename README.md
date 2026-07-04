@@ -124,6 +124,15 @@ Send the URL. Let the issues drive the next week.
 
 ---
 
+## Experiments
+
+- **Flow Lab** (`/flow/`) — a prototype animated-workflow-diagram engine. Describe a DAG in
+  Graphviz DOT, narrate it with a small timeline DSL, and the runtime lays it out, picks
+  icons, and plays it as an animated SVG — exportable as a single self-contained
+  SMIL-animated `.svg`. Format reference in [`flow/README.md`](flow/README.md).
+
+---
+
 ## Source material
 
 - [Windows Command-Line Backgrounder](https://devblogs.microsoft.com/commandline/windows-command-line-backgrounder/) — Microsoft

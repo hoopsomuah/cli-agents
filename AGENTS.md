@@ -44,6 +44,10 @@ Live: <https://hoopsomuah.github.io/cli-agents/>
 │   ├── index.html
 │   ├── deck.css
 │   └── deck.js
+├── flow/                 # Flow Lab — self-contained experiment: animated DOT
+│   │                     #   workflow diagrams (own README; content/layout rules
+│   │                     #   above don't apply inside it, but the no-build,
+│   │                     #   no-dependency, ES-modules rules do)
 ├── docs/
 │   └── SEEDED_ISSUES.md  # Starter issues for the post-meeting homework
 ├── index.html            # Reading view entry point

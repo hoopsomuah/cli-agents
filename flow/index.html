@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flow Lab — animated workflow diagrams</title>
+    <meta
+      name="description"
+      content="Prototype: describe a workflow as a DOT graph plus a narration timeline, and play it back as an animated SVG."
+    />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=boska@400,500,700&f[]=satoshi@400,500,700&f[]=jetbrains-mono@400,500,700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      // Anti-FOUC: apply the shared palette + mode before first paint.
+      (function () {
+        try {
+          var palette = localStorage.getItem('cli-agents-palette');
+          var mode = localStorage.getItem('cli-agents-mode');
+          if (palette) document.documentElement.setAttribute('data-palette', palette);
+          document.documentElement.setAttribute('data-mode', mode === 'dark' ? 'dark' : 'light');
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="stylesheet" href="../site/css/tokens.css" />
+    <link rel="stylesheet" href="flow.css" />
+  </head>
+  <body>
+    <header class="lab-header">
+      <div>
+        <p class="lab-kicker"><a href="../index.html">CLI Agents</a> · experiment</p>
+        <h1>Flow Lab</h1>
+        <p class="lab-sub">
+          Describe a workflow as a <strong>DOT graph</strong> (what exists) plus a
+          <strong>timeline</strong> (what happens, in what order) — the runtime lays it out,
+          picks icons, and plays it as an animated SVG.
+        </p>
+      </div>
+    </header>
+
+    <main class="lab-main">
+      <section class="lab-editors" aria-label="Source files">
+        <div class="lab-field">
+          <label for="example-select">Example</label>
+          <select id="example-select"></select>
+        </div>
+        <div class="lab-field">
+          <label for="dot-input">Graph — DOT <span class="lab-hint">structure: nodes, edges, icons</span></label>
+          <textarea id="dot-input" rows="16" spellcheck="false" autocomplete="off"></textarea>
+        </div>
+        <div class="lab-field">
+          <label for="timeline-input">Timeline <span class="lab-hint">narration: order, pulses, captions</span></label>
+          <textarea id="timeline-input" rows="16" spellcheck="false" autocomplete="off"></textarea>
+        </div>
+        <pre id="error-box" class="lab-errors" hidden></pre>
+        <details class="lab-icons">
+          <summary>Icon library</summary>
+          <p>
+            Set <code>icon=name</code> on a node, or leave it off — the runtime matches label
+            keywords, then falls back to a stable shape. <code>registerIcon()</code> adds your own.
+          </p>
+          <div id="icon-gallery" class="lab-icon-grid"></div>
+        </details>
+      </section>
+
+      <section class="lab-stage-wrap" aria-label="Animation">
+        <div id="stage" class="lab-stage"></div>
+        <p id="caption" class="lab-caption" aria-live="polite">&nbsp;</p>
+        <div class="lab-transport">
+          <div id="step-dots" class="lab-dots" role="group" aria-label="Steps"></div>
+          <div class="lab-buttons">
+            <button id="btn-restart" type="button" aria-label="Restart">⟲</button>
+            <button id="btn-prev" type="button" aria-label="Previous step">←</button>
+            <button id="btn-play" type="button" aria-label="Play or pause">▶</button>
+            <button id="btn-next" type="button" aria-label="Next step">→</button>
+            <select id="speed-select" aria-label="Playback speed">
+              <option value="0.5">0.5×</option>
+              <option value="1" selected>1×</option>
+              <option value="1.5">1.5×</option>
+              <option value="2">2×</option>
+            </select>
+            <button id="btn-export" type="button" class="lab-export">Download animated SVG</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="lab-footer">
+      <p>
+        The files are the canon; this player is one renderer. The exported SVG is another —
+        self-contained SMIL animation, no scripts. Format reference in
+        <a href="https://github.com/hoopsomuah/cli-agents/blob/main/flow/README.md">flow/README.md</a>.
+      </p>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
