@@ -33,7 +33,7 @@ Live: <https://hoopsomuah.github.io/cli-agents/>
 .
 ├── content/              # SOURCE OF TRUTH — one Markdown file per scene
 │   ├── manifest.json     # Act/scene structure (acts, scene order)
-│   └── NN-name.md        # 17 scenes, with YAML-ish frontmatter
+│   └── NN-name.md        # 25 scenes, with YAML-ish frontmatter
 ├── site/                 # Reading view — layout and styling
 │   ├── css/              # tokens, base, layout, components, interactive
 │   ├── js/               # main, render, header, toc, interactive/*
@@ -45,9 +45,9 @@ Live: <https://hoopsomuah.github.io/cli-agents/>
 │   ├── deck.css
 │   └── deck.js
 ├── flow/                 # Flow Lab — self-contained experiment: animated DOT
-│   │                     #   workflow diagrams (own README; content/layout rules
-│   │                     #   above don't apply inside it, but the no-build,
-│   │                     #   no-dependency, ES-modules rules do)
+│                         #   workflow diagrams (own README; content/layout rules
+│                         #   above don't apply inside it, but the no-build,
+│                         #   no-dependency, ES-modules rules do)
 ├── docs/
 │   └── SEEDED_ISSUES.md  # Starter issues for the post-meeting homework
 ├── index.html            # Reading view entry point
@@ -242,7 +242,7 @@ The script is idempotent (skips up-to-date files), uses `ffmpeg` (required), run
 ## Coding conventions
 
 - **ES modules, no bundler.** Import paths are relative and must include `.js`.
-- **No dependencies** beyond `marked` (CDN) for Markdown parsing. Do not add npm/yarn/pnpm; there is no `package.json` on purpose.
+- **No dependencies** beyond runtime CDN loads: `marked` for Markdown parsing and the webfont CDNs (Fontshare, Google Fonts). Nothing is installed — do not add npm/yarn/pnpm; there is no `package.json` on purpose.
 - **CSS custom properties** drive the design system. Tokens live in `site/css/tokens.css`; the deck has its own scoped tokens at the top of `present/deck.css`.
 - **One concern per file.** Sticky header → `header.js`. TOC → `toc.js`. Each interactive widget gets its own file.
 - **No inline event handlers, no inline styles.** Use classes and addEventListener.
